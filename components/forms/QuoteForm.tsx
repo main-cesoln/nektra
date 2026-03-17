@@ -2,11 +2,10 @@
 
 import { useState, FormEvent } from "react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
+import { inputClasses } from "@/lib/styles";
 import { INDUSTRIES, PRODUCTS } from "@/lib/constants";
 import GlowButton from "@/components/ui/GlowButton";
-
-const inputClasses =
-  "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm";
+import FormSuccessMessage from "./FormSuccessMessage";
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -48,15 +47,7 @@ export default function QuoteForm() {
   };
 
   if (submitted) {
-    return (
-      <div className="text-center py-12">
-        <div className="w-16 h-16 rounded-full bg-accent-green/20 flex items-center justify-center mx-auto mb-4">
-          <span className="text-accent-green text-2xl">&#10003;</span>
-        </div>
-        <h3 className="font-heading text-xl font-bold text-white mb-2">Quote Request Received!</h3>
-        <p className="text-gray-400">Our team will prepare a custom quote and contact you within 24 hours.</p>
-      </div>
-    );
+    return <FormSuccessMessage heading="Quote Request Received!" message="Our team will prepare a custom quote and contact you within 24 hours." />;
   }
 
   return (

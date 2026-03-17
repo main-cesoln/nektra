@@ -9,10 +9,8 @@ import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
 import { SERVICES, SERVICE_AREAS } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
-import {
-  Wrench, Activity, RefreshCw, ArrowLeftRight, Truck,
-  Zap, Shield, BarChart3, MapPin,
-} from "lucide-react";
+import { Wrench, MapPin } from "lucide-react";
+import { SERVICE_ICON_MAP } from "@/lib/icons";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Services — Installation, Testing, AMC & Emergency Service",
@@ -20,11 +18,6 @@ export const metadata: Metadata = generatePageMetadata({
     "Free battery installation, free diagnostics, AMC with 5-year warranty, emergency service, and Pan-Telangana coverage. Complete battery service solutions.",
   path: "/services",
 });
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Wrench, Activity, RefreshCw, ArrowLeftRight, Truck,
-  Zap, Shield, BarChart3, MapPin,
-};
 
 export default function ServicesPage() {
   return (
@@ -44,7 +37,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((service, i) => {
-              const Icon = iconMap[service.icon] || Wrench;
+              const Icon = SERVICE_ICON_MAP[service.icon] || Wrench;
               return (
                 <MotionWrapper key={service.slug} delay={i * 0.08}>
                   <GlassCard className="h-full flex flex-col">

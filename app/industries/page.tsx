@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Settings } from "lucide-react";
 import { generatePageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -9,10 +9,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import CTABanner from "@/components/ui/CTABanner";
 import { INDUSTRIES } from "@/lib/constants";
-import {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-} from "lucide-react";
+import { INDUSTRY_ICON_MAP } from "@/lib/icons";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Industries — Battery Solutions for 10+ Sectors",
@@ -20,11 +17,6 @@ export const metadata: Metadata = generatePageMetadata({
     "Industrial battery solutions for pharmaceutical, manufacturing, logistics, food processing, steel, construction, airports, e-commerce, automotive, and textile industries.",
   path: "/industries",
 });
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-};
 
 export default function IndustriesPage() {
   return (
@@ -40,7 +32,7 @@ export default function IndustriesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INDUSTRIES.map((industry, i) => {
-              const Icon = iconMap[industry.icon] || Settings;
+              const Icon = INDUSTRY_ICON_MAP[industry.icon] || Settings;
               return (
                 <MotionWrapper key={industry.slug} delay={i * 0.06}>
                   <Link href={`/industries/${industry.slug}`} className="block h-full">

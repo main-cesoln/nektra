@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-} from "lucide-react";
+import { Settings } from "lucide-react";
 import { INDUSTRIES } from "@/lib/constants";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-};
+import { INDUSTRY_ICON_MAP } from "@/lib/icons";
 
 export default function IndustryTicker() {
   // Double the items for seamless looping
@@ -27,7 +20,7 @@ export default function IndustryTicker() {
 
         <div className="flex animate-ticker gap-10 w-max">
           {items.map((industry, i) => {
-            const Icon = iconMap[industry.icon] || Settings;
+            const Icon = INDUSTRY_ICON_MAP[industry.icon] || Settings;
             return (
               <div
                 key={`${industry.slug}-${i}`}

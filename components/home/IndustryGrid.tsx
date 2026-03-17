@@ -1,19 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-} from "lucide-react";
+import { Settings } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import { INDUSTRIES } from "@/lib/constants";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Pill, Settings, Warehouse, UtensilsCrossed, Flame,
-  Building, Plane, Package, Car, ScrollText,
-};
+import { INDUSTRY_ICON_MAP } from "@/lib/icons";
 
 export default function IndustryGrid() {
   return (
@@ -26,7 +19,7 @@ export default function IndustryGrid() {
         />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {INDUSTRIES.map((industry, i) => {
-            const Icon = iconMap[industry.icon] || Settings;
+            const Icon = INDUSTRY_ICON_MAP[industry.icon] || Settings;
             return (
               <MotionWrapper key={industry.slug} delay={i * 0.05}>
                 <Link
