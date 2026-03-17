@@ -82,6 +82,7 @@ Add after `highlight?`:
 Add after `category`:
 
 ```typescript
+  categorySlug?: string;
   dateModified?: string;
   tags?: string[];
   relatedProducts?: string[];
@@ -322,7 +323,7 @@ export function serviceSchema(service: Service) {
 Add after `serviceSchema`:
 
 ```typescript
-export function howToSchema(service: Service) {
+export function howToSchema(service: Service): Record<string, unknown> | null {
   if (!service.steps || service.steps.length === 0) return null;
   return {
     "@context": "https://schema.org",
@@ -408,22 +409,9 @@ git commit -m "feat(seo): enhance LocalBusiness schema, remove broken SearchActi
 **Files:**
 - Modify: `app/layout.tsx`
 
-- [ ] **Step 1: Add geo meta tags and formatDetection to root layout**
+- [ ] **Step 1: Add geo meta tags and formatDetection to metadata export**
 
-Add a `<head>` block inside the `<html>` element, before `<body>`:
-
-```tsx
-<head>
-  <meta name="geo.region" content="IN-TG" />
-  <meta name="geo.placename" content="Hyderabad" />
-  <meta name="geo.position" content={`${COMPANY.coordinates.lat};${COMPANY.coordinates.lng}`} />
-  <meta name="ICBM" content={`${COMPANY.coordinates.lat}, ${COMPANY.coordinates.lng}`} />
-</head>
-```
-
-- [ ] **Step 2: Add formatDetection and themeColor to metadata export**
-
-Add to the existing `metadata` export object:
+In Next.js 15 App Router, a bare `<head>` JSX element is not supported — the framework manages `<head>` via the Metadata API. Use `metadata.other` for non-standard meta tags. Add to the existing `metadata` export object in `app/layout.tsx`:
 
 ```typescript
 formatDetection: {
@@ -432,9 +420,26 @@ formatDetection: {
   telephone: false,
 },
 other: {
-  "theme-color": "#0A0A0F",
+  "geo.region": "IN-TG",
+  "geo.placename": "Hyderabad",
+  "geo.position": `${COMPANY.coordinates.lat};${COMPANY.coordinates.lng}`,
+  "ICBM": `${COMPANY.coordinates.lat}, ${COMPANY.coordinates.lng}`,
 },
 ```
+
+- [ ] **Step 2: Add Viewport export for themeColor**
+
+Next.js 15 requires `themeColor` in a separate `Viewport` export (not in `metadata`). Add after the `metadata` export:
+
+```typescript
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0F",
+};
+```
+
+Update the import at the top of `app/layout.tsx` to include `Viewport`.
 
 - [ ] **Step 3: Verify build**
 
@@ -521,16 +526,28 @@ export const metadata: Metadata = {
 };
 ```
 
-- [ ] **Step 4: Verify build**
+- [ ] **Step 4: Add breadcrumb schema to homepage**
+
+The `Breadcrumbs` component is a client component and won't render meaningful breadcrumbs on the homepage (it would just show "Home"). Instead, inject a minimal breadcrumb JSON-LD directly. Add to the homepage component body:
+
+```tsx
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
+
+// Inside the Home component, before the first section:
+<JsonLd data={breadcrumbSchema([{ name: "Home", href: "/" }])} />
+```
+
+- [ ] **Step 5: Verify build**
 
 Run: `npx tsc --noEmit`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
 git add app/page.tsx app/get-quote/page.tsx app/book-service/page.tsx
-git commit -m "feat(seo): add homepage metadata with title.absolute, noindex get-quote and book-service"
+git commit -m "feat(seo): add homepage metadata with breadcrumb schema, noindex get-quote and book-service"
 ```
 
 ---
@@ -696,6 +713,8 @@ git commit -m "feat(seo): add H1 tags and keyword-optimized metadata to all list
 
 ## Task 7: Sitemap & Robots Overhaul
 
+**Depends on:** Task 8 (BLOG_CATEGORIES must exist in constants before this task). Execute Task 8 first.
+
 **Files:**
 - Modify: `app/sitemap.ts`, `app/robots.ts`
 
@@ -705,8 +724,7 @@ Replace `app/sitemap.ts`:
 
 ```typescript
 import { MetadataRoute } from "next";
-import { PRODUCTS, INDUSTRIES, BLOG_POSTS, SERVICES, COMPANY } from "@/lib/constants";
-import { BLOG_CATEGORIES } from "@/lib/constants";
+import { PRODUCTS, INDUSTRIES, BLOG_POSTS, SERVICES, BLOG_CATEGORIES, COMPANY } from "@/lib/constants";
 
 const SITE_LAST_UPDATED = "2026-03-17";
 
@@ -787,6 +805,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
         disallow: ["/_next/", "/api/"],
+        crawlDelay: 1,
       },
     ],
     sitemap: `${COMPANY.url}/sitemap.xml`,
@@ -797,9 +816,7 @@ export default function robots(): MetadataRoute.Robots {
 - [ ] **Step 3: Verify build**
 
 Run: `npx tsc --noEmit`
-Expected: Will fail until BLOG_CATEGORIES is created in constants (Task 8). That's expected — commit sitemap/robots now, fix import after Task 8.
-
-Note: Comment out the BLOG_CATEGORIES import temporarily to verify the rest compiles, or do this task after Task 8.
+Expected: PASS (Task 8 must have been completed first, providing BLOG_CATEGORIES)
 
 - [ ] **Step 4: Commit**
 
@@ -811,6 +828,8 @@ git commit -m "feat(seo): overhaul sitemap with priority tuning and new routes, 
 ---
 
 ## Task 8: Constants Data — Blog Categories, Service Details, Product FAQs
+
+**Note:** This task must be completed BEFORE Task 7 (sitemap depends on BLOG_CATEGORIES).
 
 **Files:**
 - Modify: `lib/constants.ts`
@@ -846,16 +865,33 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 ];
 ```
 
-Import `BlogCategory` at the top of constants.ts.
+Update the import at the top of `lib/constants.ts` to include `BlogCategory`:
+
+```typescript
+import {
+  CompanyInfo,
+  NavItem,
+  Product,
+  Industry,
+  Service,
+  BlogPost,
+  BlogCategory,
+  FAQItem,
+  Stat,
+  TechFeature,
+  AccessoryProduct,
+} from "./types";
+```
 
 - [ ] **Step 2: Add `dateModified`, `tags`, and related fields to existing blog posts**
 
-For each of the 5 existing blog posts, add the new optional fields. Example for the first post:
+For each of the 5 existing blog posts, add the new optional fields. The `categorySlug` must match one of the `BLOG_CATEGORIES` slugs for reliable category page filtering. Example for the first post:
 
 ```typescript
 {
   slug: "how-to-choose-forklift-battery",
   // ... existing fields ...
+  categorySlug: "buying-guides",
   dateModified: "2026-03-01",
   tags: ["forklift battery", "buying guide", "warehouse"],
   relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel"],
@@ -864,7 +900,7 @@ For each of the 5 existing blog posts, add the new optional fields. Example for 
 },
 ```
 
-Do this for all 5 existing posts with appropriate cross-references.
+Do this for all 5 existing posts with appropriate cross-references. Ensure every post has a valid `categorySlug`.
 
 - [ ] **Step 3: Add service detail fields to existing SERVICES entries**
 
@@ -948,7 +984,7 @@ git commit -m "feat(seo): add blog categories, service details, product FAQs, an
 
 - [ ] **Step 1: Add 12 new blog posts to BLOG_POSTS array**
 
-Each post needs: slug, title, excerpt, content (800-1200 words), date, readTime, category, dateModified, tags, relatedProducts, relatedServices, relatedIndustries.
+Each post needs: slug, title, excerpt, content (800-1200 words), date, readTime, category, categorySlug (must match a BLOG_CATEGORIES slug), dateModified, tags, relatedProducts, relatedServices, relatedIndustries.
 
 Target keyword clusters:
 
@@ -1562,11 +1598,7 @@ export default async function BlogCategoryPage({ params }: Props) {
   const category = BLOG_CATEGORIES.find((c) => c.slug === slug);
   if (!category) notFound();
 
-  const posts = BLOG_POSTS.filter(
-    (p) => p.category.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and") === slug
-      || p.category === category.name
-      || (p.tags && p.tags.some((t) => t.toLowerCase().includes(slug.replace(/-/g, " "))))
-  );
+  const posts = BLOG_POSTS.filter((p) => p.categorySlug === slug);
 
   return (
     <section className="py-16">
@@ -1827,7 +1859,39 @@ git commit -m "feat(seo): create local SEO landing page for Hyderabad battery de
 
 ---
 
-## Task 18: Full Build Verification & Final Cleanup
+## Task 18: Performance & CLS Optimization
+
+**Files:**
+- Modify: `components/home/HeroSection.tsx`, any component with above-the-fold hero images
+
+- [ ] **Step 1: Add priority and fetchPriority to hero images**
+
+In `components/home/HeroSection.tsx` (or wherever the hero section renders), ensure any `<Image>` component above the fold has:
+
+```tsx
+<Image priority fetchPriority="high" ... />
+```
+
+Also check `app/products/[slug]/page.tsx` — the product image already has `priority` set (verified in codebase). Good.
+
+- [ ] **Step 2: Verify Framer Motion animations don't cause CLS**
+
+Check all `MotionWrapper` / `motion.div` components with `initial` states that change layout properties. The existing `SectionHeading` uses `initial={{ opacity: 0, y: 20 }}` — this is safe because `opacity` and `transform` (y) don't cause layout shifts.
+
+Verify no component uses `initial` states that change `height`, `width`, `padding`, `margin`, or `display` — these cause CLS.
+
+Run: `npm run build && npx next start` — load homepage in Chrome DevTools > Lighthouse > Performance and check CLS score.
+
+- [ ] **Step 3: Commit (only if changes were made)**
+
+```bash
+git add -A
+git commit -m "perf(seo): add priority/fetchPriority to hero images, verify no CLS from animations"
+```
+
+---
+
+## Task 19: Full Build Verification & Final Cleanup
 
 **Files:**
 - All modified files
@@ -1861,9 +1925,16 @@ Start dev server (`npm run dev`) and check a few pages in browser view-source:
 - Service detail page: Service + HowTo schemas
 - Blog post: Article (with wordCount, articleSection)
 
-- [ ] **Step 5: Final commit**
+- [ ] **Step 5: Final commit (only if cleanup changes were needed)**
 
 ```bash
 git add -A
 git commit -m "feat(seo): full-stack SEO optimization — final verification pass"
 ```
+
+---
+
+## Task Execution Order
+
+Due to dependencies, execute tasks in this order:
+1-6, **8** (constants data — creates BLOG_CATEGORIES), **7** (sitemap — depends on BLOG_CATEGORIES), 9-19
