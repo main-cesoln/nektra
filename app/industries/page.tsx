@@ -12,9 +12,9 @@ import { INDUSTRIES } from "@/lib/constants";
 import { INDUSTRY_ICON_MAP } from "@/lib/icons";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Industries — Battery Solutions for 10+ Sectors",
+  title: "Battery Solutions by Industry",
   description:
-    "Industrial battery solutions for pharmaceutical, manufacturing, logistics, food processing, steel, construction, airports, e-commerce, automotive, and textile industries.",
+    "Industrial battery solutions for pharmaceutical, manufacturing, logistics, food processing, steel, construction, airports, e-commerce, automotive, and textile industries in Hyderabad.",
   path: "/industries",
 });
 
@@ -24,6 +24,7 @@ export default function IndustriesPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Battery Solutions by Industry</h1>
           <SectionHeading
             overline="Industries We Serve"
             title="Battery Solutions for Every Industry"

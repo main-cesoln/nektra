@@ -13,7 +13,7 @@ import { Award, Globe, Factory, Shield, User } from "lucide-react";
 import ExideLogo from "@/components/ui/ExideLogo";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "About Us — 35+ Years of Industrial Battery Expertise",
+  title: "About Us — 35+ Years of Industrial Battery Expertise in Hyderabad",
   description:
     "Learn about Nektra Energy Solutions, authorized Exide industrial battery dealer in Hyderabad with 35+ years of experience serving 10+ industries across Telangana.",
   path: "/about",
@@ -25,6 +25,7 @@ export default function AboutPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">About Nektra Energy Solutions — 35+ Years of Industrial Battery Expertise</h1>
           <SectionHeading
             overline="About Us"
             title="35+ Years of Powering Indian Industry"

@@ -11,9 +11,9 @@ import Badge from "@/components/ui/Badge";
 import { BLOG_POSTS } from "@/lib/constants";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Blog — Industrial Battery Insights & Guides",
+  title: "Industrial Battery Guides & Insights",
   description:
-    "Expert articles on forklift batteries, maintenance tips, DIN vs BS standards, gel vs flooded comparison, and industry insights from 35+ years of experience.",
+    "Expert articles on forklift batteries, maintenance tips, DIN vs BS standards, gel vs flooded comparisons, and industry insights from Hyderabad's trusted Exide dealer.",
   path: "/blog",
 });
 
@@ -22,6 +22,7 @@ export default function BlogPage() {
     <section className="py-16">
       <Container>
         <Breadcrumbs />
+        <h1 className="sr-only">Industrial Battery Guides &amp; Insights</h1>
         <SectionHeading
           overline="Our Blog"
           title="Expert Insights & Guides"

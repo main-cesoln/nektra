@@ -13,9 +13,9 @@ import { Wrench, MapPin } from "lucide-react";
 import { SERVICE_ICON_MAP } from "@/lib/icons";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Services — Installation, Testing, AMC & Emergency Service",
+  title: "Industrial Battery Services in Hyderabad — Installation, AMC & Emergency",
   description:
-    "Free battery installation, free diagnostics, AMC with 5-year warranty, emergency service, and Pan-Telangana coverage. Complete battery service solutions.",
+    "Expert industrial battery services in Hyderabad: free installation, free diagnostics, AMC with 5-year warranty, and emergency response across Telangana. Call now.",
   path: "/services",
 });
 
@@ -25,6 +25,7 @@ export default function ServicesPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Industrial Battery Services in Hyderabad</h1>
           <SectionHeading
             overline="Our Services"
             title="Complete Battery Service Solutions"

@@ -14,9 +14,9 @@ import { PRODUCTS } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Products — Exide Industrial Batteries & Accessories",
+  title: "Industrial Batteries — Exide Authorized Dealer",
   description:
-    "Complete range of Exide industrial batteries: Flooded Tubular, Gel, HSP Classic, Gen-X, BCI Range, and accessories. DIN & BS standards for all forklift brands.",
+    "Complete range of Exide industrial batteries: Flooded Tubular, Gel, HSP Classic, Gen-X, BCI Range. DIN & BS standards for all forklift brands. Hyderabad dealer.",
   path: "/products",
 });
 
@@ -26,6 +26,7 @@ export default function ProductsPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Industrial Battery Products — Exide Authorized Dealer</h1>
           <SectionHeading
             overline="Our Products"
             title="Exide Industrial Battery Range"
