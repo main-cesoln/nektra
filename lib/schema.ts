@@ -166,6 +166,7 @@ export function articleSchema(post: BlogPost) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    image: `${COMPANY.url}${post.image}`,
     datePublished: post.date,
     ...(post.dateModified && { dateModified: post.dateModified }),
     wordCount: post.content.split(/\s+/).length,

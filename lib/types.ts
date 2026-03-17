@@ -80,6 +80,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  image: string;
   content: string;
   date: string;
   readTime: string;

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { generatePageMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
 import Container from "@/components/ui/Container";
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
+    image: post.image,
     type: "article",
     publishedTime: post.date,
     modifiedTime: post.dateModified,
@@ -45,12 +47,34 @@ function renderMarkdown(content: string) {
   while (i < lines.length) {
     const line = lines[i];
 
-    if (line.startsWith("## ")) {
+    if (line.startsWith("### ")) {
+      elements.push(
+        <h3 key={i} className="font-heading text-xl font-bold text-white mt-8 mb-3">
+          {line.slice(4)}
+        </h3>
+      );
+    } else if (line.startsWith("## ")) {
       elements.push(
         <h2 key={i} className="font-heading text-2xl font-bold text-white mt-10 mb-4">
           {line.slice(3)}
         </h2>
       );
+    } else if (/^\d+\.\s/.test(line)) {
+      const listItems: string[] = [];
+      while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
+        listItems.push(lines[i].replace(/^\d+\.\s/, ""));
+        i++;
+      }
+      elements.push(
+        <ol key={`ol-${i}`} className="space-y-1.5 my-3 ml-4 list-decimal list-inside">
+          {listItems.map((item, j) => (
+            <li key={j} className="text-gray-300 text-sm"
+              dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }}
+            />
+          ))}
+        </ol>
+      );
+      continue;
     } else if (line.startsWith("**") && line.endsWith("**")) {
       elements.push(
         <p key={i} className="text-white font-semibold mt-4 mb-2">
@@ -74,10 +98,10 @@ function renderMarkdown(content: string) {
         </ul>
       );
       continue;
-    } else if (line.startsWith("| ")) {
+    } else if (line.startsWith("|")) {
       const tableRows: string[][] = [];
-      while (i < lines.length && lines[i].startsWith("| ")) {
-        if (!lines[i].startsWith("|-") && !lines[i].startsWith("| -")) {
+      while (i < lines.length && lines[i].startsWith("|")) {
+        if (!/^\|[\s-|]+$/.test(lines[i])) {
           tableRows.push(
             lines[i].split("|").filter(Boolean).map((c) => c.trim())
           );
@@ -155,7 +179,14 @@ export default async function BlogPostPage({ params }: Props) {
               </h1>
             </MotionWrapper>
 
-            <MotionWrapper delay={0.15}>
+            <MotionWrapper delay={0.1}>
+              <div className="relative w-full aspect-[16/9] mb-8 rounded-2xl overflow-hidden border border-white/10">
+                <Image src={post.image} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" priority />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-deepest/40 to-transparent" />
+              </div>
+            </MotionWrapper>
+
+            <MotionWrapper delay={0.2}>
               <div className="prose-custom">
                 {renderMarkdown(post.content)}
               </div>
@@ -195,6 +226,9 @@ export default async function BlogPostPage({ params }: Props) {
               {relatedPosts.map((rp) => (
                 <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                   <GlassCard className="group">
+                    <div className="relative w-full aspect-[16/9] mb-3 rounded-lg overflow-hidden bg-white/5">
+                      <Image src={rp.image} alt={rp.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                    </div>
                     <Badge variant="green" className="text-xs">{rp.category}</Badge>
                     <h3 className="font-heading text-sm font-bold text-white mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {rp.title}

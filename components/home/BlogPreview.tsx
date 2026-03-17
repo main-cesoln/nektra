@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -25,6 +26,9 @@ export default function BlogPreview() {
             <MotionWrapper key={post.slug} delay={i * 0.1}>
               <Link href={`/blog/${post.slug}`}>
                 <GlassCard className="h-full group">
+                  <div className="relative w-full aspect-[16/9] mb-4 rounded-lg overflow-hidden bg-white/5">
+                    <Image src={post.image} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                  </div>
                   <Badge variant="green">{post.category}</Badge>
                   <h3 className="font-heading text-lg font-bold text-white mt-3 mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}

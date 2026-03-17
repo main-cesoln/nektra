@@ -1163,6 +1163,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How to Choose the Right Forklift Battery for Your Warehouse",
     excerpt:
       "Selecting the perfect forklift battery involves understanding your operational demands, shift patterns, and equipment specifications. This guide walks you through every factor.",
+    image: "/images/blog/how-to-choose-forklift-battery.webp",
     content: `Choosing the right forklift battery is one of the most impactful decisions a warehouse manager can make. The battery typically represents 30% of a forklift's total cost of ownership, and selecting the wrong one leads to reduced productivity, increased maintenance costs, and premature replacement.
 
 ## Understand Your Operation
@@ -1216,6 +1217,7 @@ Our battery experts have helped hundreds of Hyderabad-area warehouses optimize t
     title: "Flooded vs Gel Batteries: Which is Right for Your Industry?",
     excerpt:
       "A comprehensive comparison of flooded tubular and gel battery technologies, helping you determine the best fit based on your industry, environment, and budget.",
+    image: "/images/blog/flooded-vs-gel-batteries.webp",
     content: `The choice between flooded tubular and gel battery technology isn't just about price — it's about matching your battery to your operational environment, maintenance capabilities, and industry requirements.
 
 ## Flooded Tubular Batteries: The Industry Workhorse
@@ -1280,6 +1282,7 @@ If your facility handles food, drugs, or operates in clean environments — go g
     title: "Battery Maintenance Tips to Maximize Cycle Life",
     excerpt:
       "Practical, actionable maintenance tips that can extend your industrial battery's life by 30-50%. From watering schedules to charging best practices.",
+    image: "/images/blog/battery-maintenance-tips.webp",
     content: `Proper maintenance is the single biggest factor in determining how long your industrial battery will last. A well-maintained traction battery can deliver 1500+ cycles, while a neglected one might fail at 500. Here are the practices that make the difference.
 
 ## 1. Follow a Strict Watering Schedule
@@ -1339,6 +1342,7 @@ Nektra Energy Solutions offers Annual Maintenance Contracts that handle all of t
     title: "Why Equalizing Charge Matters for Traction Batteries",
     excerpt:
       "Equalizing charges are often overlooked but critical for battery health. Learn why cell imbalance develops and how controlled overcharging prevents premature failure.",
+    image: "/images/blog/why-equalizing-charge-matters.webp",
     content: `If there's one maintenance practice that separates batteries that last from batteries that fail early, it's regular equalizing charges. Yet it's the most commonly skipped maintenance step in industrial battery management.
 
 ## What is an Equalizing Charge?
@@ -1394,6 +1398,7 @@ Nektra Energy Solutions offers professional equalizing charge service with cell-
     title: "Top 10 Industries That Rely on Industrial Batteries in India",
     excerpt:
       "From pharmaceutical clean rooms to steel plant furnaces, discover how different industries across India depend on industrial traction batteries for their material handling needs.",
+    image: "/images/blog/top-industries-industrial-batteries-india.webp",
     content: `India's industrial sector is booming, and at the heart of every efficient factory, warehouse, and distribution center are battery-powered material handling vehicles. Here are the top 10 industries driving demand for industrial traction batteries.
 
 ## 1. Warehouse & Logistics
@@ -1449,6 +1454,7 @@ Nektra Energy Solutions serves all 10 of these industries across Telangana with 
     title: "Understanding DIN vs BS Battery Standards",
     excerpt:
       "DIN and BS are the two primary battery standards for industrial traction batteries. Learn the key differences and how to identify which standard your forklift requires.",
+    image: "/images/blog/din-vs-bs-battery-standards.webp",
     content: `One of the most common questions we receive is: "My forklift needs a new battery — do I need DIN or BS?" Understanding these standards is essential to getting the right battery for your equipment.
 
 ## What Are DIN and BS Standards?
@@ -1504,6 +1510,7 @@ Send us a photo of your battery label and forklift model number, and our team wi
     title: "Industrial Battery Maintenance Checklist: The Complete Guide",
     excerpt:
       "A comprehensive, printable industrial battery maintenance checklist covering daily, weekly, and monthly tasks to maximize cycle life and prevent costly downtime.",
+    image: "/images/blog/industrial-battery-maintenance-checklist.webp",
     content: `Maintaining your industrial battery fleet properly is the difference between getting 1,500+ cycles and watching batteries fail at 500 cycles. Yet most facilities lack a systematic, documented approach to battery maintenance. This complete checklist gives you a structured routine — daily, weekly, and monthly — to keep every battery in your fleet performing at peak capacity.
 
 ## Why a Maintenance Checklist Matters
@@ -1600,6 +1607,7 @@ Contact Nektra Energy Solutions at +91 9963739107 for a free battery fleet asses
     title: "UPS Battery Replacement Guide for Hyderabad Businesses",
     excerpt:
       "When and how to replace your industrial UPS batteries in Hyderabad. Learn the warning signs, selection criteria, and why authorized Exide dealers matter for reliable backup power.",
+    image: "/images/blog/ups-battery-replacement-guide-hyderabad.webp",
     content: `Power reliability is non-negotiable for businesses in Hyderabad. With Telangana's industrial sector growing rapidly across HITEC City, Shamshabad, and Medchal-Malkajgiri, uninterruptible power supply (UPS) systems protect critical infrastructure from costly outages. But even the best UPS is only as good as its batteries — and those batteries don't last forever.
 
 ## When to Replace Your UPS Batteries
@@ -1705,6 +1713,7 @@ Nektra Energy Solutions offers free UPS battery assessments for businesses acros
     title: "Exide Tubular vs Flat Plate Batteries: Which Is Right for You?",
     excerpt:
       "A detailed comparison of Exide tubular and flat plate battery technologies covering construction, cycle life, applications, and total cost of ownership to help you make the right choice.",
+    image: "/images/blog/exide-tubular-vs-flat-plate-batteries.webp",
     content: `When choosing an industrial battery, one of the fundamental decisions is the plate construction: **tubular** or **flat plate** (also called pasted plate). Both technologies have their place, but understanding their differences helps you match the right battery to your application. This guide breaks down the engineering, performance, and economics of each.
 
 ## How Tubular Plates Work
@@ -1807,6 +1816,7 @@ Not sure which technology fits your application? Nektra Energy Solutions provide
     title: "Battery Backup Solutions for Telecom Towers in Telangana",
     excerpt:
       "How telecom tower operators in Telangana can ensure reliable battery backup with the right technology, sizing, and maintenance strategy for uninterrupted network coverage.",
+    image: "/images/blog/battery-backup-telecom-towers-telangana.webp",
     content: `Telangana's telecom infrastructure has expanded rapidly, with thousands of cell towers across Hyderabad, Warangal, Karimnagar, and rural districts providing 4G and 5G connectivity. Every one of these towers depends on battery backup to maintain service during grid power outages — which remain common in many parts of the state.
 
 ## The Critical Role of Batteries in Telecom
@@ -1913,6 +1923,7 @@ Contact our telecom battery specialists at +91 9963739107 for volume pricing and
     title: "Solar Battery Storage for Commercial Buildings in Hyderabad",
     excerpt:
       "How commercial and industrial establishments in Hyderabad can leverage solar battery storage to cut electricity costs, ensure power reliability, and meet sustainability goals.",
+    image: "/images/blog/solar-battery-storage-commercial-hyderabad.webp",
     content: `Hyderabad is one of the sunniest cities in India, receiving an average of 2,800 hours of sunshine per year. Combined with Telangana's progressive solar energy policies and rising commercial electricity tariffs, solar-plus-battery storage has become one of the smartest investments a Hyderabad business can make.
 
 ## Why Solar Battery Storage Makes Sense in Hyderabad
@@ -2030,6 +2041,7 @@ Partner with us for the storage side of your solar installation. Call +91 996373
     title: "Forklift Battery Safety: 10 Best Practices for Your Warehouse",
     excerpt:
       "Protect your workforce and equipment with these 10 essential forklift battery safety practices covering handling, charging, storage, and emergency procedures.",
+    image: "/images/blog/forklift-battery-safety-best-practices.webp",
     content: `Industrial forklift batteries weigh between 500 kg and 2,500 kg, contain sulfuric acid, and produce hydrogen gas during charging. Mishandling them can cause serious injuries, equipment damage, and facility shutdowns. Yet many Hyderabad warehouses lack formal battery safety protocols. This guide outlines 10 critical safety practices every facility should implement.
 
 ## 1. Designate a Proper Battery Charging Area
@@ -2151,6 +2163,7 @@ Nektra Energy Solutions provides battery safety training for warehouse teams acr
     title: "Industrial Battery ROI: How to Calculate Total Cost of Ownership",
     excerpt:
       "Learn how to calculate the true total cost of ownership for industrial batteries, including purchase price, energy costs, maintenance, downtime, and disposal — with real-world examples.",
+    image: "/images/blog/industrial-battery-roi-calculator.webp",
     content: `Most purchasing decisions for industrial batteries are made on sticker price alone. This is a costly mistake. The purchase price represents only 30–40% of what a battery actually costs over its lifetime. To make truly informed decisions, you need to calculate the **Total Cost of Ownership (TCO)** — and the results often surprise even experienced procurement managers.
 
 ## The TCO Framework for Industrial Batteries
@@ -2291,6 +2304,7 @@ Nektra Energy Solutions offers a complimentary TCO analysis for fleet operators 
     title: "Why Gel Batteries Are Essential for Cleanroom and Food-Grade Facilities",
     excerpt:
       "Discover why CEIL Gel batteries are the only compliant option for pharmaceutical cleanrooms, food processing plants, and other contamination-sensitive environments.",
+    image: "/images/blog/gel-battery-advantages-cleanroom.webp",
     content: `In pharmaceutical cleanrooms and food processing facilities, the material handling equipment running on your factory floor must meet the same stringent contamination standards as your production processes. This is where conventional flooded lead-acid batteries become a serious liability — and where CEIL Gel battery technology becomes not just an advantage, but a necessity.
 
 ## The Contamination Risk of Flooded Batteries
@@ -2407,6 +2421,7 @@ Contact us at +91 9963739107 for a site assessment and quotation.`,
     title: "Battery AMC Explained: Why Annual Maintenance Contracts Save You Money",
     excerpt:
       "Learn how an Annual Maintenance Contract for your industrial battery fleet reduces costs, extends battery life, and provides warranty protection that pays for itself.",
+    image: "/images/blog/battery-amc-benefits-explained.webp",
     content: `An Annual Maintenance Contract (AMC) for industrial batteries is one of the most underutilized cost-saving tools available to fleet operators. Many businesses view it as an unnecessary expense — until a preventable battery failure costs them ten times the AMC price in lost productivity and emergency replacements. This guide breaks down exactly what an AMC covers, what it costs, and why the math overwhelmingly favours having one.
 
 ## What Does a Battery AMC Include?
@@ -2559,6 +2574,7 @@ There is no obligation, and the assessment itself provides valuable information 
     title: "Warehouse Electrification Guide: Transitioning from IC to Electric Forklifts",
     excerpt:
       "A practical guide for warehouse operators in Hyderabad looking to transition from internal combustion (IC) forklifts to electric-powered material handling equipment.",
+    image: "/images/blog/warehouse-electrification-guide.webp",
     content: `The transition from internal combustion (IC) forklifts to electric battery-powered equipment is accelerating across India's warehouse and logistics sector. Driven by environmental regulations, fuel cost volatility, and the superior total cost of ownership of electric fleets, major operators in Hyderabad are making the switch. This guide walks you through the planning, economics, and implementation of warehouse electrification.
 
 ## Why Warehouses Are Going Electric
@@ -2718,6 +2734,7 @@ Contact us at +91 9963739107 to start planning your warehouse electrification.`,
     title: "Industrial Battery Charging Best Practices: Maximize Battery Life",
     excerpt:
       "Master the art and science of industrial battery charging with these proven best practices that can extend your traction battery's life by 30–50%.",
+    image: "/images/blog/battery-charging-best-practices.webp",
     content: `Charging is the single most influential factor in determining how long your industrial battery will last. Correct charging practices can push a traction battery to 1,500+ cycles, while poor charging habits routinely destroy batteries in under 500 cycles. This guide covers everything from basic charging protocols to advanced techniques that maximize the return on your battery investment.
 
 ## The Fundamentals: How Traction Battery Charging Works
@@ -2881,6 +2898,7 @@ Proper charging is the highest-ROI investment you can make in battery life. Cont
     title: "Why Choose an Authorized Exide Dealer in Hyderabad?",
     excerpt:
       "Understand the critical differences between authorized Exide dealers and unauthorized resellers in Hyderabad, and why your choice of dealer directly impacts battery performance and warranty.",
+    image: "/images/blog/exide-battery-dealer-hyderabad-why-choose.webp",
     content: `When shopping for industrial batteries in Hyderabad, you will find dozens of suppliers claiming to offer Exide products. But there is a critical distinction between an **authorized Exide dealer** and an unauthorized reseller — and that distinction directly affects the quality of products you receive, the warranty you are entitled to, and the support available when you need it most.
 
 ## What Makes a Dealer "Authorized"?

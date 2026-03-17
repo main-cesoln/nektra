@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { generatePageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
@@ -34,6 +35,9 @@ export default function BlogPage() {
             <MotionWrapper key={post.slug} delay={i * 0.08}>
               <Link href={`/blog/${post.slug}`} className="block h-full">
                 <GlassCard className="h-full flex flex-col group">
+                  <div className="relative w-full aspect-[16/9] mb-4 rounded-lg overflow-hidden bg-white/5">
+                    <Image src={post.image} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
                   <div className="flex items-center gap-2 mb-3">
                     <Badge variant="green">{post.category}</Badge>
                     <span className="text-xs text-gray-500">{post.date}</span>
