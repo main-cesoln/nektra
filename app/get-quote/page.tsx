@@ -8,12 +8,15 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import QuoteForm from "@/components/forms/QuoteForm";
 import { Shield, Truck, Wrench, Clock } from "lucide-react";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Get a Quote — Custom Battery Solutions",
-  description:
-    "Request a custom quote for Exide industrial batteries. Tell us your requirements and get a tailored solution with competitive pricing within 24 hours.",
-  path: "/get-quote",
-});
+export const metadata: Metadata = {
+  ...generatePageMetadata({
+    title: "Get a Quote — Custom Battery Solutions",
+    description:
+      "Request a custom quote for Exide industrial batteries. Tell us your requirements and get a tailored solution with competitive pricing within 24 hours.",
+    path: "/get-quote",
+  }),
+  robots: { index: false, follow: false },
+};
 
 const trustBadges = [
   { icon: Shield, label: "5-Year Warranty with AMC" },
