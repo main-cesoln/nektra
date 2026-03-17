@@ -5,6 +5,7 @@ import {
   Industry,
   Service,
   BlogPost,
+  BlogCategory,
   FAQItem,
   Stat,
   TechFeature,
@@ -206,6 +207,25 @@ export const PRODUCTS: Product[] = [
       "ecommerce-distribution",
       "automotive",
     ],
+    faqs: [
+      {
+        question: "What is the warranty on Motive Power Flooded Tubular batteries?",
+        answer:
+          "Without AMC, the warranty is 2 years full replacement + 3 years pro-rata. With an Annual Maintenance Contract (AMC), the warranty extends to 5 years full replacement coverage at no additional cost.",
+      },
+      {
+        question: "How many charge cycles can I expect from these batteries?",
+        answer:
+          "Exide Motive Power Flooded Tubular batteries deliver 1500+ cycles at 80% depth of discharge under proper maintenance. With an AMC ensuring professional upkeep, many batteries exceed this figure significantly.",
+      },
+      {
+        question: "Are these batteries compatible with all forklift brands?",
+        answer:
+          "Yes. Available in both DIN (IPzS) and BS (IPzB) standards, these batteries are compatible with all major forklift brands including Jungheinrich, Linde, Still, Toyota, Komatsu, and Godrej.",
+      },
+    ],
+    relatedServices: ["battery-installation", "amc", "equalizing-charge"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "battery-maintenance-tips"],
   },
   {
     slug: "motive-power-gel",
@@ -250,6 +270,25 @@ export const PRODUCTS: Product[] = [
       "warehouse-logistics",
       "ecommerce-distribution",
     ],
+    faqs: [
+      {
+        question: "Do CEIL Gel batteries require any maintenance?",
+        answer:
+          "No. CEIL Gel batteries are completely maintenance-free. There is no water topping, no electrolyte level checks, and no acid fumes to manage. The sealed VRLA design eliminates all routine maintenance tasks.",
+      },
+      {
+        question: "Can gel batteries be used in cold storage environments?",
+        answer:
+          "Yes. CEIL Gel batteries perform reliably in temperature-controlled and cold storage environments. Their sealed design prevents condensation-related issues, and they maintain stable performance down to -20°C.",
+      },
+      {
+        question: "Do gel batteries need a special charger?",
+        answer:
+          "Yes. Gel batteries require a gel-specific charging profile. Using a standard flooded-battery charger can permanently damage a gel battery by overcharging it. We supply and configure compatible chargers with every gel battery purchase.",
+      },
+    ],
+    relatedServices: ["battery-installation", "testing-diagnostics", "amc"],
+    relatedBlogSlugs: ["flooded-vs-gel-batteries", "how-to-choose-forklift-battery"],
   },
   {
     slug: "hsp-classic",
@@ -295,6 +334,25 @@ export const PRODUCTS: Product[] = [
       "engineering-manufacturing",
       "paper-textile",
     ],
+    faqs: [
+      {
+        question: "What warranty does the HSP Classic carry?",
+        answer:
+          "The HSP Classic comes with a 12-month manufacturer warranty covering manufacturing defects. You can extend coverage to 5 years full replacement by taking an AMC with Nektra Energy Solutions.",
+      },
+      {
+        question: "Is HSP Classic suitable for multi-shift operations?",
+        answer:
+          "HSP Classic is best suited for standard single-shift operations. For multi-shift or 24/7 operations requiring extended run times, we recommend the Gen-X range which offers 15% extra capacity.",
+      },
+      {
+        question: "What capacity range is available in HSP Classic?",
+        answer:
+          "HSP Classic is available in BS standard (58–841 Ah) and DIN standard (120–1400 Ah), covering voltage configurations from 12V to 80V to fit a wide range of material handling equipment.",
+      },
+    ],
+    relatedServices: ["battery-installation", "battery-replacement", "testing-diagnostics"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "din-vs-bs-battery-standards"],
   },
   {
     slug: "gen-x",
@@ -326,6 +384,25 @@ export const PRODUCTS: Product[] = [
       "steel-metal",
       "engineering-manufacturing",
     ],
+    faqs: [
+      {
+        question: "How does Gen-X achieve 15% extra capacity?",
+        answer:
+          "Gen-X batteries use higher-diameter gauntlets that hold more active material per plate and a proprietary Red Lead + Grey Oxide formula that improves energy density. This combination delivers 15% more capacity from the same physical cell size compared to conventional flooded tubular batteries.",
+      },
+      {
+        question: "Is Gen-X suitable for 24/7 multi-shift operations?",
+        answer:
+          "Yes, Gen-X is specifically designed for multi-shift and 24/7 operations. The 15% extra capacity extends run times between charges, and the enhanced deep discharge recovery means the battery handles the aggressive cycling of multi-shift use very well.",
+      },
+      {
+        question: "Does Gen-X require different maintenance than standard flooded batteries?",
+        answer:
+          "No. Gen-X batteries follow the same maintenance procedures as other flooded tubular batteries — regular water topping, equalizing charges, and cleaning. The main difference is improved performance metrics rather than different maintenance requirements.",
+      },
+    ],
+    relatedServices: ["battery-installation", "amc", "equalizing-charge"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "battery-maintenance-tips"],
   },
   {
     slug: "bci-range",
@@ -354,6 +431,25 @@ export const PRODUCTS: Product[] = [
       "warehouse-logistics",
       "engineering-manufacturing",
     ],
+    faqs: [
+      {
+        question: "How do I know if my forklift needs a BCI battery?",
+        answer:
+          "BCI batteries are required for American-brand forklifts such as Crown, Hyster, and Yale. Check your equipment's battery compartment label or the existing battery — if it shows BCI Group designations rather than DIN or BS codes, you need a BCI-standard replacement.",
+      },
+      {
+        question: "How long does it take to get a BCI battery manufactured?",
+        answer:
+          "BCI batteries are manufactured against specific customer orders at the Exide plant. Typical lead time is 4–8 weeks depending on the specification. We recommend ordering well in advance of when your current battery reaches end of life.",
+      },
+      {
+        question: "Are BCI batteries available in standard capacities?",
+        answer:
+          "BCI batteries are manufactured to exact equipment specifications rather than a fixed catalog. Capacity, voltage, and dimensions are customized to match your American-brand forklift's requirements. Contact us with your forklift model for a precise specification.",
+      },
+    ],
+    relatedServices: ["battery-installation", "battery-replacement", "testing-diagnostics"],
+    relatedBlogSlugs: ["din-vs-bs-battery-standards", "how-to-choose-forklift-battery"],
   },
   {
     slug: "accessories",
@@ -381,6 +477,25 @@ export const PRODUCTS: Product[] = [
       "ecommerce-distribution",
       "engineering-manufacturing",
     ],
+    faqs: [
+      {
+        question: "Does the Battery Monitoring System work with all battery brands?",
+        answer:
+          "The Battery Monitoring System (BMS) is compatible with all lead-acid traction batteries regardless of brand. It monitors voltage, temperature, state of charge, and discharge depth at the individual battery level, providing fleet-wide visibility.",
+      },
+      {
+        question: "How much time does the Single Point Watering system save?",
+        answer:
+          "The Single Point Watering system reduces per-battery watering time from approximately 30 minutes to under 3 minutes, and it fills every cell to exactly the correct level simultaneously. For a fleet of 20 batteries, this saves 9+ hours of maintenance time per watering cycle.",
+      },
+      {
+        question: "Is the Electrolyte Circulation System compatible with all flooded batteries?",
+        answer:
+          "Yes, the Electrolyte Circulation System is compatible with all flooded traction batteries. It uses an air-pump to circulate electrolyte during charging, reducing charging time by 30% and electricity consumption by 20%.",
+      },
+    ],
+    relatedServices: ["amc", "testing-diagnostics", "onsite-service"],
+    relatedBlogSlugs: ["battery-maintenance-tips", "why-equalizing-charge-matters"],
   },
 ];
 
@@ -451,6 +566,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-gel", "motive-power-flooded-tubular", "accessories"],
     icon: "Pill",
+    relatedBlogSlugs: ["flooded-vs-gel-batteries", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "engineering-manufacturing",
@@ -474,6 +590,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["gen-x", "motive-power-flooded-tubular", "accessories"],
     icon: "Settings",
+    relatedBlogSlugs: ["battery-maintenance-tips", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "warehouse-logistics",
@@ -497,6 +614,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-flooded-tubular", "gen-x", "accessories"],
     icon: "Warehouse",
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "battery-maintenance-tips"],
   },
   {
     slug: "food-beverage",
@@ -520,6 +638,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-gel", "motive-power-flooded-tubular", "accessories"],
     icon: "UtensilsCrossed",
+    relatedBlogSlugs: ["flooded-vs-gel-batteries", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "steel-metal",
@@ -543,6 +662,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-flooded-tubular", "gen-x", "hsp-classic"],
     icon: "Flame",
+    relatedBlogSlugs: ["battery-maintenance-tips", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "cement-construction",
@@ -566,6 +686,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-flooded-tubular", "gen-x", "hsp-classic"],
     icon: "Building",
+    relatedBlogSlugs: ["top-industries-industrial-batteries-india", "how-to-choose-forklift-battery"],
   },
   {
     slug: "airports-aviation",
@@ -589,6 +710,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-gel", "motive-power-flooded-tubular", "gen-x"],
     icon: "Plane",
+    relatedBlogSlugs: ["flooded-vs-gel-batteries", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "ecommerce-distribution",
@@ -612,6 +734,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["gen-x", "motive-power-flooded-tubular", "accessories"],
     icon: "Package",
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "automotive",
@@ -635,6 +758,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["motive-power-flooded-tubular", "gen-x", "bci-range"],
     icon: "Car",
+    relatedBlogSlugs: ["din-vs-bs-battery-standards", "top-industries-industrial-batteries-india"],
   },
   {
     slug: "paper-textile",
@@ -658,6 +782,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     recommendedProducts: ["hsp-classic", "motive-power-flooded-tubular", "gen-x"],
     icon: "ScrollText",
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "top-industries-industrial-batteries-india"],
   },
 ];
 
@@ -678,6 +803,35 @@ export const SERVICES: Service[] = [
     ],
     icon: "Wrench",
     highlight: true,
+    serviceType: "BatteryInstallation",
+    detailedDescription:
+      "Our Exide-trained technicians handle the complete installation process from delivery to commissioning, ensuring your new battery is fitted correctly and safely. We verify connector compatibility, perform torque checks on all terminal connections, set up the initial charging cycle, and walk your operators through essential daily maintenance procedures. Every installation includes a commissioning report documenting the battery serial number, installation date, and initial readings.",
+    steps: [
+      { name: "Site Assessment", description: "Technician inspects the forklift battery compartment, checks connector type, and verifies dimensional compatibility before installation begins." },
+      { name: "Battery Fitment", description: "Battery is lowered into the compartment, secured against movement, and all inter-cell connectors are torqued to specification." },
+      { name: "Connector & Cable Check", description: "All battery-to-forklift connectors and cables are inspected for wear, corrosion, and correct pin assignments before connection." },
+      { name: "Initial Charge Setup", description: "The correct charger profile is configured for the battery type (flooded or gel), and an initial full charge cycle is initiated." },
+      { name: "Operator Training", description: "On-site briefing for operators covering safe handling, daily checks, watering schedule, and what to report to maintenance staff." },
+    ],
+    faqs: [
+      {
+        question: "Is installation really free with every battery purchase?",
+        answer:
+          "Yes, professional installation by our Exide-trained technicians is completely free with every battery purchase — regardless of battery size, type, or location within our service area.",
+      },
+      {
+        question: "How long does installation take?",
+        answer:
+          "A standard forklift battery installation takes 1–2 hours. This includes fitment, connector checks, initial charge setup, and operator briefing. Larger fleet installations are scheduled in blocks to minimize operational disruption.",
+      },
+      {
+        question: "Do you install batteries for all forklift brands?",
+        answer:
+          "Yes. Our technicians are trained to install batteries in all major forklift brands including Jungheinrich, Linde, Toyota, Komatsu, Crown, Hyster, Godrej, and more.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel", "gen-x"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery"],
   },
   {
     slug: "testing-diagnostics",
@@ -693,6 +847,35 @@ export const SERVICES: Service[] = [
     ],
     icon: "Activity",
     highlight: true,
+    serviceType: "BatteryDiagnostics",
+    detailedDescription:
+      "Our free battery testing service uses professional diagnostic equipment to assess the true health of your battery down to the individual cell level. We measure open-circuit voltage, loaded voltage under discharge, electrolyte specific gravity, and internal resistance across all cells, then compare results against manufacturer benchmarks. You receive a written report with a clear health rating, identification of any weak cells, and a recommendation on whether to continue, recondition, or replace the battery.",
+    steps: [
+      { name: "Visual Inspection", description: "External examination of the battery case, terminals, connectors, and vent plugs for damage, corrosion, or electrolyte leakage." },
+      { name: "Cell Voltage Measurement", description: "Open-circuit voltage measured at each individual cell to identify cells deviating from the pack average." },
+      { name: "Specific Gravity Testing", description: "Hydrometer reading taken from each cell to assess state of charge and identify sulphated or damaged cells." },
+      { name: "Load Testing", description: "Battery discharged under a controlled load to measure actual capacity versus rated capacity and identify voltage collapse under load." },
+      { name: "Report & Recommendation", description: "Written diagnostic report issued with cell-by-cell data, overall health rating, and clear recommendation for action." },
+    ],
+    faqs: [
+      {
+        question: "Is testing truly free, even for batteries not purchased from Nektra?",
+        answer:
+          "Yes. We test batteries of any brand, any age, and any type at no charge. There is no obligation to purchase from us after the test.",
+      },
+      {
+        question: "How long does a battery diagnostic take?",
+        answer:
+          "A complete battery diagnostic including all cell measurements and a load test typically takes 45–90 minutes depending on battery size. We schedule on-site visits to avoid disrupting your operations.",
+      },
+      {
+        question: "What does the diagnostic report include?",
+        answer:
+          "The written report includes individual cell voltages, specific gravity readings, load test results, estimated remaining capacity, an overall health rating, and our recommendation (continue service, schedule replacement, or recondition).",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel", "accessories"],
+    relatedBlogSlugs: ["battery-maintenance-tips", "why-equalizing-charge-matters"],
   },
   {
     slug: "battery-replacement",
@@ -707,6 +890,35 @@ export const SERVICES: Service[] = [
       "New battery setup and commissioning",
     ],
     icon: "RefreshCw",
+    serviceType: "BatteryReplacement",
+    detailedDescription:
+      "When your battery reaches end of life, our replacement service ensures a seamless transition with zero hassle. We begin with a full diagnostic to confirm replacement is the right decision, then recommend the optimal new battery based on your current operation and any capacity upgrades that make sense. Our team removes the old battery, installs the new one, and handles the environmentally compliant disposal — all in a single visit. The old battery's residual value is applied as a credit toward your new purchase.",
+    steps: [
+      { name: "Battery Diagnosis", description: "Full diagnostic confirms the battery has reached end of life and replacement is the most cost-effective option versus reconditioning." },
+      { name: "Replacement Recommendation", description: "We recommend the optimal replacement battery considering your current operation, any changes in shift patterns, and available capacity upgrades." },
+      { name: "Old Battery Removal", description: "Old battery safely removed from the equipment using appropriate lifting tools and stored for transport." },
+      { name: "New Battery Installation", description: "New battery installed and commissioned following the standard installation process including connector checks and initial charge setup." },
+      { name: "Disposal & Credit", description: "Old battery transported for environmentally responsible recycling and residual value credited toward the purchase price." },
+    ],
+    faqs: [
+      {
+        question: "How do I know when my battery needs replacing versus servicing?",
+        answer:
+          "Key signs a battery needs replacement include: unable to complete a full shift on a single charge despite proper maintenance, capacity below 60% of rated, multiple dead or reversed cells, or severe case damage. Our free diagnostic will give you a definitive answer.",
+      },
+      {
+        question: "Can I get a higher capacity battery as a replacement?",
+        answer:
+          "In some cases, yes. If your battery compartment and charger support a higher-capacity configuration within the same DIN or BS standard, we can recommend an upgrade that extends run times. We assess compatibility during the replacement consultation.",
+      },
+      {
+        question: "What happens to my old battery?",
+        answer:
+          "Old batteries are collected and transported to Exide's authorized recycling facility for environmentally responsible lead recovery. You also receive an exchange credit toward your new battery purchase.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "hsp-classic"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery", "flooded-vs-gel-batteries"],
   },
   {
     slug: "old-battery-exchange",
@@ -721,6 +933,28 @@ export const SERVICES: Service[] = [
       "Applicable to all industrial battery types",
     ],
     icon: "ArrowLeftRight",
+    serviceType: "BatteryExchange",
+    detailedDescription:
+      "Our old battery exchange program makes upgrading to new Exide batteries more affordable by giving you real credit for your end-of-life batteries. The exchange is open to all industrial battery brands and types — not just Exide — and the credit is applied directly to your new battery invoice. We handle all logistics including safe removal, loading, transport, and delivery of new batteries in the same visit, keeping your operations running with minimal interruption.",
+    faqs: [
+      {
+        question: "What brands of old batteries do you accept for exchange?",
+        answer:
+          "We accept old industrial batteries of any brand — Exide, Amara Raja, HBL, and others. The exchange value depends on the battery's weight, lead content, and current scrap metal rates.",
+      },
+      {
+        question: "How is the exchange value calculated?",
+        answer:
+          "Exchange value is based primarily on the battery's total lead content (weight minus non-lead components) and the current market rate for lead scrap. Our team will assess and quote the exchange value before you commit.",
+      },
+      {
+        question: "Can I exchange multiple batteries at once?",
+        answer:
+          "Yes, we handle bulk exchanges for entire fleets. Multiple batteries can be exchanged in a single transaction with the total credit applied toward your fleet order.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "hsp-classic"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery"],
   },
   {
     slug: "doorstep-delivery",
@@ -735,6 +969,28 @@ export const SERVICES: Service[] = [
       "Installation available at delivery location",
     ],
     icon: "Truck",
+    serviceType: "BatteryDelivery",
+    detailedDescription:
+      "Industrial batteries are heavy, fragile, and hazardous goods that require specialist handling during transport. Our doorstep delivery service uses vehicles equipped for industrial battery logistics — proper tie-downs, acid spill containment, and loading equipment to safely move batteries up to 800 kg. Within the Hyderabad metro area we offer same-day or next-day delivery; for other Telangana locations typically 1–2 days; and for pan-India shipments 3–5 business days. Installation teams can be scheduled to coincide with delivery.",
+    faqs: [
+      {
+        question: "What is the delivery lead time for Hyderabad orders?",
+        answer:
+          "For in-stock batteries, we offer same-day delivery for orders placed before noon within the Hyderabad metro area, and next-day delivery for orders placed in the afternoon. Telangana-wide delivery is typically 1–2 business days.",
+      },
+      {
+        question: "Is installation included with delivery?",
+        answer:
+          "Installation can be combined with delivery at no extra charge. Simply request installation at the time of ordering and we will schedule both in the same visit.",
+      },
+      {
+        question: "Do you deliver outside Telangana?",
+        answer:
+          "Yes. We deliver anywhere in India. Delivery to other states typically takes 3–5 business days via our logistics partners. For large fleet orders, we coordinate directly with your facility team.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel", "gen-x"],
+    relatedBlogSlugs: ["how-to-choose-forklift-battery"],
   },
   {
     slug: "emergency-service",
@@ -750,6 +1006,28 @@ export const SERVICES: Service[] = [
     ],
     icon: "Zap",
     highlight: true,
+    serviceType: "EmergencyBatteryService",
+    detailedDescription:
+      "A dead battery can halt an entire production line or distribution center, costing thousands per hour. Our emergency service line is available around the clock, with technicians on call to dispatch to your Hyderabad or Telangana facility as quickly as possible. We carry a stock of common battery configurations on our service vehicles for immediate swap-in, and can arrange expedited delivery of less common specifications within hours. AMC customers receive priority emergency response over standard service calls.",
+    faqs: [
+      {
+        question: "What is the response time for emergency calls?",
+        answer:
+          "Within the Hyderabad metro area, we target a 2–4 hour response time for emergency calls. For other Telangana locations, response is typically 4–8 hours. AMC customers receive prioritized response.",
+      },
+      {
+        question: "Is emergency service available 24/7?",
+        answer:
+          "Our emergency phone line (+91 9963739107 via WhatsApp) is monitored 24/7. Technician dispatch is available during extended hours; for after-midnight emergencies, we will schedule the earliest possible morning response.",
+      },
+      {
+        question: "What if you don't have the exact battery in stock?",
+        answer:
+          "We carry the most common Exide traction battery configurations on our service vehicles. For less common specifications, we can provide a temporary compatible battery to keep your operations running while we source the exact replacement.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "motive-power-gel"],
+    relatedBlogSlugs: ["battery-maintenance-tips"],
   },
   {
     slug: "amc",
@@ -766,6 +1044,35 @@ export const SERVICES: Service[] = [
     ],
     icon: "Shield",
     highlight: true,
+    serviceType: "AnnualMaintenanceContract",
+    detailedDescription:
+      "The Nektra Energy Solutions AMC is the most comprehensive battery care program available for Exide traction batteries in Telangana. By committing to an AMC, you unlock a 5-year full replacement warranty — more than double the 2-year coverage available without a contract. Scheduled quarterly visits include all key maintenance tasks: watering checks, equalization, terminal cleaning, and capacity verification. All maintenance is documented in a format suitable for ISO, GMP, and internal audit requirements. AMC customers also receive priority scheduling for all service and emergency calls.",
+    steps: [
+      { name: "Contract Enrollment", description: "Battery fleet registered under AMC with serial numbers, installation dates, and baseline capacity readings documented." },
+      { name: "Quarterly Preventive Visits", description: "Scheduled visits every quarter for full battery inspection, watering, equalization, terminal cleaning, and capacity checks." },
+      { name: "Health Monitoring", description: "Battery Monitoring System data reviewed at each visit to identify early signs of capacity decline or cell imbalance." },
+      { name: "Priority Service Response", description: "AMC customers receive priority dispatch for all service calls, including emergency breakdowns." },
+      { name: "Annual Review & Reporting", description: "Annual battery health report issued for each battery in the fleet, with recommendations for the coming year." },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between AMC and non-AMC warranty?",
+        answer:
+          "Without AMC: 2 years full replacement warranty + 3 years pro-rata (you pay a percentage of replacement cost). With AMC: 5 years full replacement warranty — Nektra replaces any failed battery at zero cost to you for the entire 5-year period.",
+      },
+      {
+        question: "How many site visits are included in the AMC?",
+        answer:
+          "The AMC includes quarterly preventive maintenance visits (4 per year per site) plus unlimited service calls for issues arising between scheduled visits. Emergency calls receive priority response.",
+      },
+      {
+        question: "Can I enroll an existing battery fleet in AMC, or only new purchases?",
+        answer:
+          "AMC is available for both new battery purchases and existing Exide batteries that pass a diagnostic assessment. For existing batteries, we perform a health check first to establish a baseline and confirm eligibility.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "motive-power-gel"],
+    relatedBlogSlugs: ["battery-maintenance-tips", "how-to-choose-forklift-battery"],
   },
   {
     slug: "equalizing-charge",
@@ -780,6 +1087,35 @@ export const SERVICES: Service[] = [
       "Extends overall battery pack life",
     ],
     icon: "BarChart3",
+    serviceType: "EqualizingChargeService",
+    detailedDescription:
+      "Electrolyte stratification and cell imbalance are silent killers of traction batteries, often reducing effective capacity by 20–30% before operators notice reduced performance. Our professional equalizing charge service applies a controlled overcharge using calibrated equipment, bringing every cell in the pack up to the same voltage and restoring stratified electrolyte to uniform density. We monitor temperature and individual cell voltages throughout the process to ensure safe execution, and document before-and-after readings so you can see the measurable improvement.",
+    steps: [
+      { name: "Pre-Equalization Assessment", description: "Individual cell voltages and specific gravity measured to quantify the degree of imbalance before starting." },
+      { name: "Full Standard Charge", description: "Battery brought to 100% state of charge using normal charging profile as the starting point for equalization." },
+      { name: "Controlled Overcharge", description: "Charger switched to equalize mode (2.65–2.70V per cell). Equalization continues for 3–4 hours beyond normal charge cutoff." },
+      { name: "Temperature Monitoring", description: "Electrolyte temperature monitored throughout. Process paused if temperature exceeds 55°C to prevent damage." },
+      { name: "Post-Equalization Verification", description: "Cell voltages and specific gravity re-measured to confirm uniform distribution. Results documented and provided to customer." },
+    ],
+    faqs: [
+      {
+        question: "How often should equalizing charges be performed?",
+        answer:
+          "We recommend an equalizing charge every 5–10 regular charge cycles for standard operations, or weekly for multi-shift operations. If cell voltage deviation exceeds 0.1V between the highest and lowest cells, equalization should be performed immediately.",
+      },
+      {
+        question: "Can I perform equalizing charges myself?",
+        answer:
+          "Equalizing charges can be performed by operators if your charger has an equalize mode. However, improper execution — wrong voltage, wrong duration, or ignoring temperature limits — can damage batteries. Our professional service ensures correct parameters and full documentation.",
+      },
+      {
+        question: "Will equalization restore a significantly degraded battery?",
+        answer:
+          "Equalization restores capacity lost due to stratification and mild sulphation, typically recovering 10–25% of lost capacity. It cannot reverse severe sulphation, physical plate damage, or dead cells. Our assessment before equalization will tell you realistically what to expect.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "accessories"],
+    relatedBlogSlugs: ["why-equalizing-charge-matters", "battery-maintenance-tips"],
   },
   {
     slug: "onsite-service",
@@ -794,6 +1130,28 @@ export const SERVICES: Service[] = [
       "Same-day response in Hyderabad metro area",
     ],
     icon: "MapPin",
+    serviceType: "OnsiteBatteryService",
+    detailedDescription:
+      "Industrial batteries are large, heavy, and must never be transported without proper equipment — which is why all Nektra maintenance and repair work is performed at your facility. Our mobile service teams are stationed across Telangana, each equipped with diagnostic tools, replacement parts, water deionizers, equalizing charge equipment, and common battery configurations for immediate swap. Regular on-site visits keep your fleet in top condition, and our geographic coverage means no Telangana facility is more than a few hours from our nearest team.",
+    faqs: [
+      {
+        question: "Which areas of Telangana do you cover for on-site service?",
+        answer:
+          "We cover all of Telangana including Hyderabad, Secunderabad, Chandanagar, Kukatpally, Miyapur, Gachibowli, HITEC City, Medchal, Shamshabad, Uppal, LB Nagar, Kompally, Bolarum, and Patancheru, along with all other Telangana districts.",
+      },
+      {
+        question: "How do I schedule a regular maintenance visit?",
+        answer:
+          "Regular maintenance visits are scheduled monthly or quarterly depending on your operation. AMC customers have visits pre-scheduled at enrollment. For non-AMC customers, call or WhatsApp us to arrange a visit.",
+      },
+      {
+        question: "What equipment do your technicians bring on-site?",
+        answer:
+          "Our mobile service vehicles carry digital cell voltage testers, hydrometers, deionized water systems, equalizing charge equipment, torque tools for connectors, replacement vent plugs, and a selection of common battery components for minor repairs.",
+      },
+    ],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "accessories"],
+    relatedBlogSlugs: ["battery-maintenance-tips"],
   },
 ];
 
@@ -846,6 +1204,12 @@ Our battery experts have helped hundreds of Hyderabad-area warehouses optimize t
     date: "2025-12-15",
     readTime: "8 min read",
     category: "Guides",
+    categorySlug: "buying-guides",
+    dateModified: "2025-12-15",
+    tags: ["forklift battery", "warehouse battery", "battery selection", "DIN vs BS", "flooded vs gel", "AMC"],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "hsp-classic"],
+    relatedServices: ["battery-installation", "testing-diagnostics", "amc"],
+    relatedIndustries: ["warehouse-logistics", "ecommerce-distribution", "engineering-manufacturing"],
   },
   {
     slug: "flooded-vs-gel-batteries",
@@ -904,6 +1268,12 @@ If your facility handles food, drugs, or operates in clean environments — go g
     date: "2025-11-28",
     readTime: "7 min read",
     category: "Comparison",
+    categorySlug: "battery-technology",
+    dateModified: "2025-11-28",
+    tags: ["flooded battery", "gel battery", "CEIL Gel", "battery comparison", "VRLA", "traction battery"],
+    relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel", "gen-x"],
+    relatedServices: ["testing-diagnostics", "battery-installation", "amc"],
+    relatedIndustries: ["pharmaceutical", "food-beverage", "warehouse-logistics"],
   },
   {
     slug: "battery-maintenance-tips",
@@ -957,6 +1327,12 @@ Nektra Energy Solutions offers Annual Maintenance Contracts that handle all of t
     date: "2025-11-10",
     readTime: "6 min read",
     category: "Maintenance",
+    categorySlug: "maintenance-guides",
+    dateModified: "2025-11-10",
+    tags: ["battery maintenance", "water topping", "equalizing charge", "battery life", "cycle life", "AMC"],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "accessories"],
+    relatedServices: ["amc", "equalizing-charge", "onsite-service"],
+    relatedIndustries: ["warehouse-logistics", "engineering-manufacturing", "ecommerce-distribution"],
   },
   {
     slug: "why-equalizing-charge-matters",
@@ -1006,6 +1382,12 @@ Nektra Energy Solutions offers professional equalizing charge service with cell-
     date: "2025-10-22",
     readTime: "5 min read",
     category: "Technical",
+    categorySlug: "maintenance-guides",
+    dateModified: "2025-10-22",
+    tags: ["equalizing charge", "cell balance", "electrolyte stratification", "battery maintenance", "traction battery"],
+    relatedProducts: ["motive-power-flooded-tubular", "gen-x", "accessories"],
+    relatedServices: ["equalizing-charge", "amc", "testing-diagnostics"],
+    relatedIndustries: ["warehouse-logistics", "engineering-manufacturing", "steel-metal"],
   },
   {
     slug: "top-industries-industrial-batteries-india",
@@ -1055,6 +1437,12 @@ Nektra Energy Solutions serves all 10 of these industries across Telangana with 
     date: "2025-10-05",
     readTime: "6 min read",
     category: "Industry",
+    categorySlug: "industry-insights",
+    dateModified: "2025-10-05",
+    tags: ["industrial battery", "traction battery India", "forklift battery", "warehouse logistics", "pharmaceutical", "automotive manufacturing"],
+    relatedProducts: ["motive-power-flooded-tubular", "motive-power-gel", "gen-x"],
+    relatedServices: ["battery-installation", "amc", "onsite-service"],
+    relatedIndustries: ["warehouse-logistics", "pharmaceutical", "automotive"],
   },
   {
     slug: "din-vs-bs-battery-standards",
@@ -1104,6 +1492,35 @@ Send us a photo of your battery label and forklift model number, and our team wi
     date: "2025-09-18",
     readTime: "5 min read",
     category: "Technical",
+    categorySlug: "battery-technology",
+    dateModified: "2025-09-18",
+    tags: ["DIN battery", "BS battery", "BCI battery", "IPzS", "IPzB", "forklift battery standards", "battery compatibility"],
+    relatedProducts: ["motive-power-flooded-tubular", "bci-range", "hsp-classic"],
+    relatedServices: ["testing-diagnostics", "battery-replacement", "battery-installation"],
+    relatedIndustries: ["warehouse-logistics", "automotive", "engineering-manufacturing"],
+  },
+];
+
+export const BLOG_CATEGORIES: BlogCategory[] = [
+  {
+    slug: "battery-technology",
+    name: "Battery Technology",
+    description: "Deep dives into industrial battery technology, comparisons, and innovations.",
+  },
+  {
+    slug: "maintenance-guides",
+    name: "Maintenance Guides",
+    description: "Practical guides for maintaining and optimizing your industrial battery fleet.",
+  },
+  {
+    slug: "industry-insights",
+    name: "Industry Insights",
+    description: "Battery solutions and best practices for specific industries.",
+  },
+  {
+    slug: "buying-guides",
+    name: "Buying Guides",
+    description: "How to choose the right industrial battery for your business needs.",
   },
 ];
 
