@@ -127,7 +127,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden border-t border-white/5 bg-surface-deepest/95 backdrop-blur-xl overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label}>
                   <Link
