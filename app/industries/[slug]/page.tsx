@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { generatePageMetadata } from "@/lib/seo";
-import { serviceSchema } from "@/lib/schema";
+import { industrySchema } from "@/lib/schema";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GlassCard from "@/components/ui/GlassCard";
@@ -10,7 +10,8 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
 import JsonLd from "@/components/seo/JsonLd";
-import { INDUSTRIES, PRODUCTS } from "@/lib/constants";
+import RelatedContent from "@/components/ui/RelatedContent";
+import { INDUSTRIES, PRODUCTS, BLOG_POSTS } from "@/lib/constants";
 import { AlertTriangle, CheckCircle, ArrowRight } from "lucide-react";
 
 interface Props {
@@ -43,15 +44,7 @@ export default async function IndustryPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd
-        data={serviceSchema({
-          slug: industry.slug,
-          name: `${industry.name} Battery Solutions`,
-          description: industry.description,
-          details: industry.solutions,
-          icon: industry.icon,
-        })}
-      />
+      <JsonLd data={industrySchema(industry)} />
       <section className="py-16">
         <Container>
           <Breadcrumbs overrides={{ [industry.slug]: industry.shortName }} />
@@ -73,7 +66,7 @@ export default async function IndustryPage({ params }: Props) {
               <GlassCard hover={false} className="h-full">
                 <h2 className="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-accent-red" />
-                  Industry Challenges
+                  {industry.shortName} Battery Challenges
                 </h2>
                 <ul className="space-y-3">
                   {industry.painPoints.map((point) => (
@@ -90,7 +83,7 @@ export default async function IndustryPage({ params }: Props) {
               <GlassCard hover={false} className="h-full border-primary/20 bg-primary/5">
                 <h2 className="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-primary" />
-                  Our Solutions
+                  Battery Solutions for {industry.shortName} in Hyderabad
                 </h2>
                 <ul className="space-y-3">
                   {industry.solutions.map((solution) => (
@@ -126,6 +119,19 @@ export default async function IndustryPage({ params }: Props) {
               ))}
             </div>
           </MotionWrapper>
+
+          {/* Related Articles */}
+          <RelatedContent
+            heading={`Battery Insights for ${industry.shortName}`}
+            items={(industry.relatedBlogSlugs || [])
+              .map((slug) => BLOG_POSTS.find((p) => p.slug === slug))
+              .filter((p): p is NonNullable<typeof p> => p != null)
+              .map((p) => ({
+                title: p.title,
+                description: p.excerpt,
+                href: `/blog/${p.slug}`,
+              }))}
+          />
         </Container>
       </section>
 

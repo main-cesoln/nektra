@@ -48,7 +48,7 @@ export default function Navbar() {
 
           {/* Exide Badge — desktop only */}
           <div className="hidden lg:flex items-center ml-3 pl-3 border-l border-white/10">
-            <ExideBadge variant="compact" />
+            <ExideBadge variant="compact" priority />
           </div>
 
           {/* Desktop Nav */}

@@ -10,9 +10,9 @@ import { COMPANY, SERVICE_AREAS } from "@/lib/constants";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Navigation } from "lucide-react";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Contact Us — Hyderabad Industrial Battery Experts",
+  title: "Contact Exide Battery Dealer Hyderabad",
   description:
-    "Contact Nektra Energy Solutions for Exide industrial battery enquiries, service booking, and quotes. Chandanagar, Hyderabad. Call +91 9963739107.",
+    "Contact Nektra Energy Solutions for Exide industrial battery enquiries, service booking, and quotes. Chandanagar, Hyderabad. Call +91 9963739107. Free consultation.",
   path: "/contact",
 });
 
@@ -21,6 +21,7 @@ export default function ContactPage() {
     <section className="py-16">
       <Container>
         <Breadcrumbs />
+        <h1 className="sr-only">Contact Exide Battery Dealer Hyderabad</h1>
         <SectionHeading
           overline="Contact Us"
           title="Get in Touch"

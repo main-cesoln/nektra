@@ -11,9 +11,9 @@ import FAQAccordion from "./FAQAccordion";
 import { FAQS } from "@/lib/constants";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "FAQ — Industrial Battery Questions Answered",
+  title: "Industrial Battery FAQ — Exide Dealer Hyderabad",
   description:
-    "Frequently asked questions about Exide industrial batteries, DIN vs BS standards, gel vs flooded batteries, warranty, AMC, and battery maintenance.",
+    "Frequently asked questions about Exide industrial batteries, warranty, AMC, DIN vs BS standards, gel vs flooded, and maintenance. Hyderabad's trusted battery experts.",
   path: "/faq",
 });
 
@@ -26,6 +26,7 @@ export default function FAQPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Industrial Battery FAQ — Exide Dealer Hyderabad</h1>
           <SectionHeading
             overline="FAQ"
             title="Frequently Asked Questions"

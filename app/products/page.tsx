@@ -10,13 +10,13 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
-import { PRODUCTS } from "@/lib/constants";
+import { PRODUCTS, COMPANY } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Products — Exide Industrial Batteries & Accessories",
+  title: "Industrial Batteries — Exide Authorized Dealer",
   description:
-    "Complete range of Exide industrial batteries: Flooded Tubular, Gel, HSP Classic, Gen-X, BCI Range, and accessories. DIN & BS standards for all forklift brands.",
+    "Complete range of Exide industrial batteries: Flooded Tubular, Gel, HSP Classic, Gen-X, BCI Range. DIN & BS standards for all forklift brands. Hyderabad dealer.",
   path: "/products",
 });
 
@@ -26,6 +26,7 @@ export default function ProductsPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Industrial Battery Products — Exide Authorized Dealer</h1>
           <SectionHeading
             overline="Our Products"
             title="Exide Industrial Battery Range"
@@ -81,7 +82,7 @@ export default function ProductsPage() {
         primaryLabel="Get a Quote"
         primaryHref="/get-quote"
         secondaryLabel="Call an Expert"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );

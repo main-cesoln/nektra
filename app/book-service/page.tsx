@@ -10,12 +10,15 @@ import ServiceBookingForm from "@/components/forms/ServiceBookingForm";
 import { SERVICES, COMPANY } from "@/lib/constants";
 import { Phone, Zap } from "lucide-react";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Book a Service — Battery Installation, Testing & Maintenance",
-  description:
-    "Book battery installation, testing, replacement, AMC, or emergency service. Free diagnostics and installation with every Exide battery from Nektra Energy Solutions.",
-  path: "/book-service",
-});
+export const metadata: Metadata = {
+  ...generatePageMetadata({
+    title: "Book a Service — Battery Installation, Testing & Maintenance",
+    description:
+      "Book battery installation, testing, replacement, AMC, or emergency service. Free diagnostics and installation with every Exide battery from Nektra Energy Solutions.",
+    path: "/book-service",
+  }),
+  robots: { index: false, follow: false },
+};
 
 export default function BookServicePage() {
   return (

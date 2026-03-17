@@ -7,15 +7,15 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
-import { SERVICES, SERVICE_AREAS } from "@/lib/constants";
+import { SERVICES, SERVICE_AREAS, COMPANY } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
 import { Wrench, MapPin } from "lucide-react";
 import { SERVICE_ICON_MAP } from "@/lib/icons";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Services — Installation, Testing, AMC & Emergency Service",
+  title: "Industrial Battery Services in Hyderabad — Installation, AMC & Emergency",
   description:
-    "Free battery installation, free diagnostics, AMC with 5-year warranty, emergency service, and Pan-Telangana coverage. Complete battery service solutions.",
+    "Expert industrial battery services in Hyderabad: free installation, free diagnostics, AMC with 5-year warranty, and emergency response across Telangana. Call now.",
   path: "/services",
 });
 
@@ -25,6 +25,7 @@ export default function ServicesPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
+          <h1 className="sr-only">Industrial Battery Services in Hyderabad</h1>
           <SectionHeading
             overline="Our Services"
             title="Complete Battery Service Solutions"
@@ -150,7 +151,7 @@ export default function ServicesPage() {
         primaryLabel="Book a Service"
         primaryHref="/book-service"
         secondaryLabel="Call Now"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );
