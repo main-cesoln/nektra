@@ -39,7 +39,7 @@ Pages using `SectionHeading` (renders H2) need explicit H1 elements:
 
 ### 1.3 OpenGraph image infrastructure
 - Add default OG image path (`/og-default.jpg`) in `lib/seo.ts`
-- Wire up the existing `image` field in `PageSEO` interface — it is already declared but never passed to the returned Metadata object. Connect it to `openGraph.images` and `twitter.images`.
+- Wire up the existing `image` field in `PageSEO` interface — it is already declared but the function destructures only `{ title, description, path }`, silently dropping `image`. Expand the destructuring to include `image`, then connect it to `openGraph.images` and `twitter.images`.
 - Add Twitter card image support alongside OpenGraph
 
 ### 1.6 OpenGraph type differentiation
@@ -94,7 +94,7 @@ Verify Name, Address, Phone rendered identically everywhere: footer, contact pag
 - **Brand/Manufacturer:** Ensure Exide branding explicit in product schema.
 
 ### 3.2 Service schema expansion
-- Each service gets `areaServed` (Hyderabad, Telangana), `provider` (Organization ref), `serviceType`
+- Each service gets `areaServed` (Hyderabad, Telangana), `provider` (Organization ref), `serviceType` (add `serviceType?: string` to Service type in `lib/types.ts` and populate per service in constants, e.g., "BatteryInstallation", "BatteryMaintenance")
 - **HowTo schema:** For applicable services (installation, testing), add step-by-step process. Add `steps` field to Service type for services that warrant it.
 
 ### 3.3 Breadcrumb schema improvements
@@ -267,7 +267,7 @@ Each blog post targets a specific long-tail query cluster:
 ## Files Modified
 
 ### Existing files to modify:
-- `lib/types.ts` — Add fields: Product.faqs, Product.relatedServices, Product.relatedBlogSlugs, Service.detailedDescription, Service.faqs, Service.steps, Service.relatedProducts, Service.relatedBlogSlugs, BlogPost.dateModified, BlogPost.relatedProducts, BlogPost.relatedServices, BlogPost.relatedIndustries, Industry.relatedBlogSlugs (Note: Service.slug already exists)
+- `lib/types.ts` — Add fields: Product.faqs, Product.relatedServices, Product.relatedBlogSlugs, Service.detailedDescription, Service.faqs, Service.steps, Service.serviceType, Service.relatedProducts, Service.relatedBlogSlugs, BlogPost.dateModified, BlogPost.relatedProducts, BlogPost.relatedServices, BlogPost.relatedIndustries, Industry.relatedBlogSlugs (Note: Service.slug already exists)
 - `lib/constants.ts` — Populate all new fields, add 10-15 blog posts, add blog categories, add service details, add product FAQs, add location landing page content
 - `lib/seo.ts` — Wire up existing dead `image` field to OG/Twitter images, add OG type parameter, add hreflang support
 - `lib/schema.ts` — LocalBusiness enhancements (OpeningHoursSpecification, ContactPoint, areaServed, priceRange), HowTo, remove broken SearchAction, article enrichment
