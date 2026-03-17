@@ -1,0 +1,49 @@
+import ExideLogo from "@/components/ui/ExideLogo";
+
+interface ExideBadgeProps {
+  variant?: "inline" | "stacked" | "compact";
+  label?: string;
+  className?: string;
+}
+
+export default function ExideBadge({
+  variant = "inline",
+  label = "Authorized Dealer",
+  className = "",
+}: ExideBadgeProps) {
+  if (variant === "compact") {
+    return (
+      <div className={`flex items-center gap-2 ${className}`}>
+        <ExideLogo colorMode="color" className="h-16" />
+        <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+          {label}
+        </span>
+      </div>
+    );
+  }
+
+  if (variant === "stacked") {
+    return (
+      <div
+        className={`inline-flex flex-col items-center gap-2 px-5 py-3 rounded-xl border border-primary/20 bg-white/[0.03] backdrop-blur-sm ${className}`}
+      >
+        <ExideLogo colorMode="color" className="h-20" />
+        <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+          {label}
+        </span>
+      </div>
+    );
+  }
+
+  // inline
+  return (
+    <div
+      className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border border-primary/20 bg-white/[0.03] backdrop-blur-sm ${className}`}
+    >
+      <ExideLogo colorMode="color" className="h-16" />
+      <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+        {label}
+      </span>
+    </div>
+  );
+}

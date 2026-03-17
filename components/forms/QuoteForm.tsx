@@ -1,0 +1,119 @@
+"use client";
+
+import { useState, FormEvent } from "react";
+import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
+import { INDUSTRIES, PRODUCTS } from "@/lib/constants";
+import GlowButton from "@/components/ui/GlowButton";
+
+const inputClasses =
+  "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm";
+
+export default function QuoteForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    industry: "",
+    batteryType: "",
+    quantity: "",
+    voltage: "",
+    capacity: "",
+    timeline: "",
+    notes: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const newErrors: Record<string, string> = {};
+    if (!validateRequired(form.name)) newErrors.name = "Name is required";
+    if (!validateEmail(form.email)) newErrors.email = "Valid email is required";
+    if (!validatePhone(form.phone)) newErrors.phone = "Valid phone is required";
+    if (!validateRequired(form.company)) newErrors.company = "Company name is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 rounded-full bg-accent-green/20 flex items-center justify-center mx-auto mb-4">
+          <span className="text-accent-green text-2xl">&#10003;</span>
+        </div>
+        <h3 className="font-heading text-xl font-bold text-white mb-2">Quote Request Received!</h3>
+        <p className="text-gray-400">Our team will prepare a custom quote and contact you within 24 hours.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h3 className="font-heading text-lg font-bold text-white mb-2">Your Details</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <input name="name" placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
+          {errors.name && <p className="text-accent-red text-xs mt-1">{errors.name}</p>}
+        </div>
+        <div>
+          <input name="email" type="email" placeholder="Email *" value={form.email} onChange={handleChange} className={inputClasses} />
+          {errors.email && <p className="text-accent-red text-xs mt-1">{errors.email}</p>}
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <input name="phone" placeholder="Phone *" value={form.phone} onChange={handleChange} className={inputClasses} />
+          {errors.phone && <p className="text-accent-red text-xs mt-1">{errors.phone}</p>}
+        </div>
+        <div>
+          <input name="company" placeholder="Company Name *" value={form.company} onChange={handleChange} className={inputClasses} />
+          {errors.company && <p className="text-accent-red text-xs mt-1">{errors.company}</p>}
+        </div>
+      </div>
+
+      <h3 className="font-heading text-lg font-bold text-white mt-6 mb-2">Battery Requirements</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <select name="industry" value={form.industry} onChange={handleChange} className={inputClasses}>
+          <option value="">Select Industry</option>
+          {INDUSTRIES.map((ind) => (
+            <option key={ind.slug} value={ind.slug}>{ind.name}</option>
+          ))}
+        </select>
+        <select name="batteryType" value={form.batteryType} onChange={handleChange} className={inputClasses}>
+          <option value="">Select Battery Type</option>
+          {PRODUCTS.map((p) => (
+            <option key={p.slug} value={p.slug}>{p.shortName}</option>
+          ))}
+        </select>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <input name="quantity" placeholder="Quantity" value={form.quantity} onChange={handleChange} className={inputClasses} />
+        <input name="voltage" placeholder="Voltage (V)" value={form.voltage} onChange={handleChange} className={inputClasses} />
+        <input name="capacity" placeholder="Capacity (Ah)" value={form.capacity} onChange={handleChange} className={inputClasses} />
+      </div>
+      <select name="timeline" value={form.timeline} onChange={handleChange} className={inputClasses}>
+        <option value="">Timeline</option>
+        <option value="immediate">Immediate (within 1 week)</option>
+        <option value="1-month">Within 1 month</option>
+        <option value="3-months">Within 3 months</option>
+        <option value="planning">Just planning / exploring</option>
+      </select>
+      <textarea name="notes" rows={3} placeholder="Additional notes or requirements" value={form.notes} onChange={handleChange} className={inputClasses} />
+      <GlowButton type="submit" className="w-full">
+        Request Quote
+      </GlowButton>
+    </form>
+  );
+}
