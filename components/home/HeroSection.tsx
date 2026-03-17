@@ -22,7 +22,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-flex items-center gap-2 font-mono text-sm text-primary tracking-widest uppercase mb-6 border border-primary/20 px-4 py-1.5 rounded-full">
-            <ExideLogo colorMode="color" className="h-14" />
+            <ExideLogo colorMode="color" className="h-14" priority />
             Authorized Exide Industrial Battery Dealer — 35+ Years
           </span>
         </motion.div>
