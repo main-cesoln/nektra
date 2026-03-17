@@ -10,7 +10,8 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import CTABanner from "@/components/ui/CTABanner";
 import JsonLd from "@/components/seo/JsonLd";
-import { BLOG_POSTS } from "@/lib/constants";
+import RelatedContent from "@/components/ui/RelatedContent";
+import { BLOG_POSTS, PRODUCTS, SERVICES, INDUSTRIES } from "@/lib/constants";
 import { Clock } from "lucide-react";
 
 interface Props {
@@ -29,6 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.date,
+    modifiedTime: post.dateModified,
+    section: post.category,
   });
 }
 
@@ -156,6 +161,32 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             </MotionWrapper>
           </article>
+
+          {/* Related Products */}
+          <RelatedContent
+            heading="Related Products"
+            items={(post.relatedProducts || [])
+              .map((slug) => PRODUCTS.find((p) => p.slug === slug))
+              .filter((p): p is NonNullable<typeof p> => p != null)
+              .map((p) => ({
+                title: p.name,
+                description: p.tagline,
+                href: `/products/${p.slug}`,
+              }))}
+          />
+
+          {/* Related Services */}
+          <RelatedContent
+            heading="Related Services"
+            items={(post.relatedServices || [])
+              .map((slug) => SERVICES.find((s) => s.slug === slug))
+              .filter((s): s is NonNullable<typeof s> => s != null)
+              .map((s) => ({
+                title: s.name,
+                description: s.description,
+                href: `/services/${s.slug}`,
+              }))}
+          />
 
           {/* Related Posts */}
           <div className="max-w-3xl mx-auto mt-16">
