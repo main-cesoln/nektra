@@ -14,7 +14,7 @@ No test framework is configured.
 
 ## What This Is
 
-Static corporate website for Nektra Energy Solutions (authorized Exide industrial battery dealer, Hyderabad). Next.js 14 App Router, TypeScript strict mode, Tailwind CSS 3. No backend, API routes, or database — purely static pages.
+Static corporate website for Nektra Energy Solutions (authorized Exide industrial battery dealer, Hyderabad). Next.js 15 App Router, React 19, TypeScript strict mode, Tailwind CSS 3. No backend, API routes, or database — purely static pages. Animations use Framer Motion; icons come from Lucide React plus custom SVG maps in `lib/icons.ts`.
 
 ## Key Architectural Patterns
 
@@ -27,8 +27,12 @@ All site content (products, services, industries, blog posts, FAQs, stats, compa
 ### SEO layer
 
 - `lib/seo.ts` exports `generatePageMetadata()` — every page calls this for consistent OpenGraph/canonical metadata with the title template `%s | Nektra Energy Solutions`.
-- `lib/schema.ts` exports JSON-LD schema generators (Organization, Product, Service, FAQ, Article, Breadcrumb) — injected via `components/seo/JsonLd.tsx`.
+- `lib/schema.ts` exports JSON-LD schema generators (Organization, Product, Service, FAQ, Article, Breadcrumb) — injected via `components/seo/JsonLd.tsx`. JSON-LD schemas reference `COMPANY` data directly (address, coordinates, socials/sameAs) — keep schema.ts in sync when COMPANY fields change.
 - `app/sitemap.ts` and `app/robots.ts` handle crawling configuration.
+
+### Icon maps in `lib/icons.ts`
+
+Lucide icons are re-exported as named `Record<string, Component>` maps (INDUSTRY_ICON_MAP, SERVICE_ICON_MAP, SOCIAL_ICON_MAP). Components look up icons by string key from constants data. To add icons: import from Lucide and add to the relevant map. For brand icons without Lucide equivalents (e.g., WhatsApp), use inline SVGs.
 
 ### Component organization
 

@@ -27,6 +27,13 @@ export const COMPANY: CompanyInfo = {
   hours: "Mon-Sat 9:00 AM - 8:00 PM",
   coordinates: { lat: 17.4933, lng: 78.3222 },
   url: "https://nektraenergy.com",
+  socials: [
+    { platform: "Facebook", url: "https://facebook.com/nektraenergy" },
+    { platform: "Instagram", url: "https://instagram.com/nektraenergy" },
+    { platform: "Linkedin", url: "https://linkedin.com/company/nektraenergy" },
+    { platform: "Twitter", url: "https://twitter.com/nektraenergy" },
+    { platform: "Youtube", url: "https://youtube.com/@nektraenergy" },
+  ],
 };
 
 export const SERVICE_AREAS = [

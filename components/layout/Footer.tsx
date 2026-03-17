@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Zap, Phone, Mail, MapPin, Clock } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { COMPANY, PRODUCTS } from "@/lib/constants";
+import { SOCIAL_ICON_MAP } from "@/lib/icons";
 import ExideBadge from "@/components/ui/ExideBadge";
 import ExideLogo from "@/components/ui/ExideLogo";
 
@@ -34,7 +35,26 @@ export default function Footer() {
                 Authorized Exide Industrial Battery dealer in Hyderabad with 35+ years of experience powering industries across Telangana.
               </p>
               <ExideBadge variant="inline" className="mb-3" />
-              <p className="text-xs text-gray-500 font-mono">{COMPANY.tagline}</p>
+              <p className="text-xs text-gray-500 font-mono mb-4">{COMPANY.tagline}</p>
+              {COMPANY.socials && (
+                <div className="flex items-center gap-3">
+                  {COMPANY.socials.map((social) => {
+                    const Icon = SOCIAL_ICON_MAP[social.platform];
+                    return Icon ? (
+                      <a
+                        key={social.platform}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.platform}
+                        className="text-gray-400 hover:text-primary transition-colors"
+                      >
+                        <Icon className="w-5 h-5" />
+                      </a>
+                    ) : null;
+                  })}
+                </div>
+              )}
             </div>
 
             {/* Quick Links */}

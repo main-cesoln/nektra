@@ -91,6 +91,11 @@ export interface Testimonial {
   rating: number;
 }
 
+export interface SocialLink {
+  platform: "Facebook" | "Instagram" | "Linkedin" | "Twitter" | "Youtube";
+  url: string;
+}
+
 export interface CompanyInfo {
   name: string;
   tagline: string;
@@ -104,4 +109,5 @@ export interface CompanyInfo {
   hours: string;
   coordinates: { lat: number; lng: number };
   url: string;
+  socials?: SocialLink[];
 }

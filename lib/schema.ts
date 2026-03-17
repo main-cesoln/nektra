@@ -24,6 +24,7 @@ export function organizationSchema() {
       longitude: COMPANY.coordinates.lng,
     },
     openingHours: "Mo-Sa 09:00-20:00",
+    sameAs: COMPANY.socials?.map((s) => s.url) ?? [],
     priceRange: "$$",
     areaServed: {
       "@type": "State",
