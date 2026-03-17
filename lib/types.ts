@@ -31,6 +31,9 @@ export interface Product {
   applications: string[];
   relatedIndustries: string[];
   image?: string;
+  faqs?: { question: string; answer: string }[];
+  relatedServices?: string[];
+  relatedBlogSlugs?: string[];
 }
 
 export interface AccessoryProduct {
@@ -49,6 +52,13 @@ export interface Industry {
   solutions: string[];
   recommendedProducts: string[];
   icon: string;
+  relatedBlogSlugs?: string[];
+}
+
+export interface BlogCategory {
+  slug: string;
+  name: string;
+  description: string;
 }
 
 export interface Service {
@@ -58,6 +68,12 @@ export interface Service {
   details: string[];
   icon: string;
   highlight?: boolean;
+  detailedDescription?: string;
+  faqs?: { question: string; answer: string }[];
+  steps?: { name: string; description: string }[];
+  serviceType?: string;
+  relatedProducts?: string[];
+  relatedBlogSlugs?: string[];
 }
 
 export interface BlogPost {
@@ -68,6 +84,12 @@ export interface BlogPost {
   date: string;
   readTime: string;
   category: string;
+  categorySlug?: string;
+  dateModified?: string;
+  tags?: string[];
+  relatedProducts?: string[];
+  relatedServices?: string[];
+  relatedIndustries?: string[];
 }
 
 export interface FAQItem {
