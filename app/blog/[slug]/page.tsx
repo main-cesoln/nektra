@@ -11,7 +11,7 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import CTABanner from "@/components/ui/CTABanner";
 import JsonLd from "@/components/seo/JsonLd";
 import RelatedContent from "@/components/ui/RelatedContent";
-import { BLOG_POSTS, PRODUCTS, SERVICES, INDUSTRIES } from "@/lib/constants";
+import { BLOG_POSTS, PRODUCTS, SERVICES } from "@/lib/constants";
 import { Clock } from "lucide-react";
 
 interface Props {
