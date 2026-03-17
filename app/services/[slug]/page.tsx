@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo";
-import { serviceSchema, howToSchema } from "@/lib/schema";
+import { serviceSchema, howToSchema, faqSchema } from "@/lib/schema";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import MotionWrapper from "@/components/ui/MotionWrapper";
@@ -10,7 +10,7 @@ import CTABanner from "@/components/ui/CTABanner";
 import ProductFAQ from "@/components/ui/ProductFAQ";
 import RelatedContent from "@/components/ui/RelatedContent";
 import JsonLd from "@/components/seo/JsonLd";
-import { SERVICES, PRODUCTS, BLOG_POSTS } from "@/lib/constants";
+import { SERVICES, PRODUCTS, BLOG_POSTS, COMPANY } from "@/lib/constants";
 import { Wrench } from "lucide-react";
 import { SERVICE_ICON_MAP } from "@/lib/icons";
 
@@ -105,6 +105,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* FAQ */}
           {service.faqs && service.faqs.length > 0 && (
             <MotionWrapper className="mb-16">
+              <JsonLd data={faqSchema(service.faqs)} />
               <h2 className="font-heading text-2xl font-bold text-white mb-6">
                 Frequently Asked Questions About {service.name}
               </h2>
@@ -117,11 +118,11 @@ export default async function ServiceDetailPage({ params }: Props) {
             heading="Products We Service"
             items={(service.relatedProducts || [])
               .map((s) => PRODUCTS.find((p) => p.slug === s))
-              .filter(Boolean)
+              .filter((p): p is NonNullable<typeof p> => p != null)
               .map((p) => ({
-                title: p!.name,
-                description: p!.tagline,
-                href: `/products/${p!.slug}`,
+                title: p.name,
+                description: p.tagline,
+                href: `/products/${p.slug}`,
               }))}
           />
 
@@ -130,11 +131,11 @@ export default async function ServiceDetailPage({ params }: Props) {
             heading="Related Guides"
             items={(service.relatedBlogSlugs || [])
               .map((s) => BLOG_POSTS.find((p) => p.slug === s))
-              .filter(Boolean)
+              .filter((p): p is NonNullable<typeof p> => p != null)
               .map((p) => ({
-                title: p!.title,
-                description: p!.excerpt,
-                href: `/blog/${p!.slug}`,
+                title: p.title,
+                description: p.excerpt,
+                href: `/blog/${p.slug}`,
               }))}
           />
         </Container>
@@ -146,7 +147,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         primaryLabel="Book This Service"
         primaryHref="/book-service"
         secondaryLabel="Call Us"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { generatePageMetadata } from "@/lib/seo";
-import { productSchema } from "@/lib/schema";
+import { productSchema, faqSchema } from "@/lib/schema";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GlassCard from "@/components/ui/GlassCard";
@@ -13,7 +13,7 @@ import CTABanner from "@/components/ui/CTABanner";
 import JsonLd from "@/components/seo/JsonLd";
 import ProductFAQ from "@/components/ui/ProductFAQ";
 import RelatedContent from "@/components/ui/RelatedContent";
-import { PRODUCTS, INDUSTRIES, ACCESSORY_PRODUCTS, SERVICES, BLOG_POSTS } from "@/lib/constants";
+import { PRODUCTS, INDUSTRIES, ACCESSORY_PRODUCTS, SERVICES, BLOG_POSTS, COMPANY } from "@/lib/constants";
 import { CheckCircle } from "lucide-react";
 import ExideBadge from "@/components/ui/ExideBadge";
 
@@ -214,6 +214,7 @@ export default async function ProductPage({ params }: Props) {
           {/* Product FAQ */}
           {product.faqs && product.faqs.length > 0 && (
             <MotionWrapper className="mb-16">
+              <JsonLd data={faqSchema(product.faqs)} />
               <h2 className="font-heading text-2xl font-bold text-white mb-6">
                 Frequently Asked Questions About {product.shortName}
               </h2>
@@ -255,7 +256,7 @@ export default async function ProductPage({ params }: Props) {
         primaryLabel="Get a Quote"
         primaryHref="/get-quote"
         secondaryLabel="Call Us"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );

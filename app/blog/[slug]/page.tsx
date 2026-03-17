@@ -39,6 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+const boldToHtml = (s: string) =>
+  s.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
+
 function renderMarkdown(content: string) {
   const lines = content.split("\n");
   const elements: React.ReactNode[] = [];
@@ -69,7 +72,7 @@ function renderMarkdown(content: string) {
         <ol key={`ol-${i}`} className="space-y-1.5 my-3 ml-4 list-decimal list-inside">
           {listItems.map((item, j) => (
             <li key={j} className="text-gray-300 text-sm"
-              dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }}
+              dangerouslySetInnerHTML={{ __html: boldToHtml(item) }}
             />
           ))}
         </ol>
@@ -92,7 +95,7 @@ function renderMarkdown(content: string) {
           {listItems.map((item, j) => (
             <li key={j} className="text-gray-300 text-sm flex items-start gap-2">
               <span className="text-primary mt-1">&#9656;</span>
-              <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
+              <span dangerouslySetInnerHTML={{ __html: boldToHtml(item) }} />
             </li>
           ))}
         </ul>
@@ -140,7 +143,7 @@ function renderMarkdown(content: string) {
       elements.push(
         <p key={i} className="text-gray-300 text-sm leading-relaxed mb-3"
           dangerouslySetInnerHTML={{
-            __html: line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
+            __html: boldToHtml(line)
           }}
         />
       );
@@ -156,7 +159,9 @@ export default async function BlogPostPage({ params }: Props) {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const otherPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug);
+  const sameCategoryPosts = otherPosts.filter((p) => p.categorySlug === post.categorySlug);
+  const relatedPosts = (sameCategoryPosts.length >= 3 ? sameCategoryPosts : otherPosts).slice(0, 3);
 
   return (
     <>

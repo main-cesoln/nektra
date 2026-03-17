@@ -7,7 +7,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
-import { SERVICES, SERVICE_AREAS } from "@/lib/constants";
+import { SERVICES, SERVICE_AREAS, COMPANY } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
 import { Wrench, MapPin } from "lucide-react";
 import { SERVICE_ICON_MAP } from "@/lib/icons";
@@ -151,7 +151,7 @@ export default function ServicesPage() {
         primaryLabel="Book a Service"
         primaryHref="/book-service"
         secondaryLabel="Call Now"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );

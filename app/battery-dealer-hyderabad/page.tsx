@@ -1,43 +1,24 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin, Phone, Shield, Truck, Wrench, Clock } from "lucide-react";
+import { generatePageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
-import JsonLd from "@/components/seo/JsonLd";
-import { organizationSchema } from "@/lib/schema";
 import { COMPANY, SERVICE_AREAS, PRODUCTS, SERVICES } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Exide Industrial Battery Dealer in Hyderabad — Nektra Energy Solutions",
-  },
+export const metadata: Metadata = generatePageMetadata({
+  title: "Exide Industrial Battery Dealer in Hyderabad",
   description:
     "Authorized Exide industrial battery dealer in Hyderabad, Telangana. 35+ years experience, free installation, AMC with 5-year warranty. Serving all of Hyderabad and Telangana. Call +91 9963739107.",
-  openGraph: {
-    title: "Exide Industrial Battery Dealer in Hyderabad — Nektra Energy Solutions",
-    description:
-      "Authorized Exide industrial battery dealer in Hyderabad, Telangana. 35+ years experience, free installation, AMC with 5-year warranty.",
-    url: `${COMPANY.url}/battery-dealer-hyderabad`,
-    siteName: COMPANY.name,
-    locale: "en_IN",
-    type: "website",
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Nektra Energy Solutions Hyderabad" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Exide Industrial Battery Dealer in Hyderabad",
-    description: "Authorized Exide dealer. 35+ years. Free installation. Call now.",
-    images: ["/og-default.jpg"],
-  },
-};
+  path: "/battery-dealer-hyderabad",
+});
 
 export default function BatteryDealerHyderabadPage() {
   return (
     <>
-      <JsonLd data={organizationSchema()} />
       <section className="py-16">
         <Container>
           <MotionWrapper className="mb-16 text-center">

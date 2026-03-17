@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import JsonLd from "@/components/seo/JsonLd";
-import { productFaqSchema } from "@/lib/schema";
 
 interface FAQ {
   question: string;
@@ -14,8 +12,6 @@ export default function ProductFAQ({ faqs }: { faqs: FAQ[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <>
-      <JsonLd data={productFaqSchema(faqs)} />
       <div className="space-y-3">
         {faqs.map((faq, i) => (
           <div
@@ -41,6 +37,5 @@ export default function ProductFAQ({ faqs }: { faqs: FAQ[] }) {
           </div>
         ))}
       </div>
-    </>
   );
 }

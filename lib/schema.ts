@@ -1,5 +1,5 @@
 import { COMPANY, EXIDE_INFO } from "./constants";
-import { Product, Service, FAQItem, BlogPost } from "./types";
+import { Product, Service, BlogPost } from "./types";
 
 export function organizationSchema() {
   return {
@@ -130,7 +130,7 @@ export function howToSchema(service: Service): Record<string, unknown> | null {
   };
 }
 
-export function faqSchema(faqs: FAQItem[]) {
+export function faqSchema(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -184,17 +184,20 @@ export function articleSchema(post: BlogPost) {
   };
 }
 
-export function productFaqSchema(faqs: { question: string; answer: string }[]) {
+export function industrySchema(industry: { name: string; description: string; slug: string }) {
   return {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
+    "@type": "Service",
+    name: `${industry.name} Battery Solutions`,
+    description: industry.description,
+    provider: {
+      "@type": "Organization",
+      name: COMPANY.name,
+      url: COMPANY.url,
+    },
+    areaServed: [
+      { "@type": "City", name: "Hyderabad" },
+      { "@type": "State", name: "Telangana" },
+    ],
   };
 }

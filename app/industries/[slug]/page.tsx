@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { generatePageMetadata } from "@/lib/seo";
-import { serviceSchema } from "@/lib/schema";
+import { industrySchema } from "@/lib/schema";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GlassCard from "@/components/ui/GlassCard";
@@ -44,15 +44,7 @@ export default async function IndustryPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd
-        data={serviceSchema({
-          slug: industry.slug,
-          name: `${industry.name} Battery Solutions`,
-          description: industry.description,
-          details: industry.solutions,
-          icon: industry.icon,
-        })}
-      />
+      <JsonLd data={industrySchema(industry)} />
       <section className="py-16">
         <Container>
           <Breadcrumbs overrides={{ [industry.slug]: industry.shortName }} />

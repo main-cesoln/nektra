@@ -10,7 +10,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
-import { PRODUCTS } from "@/lib/constants";
+import { PRODUCTS, COMPANY } from "@/lib/constants";
 import ExideBadge from "@/components/ui/ExideBadge";
 
 export const metadata: Metadata = generatePageMetadata({
@@ -82,7 +82,7 @@ export default function ProductsPage() {
         primaryLabel="Get a Quote"
         primaryHref="/get-quote"
         secondaryLabel="Call an Expert"
-        secondaryHref="tel:+919963739107"
+        secondaryHref={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
       />
     </>
   );
