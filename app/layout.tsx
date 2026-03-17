@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -44,6 +44,21 @@ export const metadata: Metadata = {
     "gel battery India",
   ],
   metadataBase: new URL(COMPANY.url),
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  other: {
+    "geo.region": "IN-TG",
+    "geo.placename": "Hyderabad",
+    "geo.position": `${COMPANY.coordinates.lat};${COMPANY.coordinates.lng}`,
+    "ICBM": `${COMPANY.coordinates.lat}, ${COMPANY.coordinates.lng}`,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0F",
 };
 
 export default function RootLayout({
