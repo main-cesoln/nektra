@@ -23,13 +23,40 @@ export function organizationSchema() {
       latitude: COMPANY.coordinates.lat,
       longitude: COMPANY.coordinates.lng,
     },
-    openingHours: "Mo-Sa 09:00-20:00",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
+        closes: "20:00",
+      },
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: COMPANY.phones[0],
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Telugu"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: COMPANY.phones[1] || COMPANY.phones[0],
+        contactType: "customer service",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Telugu"],
+      },
+    ],
+    areaServed: [
+      { "@type": "City", name: "Hyderabad" },
+      { "@type": "City", name: "Secunderabad" },
+      { "@type": "State", name: "Telangana" },
+    ],
     sameAs: COMPANY.socials?.map((s) => s.url) ?? [],
     priceRange: "$$",
-    areaServed: {
-      "@type": "State",
-      name: "Telangana",
-    },
+    paymentAccepted: "Cash, Bank Transfer, UPI",
+    currenciesAccepted: "INR",
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${COMPANY.coordinates.lat},${COMPANY.coordinates.lng}`,
   };
 }
 
@@ -39,11 +66,6 @@ export function websiteSchema() {
     "@type": "WebSite",
     name: COMPANY.name,
     url: COMPANY.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${COMPANY.url}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -79,14 +101,32 @@ export function serviceSchema(service: Service) {
     "@type": "Service",
     name: service.name,
     description: service.description,
+    ...(service.serviceType && { serviceType: service.serviceType }),
     provider: {
       "@type": "Organization",
       name: COMPANY.name,
+      url: COMPANY.url,
     },
-    areaServed: {
-      "@type": "State",
-      name: "Telangana",
-    },
+    areaServed: [
+      { "@type": "City", name: "Hyderabad" },
+      { "@type": "State", name: "Telangana" },
+    ],
+  };
+}
+
+export function howToSchema(service: Service): Record<string, unknown> | null {
+  if (!service.steps || service.steps.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How ${service.name} Works`,
+    description: service.description,
+    step: service.steps.map((step, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: step.name,
+      text: step.description,
+    })),
   };
 }
 
@@ -127,13 +167,33 @@ export function articleSchema(post: BlogPost) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    ...(post.dateModified && { dateModified: post.dateModified }),
+    wordCount: post.content.split(/\s+/).length,
+    articleSection: post.category,
     author: {
       "@type": "Organization",
       name: COMPANY.name,
+      url: COMPANY.url,
     },
     publisher: {
       "@type": "Organization",
       name: COMPANY.name,
+      url: COMPANY.url,
     },
+  };
+}
+
+export function productFaqSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 }
