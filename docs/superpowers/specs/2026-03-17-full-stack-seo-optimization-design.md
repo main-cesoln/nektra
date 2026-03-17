@@ -1,7 +1,7 @@
 # Full-Stack SEO Optimization — Nektra Energy Solutions
 
 **Date:** 2026-03-17
-**Status:** Draft
+**Status:** Reviewed
 **Scope:** Comprehensive SEO optimization for Nektra Energy Solutions (Exide industrial battery dealer, Hyderabad/Telangana)
 
 ## Context
@@ -35,18 +35,23 @@ Pages using `SectionHeading` (renders H2) need explicit H1 elements:
 - **Blog listing:** "Expert Insights on Industrial Battery Solutions"
 - **Industries listing:** "Battery Solutions by Industry"
 - **Products listing:** "Industrial Battery Products — Exide Authorized Dealer"
+- **About** and **Contact** pages should also be audited for H1 presence in the same pass
 
 ### 1.3 OpenGraph image infrastructure
 - Add default OG image path (`/og-default.jpg`) in `lib/seo.ts`
-- Extend `generatePageMetadata()` to accept optional `image` parameter
+- Wire up the existing `image` field in `PageSEO` interface — it is already declared but never passed to the returned Metadata object. Connect it to `openGraph.images` and `twitter.images`.
 - Add Twitter card image support alongside OpenGraph
+
+### 1.6 OpenGraph type differentiation
+Blog post pages should emit `og:type: "article"` with `article:published_time` and `article:section` instead of the current hardcoded `type: "website"`. Extend `generatePageMetadata()` to accept an optional `type` parameter (default "website").
 
 ### 1.4 Canonical URL consistency
 Verify every page has explicit canonical URL. Ensure no trailing slash inconsistencies.
 
 ### 1.5 Meta robots refinement
 - Add `index, follow` explicitly to all public pages
-- Add `noindex` to utility pages (`/get-quote`, `/book-service`) — form pages that shouldn't rank independently
+- Add `noindex` to utility pages (`/get-quote`, `/book-service`) via `robots: { index: false, follow: false }` in each page's exported `metadata` constant (Next.js Metadata API)
+- **Also remove `/get-quote` and `/book-service` from `app/sitemap.ts` staticRoutes** — `noindex` + sitemap inclusion sends contradictory signals to crawlers
 
 ---
 
@@ -54,7 +59,7 @@ Verify every page has explicit canonical URL. Ensure no trailing slash inconsist
 
 ### 2.1 Enhanced LocalBusiness schema
 Expand `lib/schema.ts` organization schema:
-- `OpeningHoursSpecification`: Monday-Saturday 9AM-6PM, closed Sunday (day-of-week breakdown)
+- `OpeningHoursSpecification`: Replace the current `openingHours: "Mo-Sa 09:00-20:00"` string with structured `openingHoursSpecification` array. **Note:** Current schema says 09:00-20:00 — verify actual business hours before implementation. Use verified hours consistently.
 - `ContactPoint`: sales department + service department (telephone, contactType)
 - `areaServed`: multiple — Hyderabad, Secunderabad, Telangana
 - `priceRange`: "$$"
@@ -62,7 +67,7 @@ Expand `lib/schema.ts` organization schema:
 - `hasMap`: Google Maps link
 
 ### 2.2 Geo-targeted meta tags
-Add to root layout `<head>`:
+These tags are NOT supported by the Next.js Metadata API. They must be added as raw `<meta>` tags in the root layout JSX via a `<head>` block within the `<html>` element in `app/layout.tsx`:
 - `geo.region`: "IN-TG"
 - `geo.placename`: "Hyderabad"
 - `geo.position`: from COMPANY coordinates
@@ -85,7 +90,7 @@ Verify Name, Address, Phone rendered identically everywhere: footer, contact pag
 
 ### 3.1 Product page enhancements
 - **FAQ schema per product:** Add `faqs` field to Product type in `lib/types.ts`. Populate product-specific FAQs in `lib/constants.ts`. Render FAQ section + inject faqSchema on each product page.
-- **AggregateRating:** Use testimonial ratings data from constants to generate aggregate rating schema on products.
+- **AggregateRating:** Deferred — Google's structured data guidelines require ratings from a verified third-party platform (Google Business Profile, Justdial, etc.), not self-authored static testimonials. Implementing from static constants data risks a manual action from Google. Revisit once Google Business Profile is set up and has verified reviews.
 - **Brand/Manufacturer:** Ensure Exide branding explicit in product schema.
 
 ### 3.2 Service schema expansion
@@ -96,14 +101,14 @@ Verify Name, Address, Phone rendered identically everywhere: footer, contact pag
 - Render breadcrumbs on every page including homepage
 - 3-level depth on dynamic pages: Home > Products > Product Name
 
-### 3.4 WebSite schema verification
-Verify `target` URL pattern in existing SearchAction schema is correct.
+### 3.4 WebSite schema — remove broken SearchAction
+The current `websiteSchema()` includes a `SearchAction` pointing to `${COMPANY.url}/search?q={search_term_string}`. This site has no `/search` route and no search functionality — the action is actively broken and will fail Google's Rich Results Test. **Remove the `potentialAction` / `SearchAction` from `websiteSchema()`.**
 
 ### 3.5 Article schema enrichment
 - Add `dateModified` field to BlogPost type
 - Add `wordCount` to article schema
 - Add `articleSection` (category mapping)
-- Add `speakable` schema — mark first paragraph and H1 as speakable content for voice search
+- ~~`speakable` schema~~ — **Low priority / optional.** This is a Google-specific extension in limited beta, relevant only to Google Assistant/Google News surfaces. Minimal practical impact for a B2B industrial battery dealer. Skip unless explicitly requested later.
 
 ---
 
@@ -116,7 +121,7 @@ Create individual pages for each of the 8 services. Each page includes:
 - CTA to book service
 - Unique metadata
 
-**Type changes:** Add `slug`, `detailedDescription`, `faqs`, `steps` to Service type. Add `generateStaticParams()`.
+**Type changes:** Add `detailedDescription`, `faqs`, `steps` to Service type (`slug` already exists in the type). Add `generateStaticParams()`.
 
 ### 4.2 Blog category pages (`/blog/category/[slug]`)
 Group blog posts by category:
@@ -144,7 +149,8 @@ Update `app/sitemap.ts` to include:
 - Service detail pages (priority 0.85)
 - Blog category pages (priority 0.6)
 - Location landing page (priority 0.95)
-- Proper `lastModified` on all entries
+- Remove `/get-quote` and `/book-service` from staticRoutes (noindex pages should not be in sitemap)
+- **`lastModified` strategy:** Current sitemap uses `new Date()` for static pages, which re-emits today's date on every build (misleading to crawlers). Use a hardcoded release date constant (e.g., `SITE_LAST_UPDATED = "2026-03-17"`) for static pages, and `post.date` / `post.dateModified` for blog posts.
 
 ---
 
@@ -190,8 +196,8 @@ Blog post markdown content includes inline links to product and service pages wh
 Verify preconnect to Google Fonts handled by next/font. Add dns-prefetch for any external resources.
 
 ### 6.3 Metadata performance hints
-- Set `metadataBase` URL explicitly in root layout
-- Add `formatDetection` control
+- `metadataBase` is already set in root layout (`metadataBase: new URL(COMPANY.url)`) — no change needed
+- Add `formatDetection` control to root layout metadata
 - Add `viewport` with `themeColor` for mobile browser chrome
 
 ### 6.4 Robots.txt refinement
@@ -222,18 +228,20 @@ Verify preconnect to Google Fonts handled by next/font. Add dns-prefetch for any
 ## Section 7: Keyword Strategy & On-Page SEO
 
 ### 7.1 Title tag optimization
-Front-load primary keywords in all titles:
-| Page | Title |
-|------|-------|
-| Home | Exide Industrial Battery Dealer in Hyderabad \| Nektra Energy Solutions |
-| Products | Industrial Batteries — Exide Authorized Dealer \| Nektra |
-| Product detail | {Name} — Exide Industrial Battery \| Nektra Hyderabad |
-| Services | Industrial Battery Services in Hyderabad \| Nektra Energy |
-| Service detail | {Name} — Battery Service Hyderabad \| Nektra |
-| Industries | Battery Solutions by Industry \| Nektra Energy Hyderabad |
-| Blog | Industrial Battery Guides & Insights \| Nektra Energy |
-| Contact | Contact Exide Battery Dealer Hyderabad \| Nektra Energy |
-| FAQ | Industrial Battery FAQ — Exide Dealer Hyderabad \| Nektra |
+**Important:** The root layout uses the title template `%s | Nektra Energy Solutions`, which auto-appends the brand suffix. Page-level titles passed to `generatePageMetadata()` must **omit** the `| Nektra...` suffix to avoid double-branding (e.g., "Title | Nektra | Nektra Energy Solutions"). The homepage should use `title.absolute` to set the full title without the template.
+
+Front-load primary keywords in all titles (brand suffix auto-appended by template):
+| Page | Title (passed to generatePageMetadata) | Rendered |
+|------|-------|---------|
+| Home | `title.absolute`: "Exide Industrial Battery Dealer in Hyderabad \| Nektra Energy Solutions" | Exide Industrial Battery Dealer in Hyderabad \| Nektra Energy Solutions |
+| Products | "Industrial Batteries — Exide Authorized Dealer" | Industrial Batteries — Exide Authorized Dealer \| Nektra Energy Solutions |
+| Product detail | "{Name} — Exide Industrial Battery Hyderabad" | {Name} — Exide Industrial Battery Hyderabad \| Nektra Energy Solutions |
+| Services | "Industrial Battery Services in Hyderabad" | Industrial Battery Services in Hyderabad \| Nektra Energy Solutions |
+| Service detail | "{Name} — Battery Service Hyderabad" | {Name} — Battery Service Hyderabad \| Nektra Energy Solutions |
+| Industries | "Battery Solutions by Industry" | Battery Solutions by Industry \| Nektra Energy Solutions |
+| Blog | "Industrial Battery Guides & Insights" | Industrial Battery Guides & Insights \| Nektra Energy Solutions |
+| Contact | "Contact Exide Battery Dealer Hyderabad" | Contact Exide Battery Dealer Hyderabad \| Nektra Energy Solutions |
+| FAQ | "Industrial Battery FAQ — Exide Dealer Hyderabad" | Industrial Battery FAQ — Exide Dealer Hyderabad \| Nektra Energy Solutions |
 
 ### 7.2 Meta description optimization
 All descriptions: 150-160 chars, include primary keyword + "Hyderabad"/"Telangana" + "Exide" where natural + action CTA ("Get a free quote", "Call now", "Explore solutions").
@@ -259,33 +267,39 @@ Each blog post targets a specific long-tail query cluster:
 ## Files Modified
 
 ### Existing files to modify:
-- `lib/types.ts` — Add fields: Product.faqs, Product.relatedServices, Product.relatedBlogSlugs, Service.slug, Service.detailedDescription, Service.faqs, Service.steps, Service.relatedProducts, Service.relatedBlogSlugs, BlogPost.dateModified, BlogPost.relatedProducts, BlogPost.relatedServices, BlogPost.relatedIndustries, Industry.relatedBlogSlugs
-- `lib/constants.ts` — Populate all new fields, add 10-15 blog posts, add blog categories, add service slugs/details, add product FAQs, add location landing page content
-- `lib/seo.ts` — OG image support, metadataBase, enhanced generatePageMetadata
-- `lib/schema.ts` — LocalBusiness enhancements, ContactPoint, HowTo, speakable, AggregateRating, article enrichment
+- `lib/types.ts` — Add fields: Product.faqs, Product.relatedServices, Product.relatedBlogSlugs, Service.detailedDescription, Service.faqs, Service.steps, Service.relatedProducts, Service.relatedBlogSlugs, BlogPost.dateModified, BlogPost.relatedProducts, BlogPost.relatedServices, BlogPost.relatedIndustries, Industry.relatedBlogSlugs (Note: Service.slug already exists)
+- `lib/constants.ts` — Populate all new fields, add 10-15 blog posts, add blog categories, add service details, add product FAQs, add location landing page content
+- `lib/seo.ts` — Wire up existing dead `image` field to OG/Twitter images, add OG type parameter, add hreflang support
+- `lib/schema.ts` — LocalBusiness enhancements (OpeningHoursSpecification, ContactPoint, areaServed, priceRange), HowTo, remove broken SearchAction, article enrichment
 - `lib/icons.ts` — New icons for service detail pages if needed
-- `app/layout.tsx` — Geo meta tags, metadataBase, formatDetection, themeColor
-- `app/page.tsx` — Add metadata export
-- `app/sitemap.ts` — Add service pages, category pages, location page, priority tuning
+- `app/layout.tsx` — Geo meta tags (raw JSX `<head>` block), formatDetection, themeColor
+- `app/page.tsx` — Add metadata export with `title.absolute`
+- `app/sitemap.ts` — Add service pages, category pages, location page, priority tuning, remove `/get-quote` and `/book-service`
 - `app/robots.ts` — Disallow rules, crawl-delay
 - `app/products/[slug]/page.tsx` — FAQ section, related content, heading keywords
 - `app/industries/[slug]/page.tsx` — Related articles section, heading keywords
-- `app/blog/[slug]/page.tsx` — Related content section, article schema enrichment
+- `app/blog/[slug]/page.tsx` — Related content section, article schema enrichment, OG type "article"
 - `app/blog/page.tsx` — Add H1
 - `app/services/page.tsx` — Add H1
 - `app/faq/page.tsx` — Add H1
-- `app/industries/page.tsx` — Add H1 (if exists as listing)
-- `app/products/page.tsx` — Add H1 (if exists as listing)
-- `components/seo/JsonLd.tsx` — Support new schema types
+- `app/industries/page.tsx` — Add H1
+- `app/products/page.tsx` — Add H1
+- `app/about/page.tsx` — Audit H1, keyword-optimize metadata
+- `app/contact/page.tsx` — Audit H1, keyword-optimize metadata
+- `app/get-quote/page.tsx` — Add `robots: { index: false, follow: false }` to metadata
+- `app/book-service/page.tsx` — Add `robots: { index: false, follow: false }` to metadata
 
 ### New files to create:
 - `app/services/[slug]/page.tsx` — Service detail pages
 - `app/blog/category/[slug]/page.tsx` — Blog category pages
 - `app/battery-dealer-hyderabad/page.tsx` — Location landing page
 
-### New components (if needed):
+### New components:
 - `components/ui/RelatedContent.tsx` — Reusable related content section
 - `components/ui/ProductFAQ.tsx` — Product FAQ section with schema
+
+### Notes on existing components:
+- `components/seo/JsonLd.tsx` already accepts arbitrary JSON-LD objects (`Record<string, unknown>`) — no changes needed for new schema types
 
 ---
 
