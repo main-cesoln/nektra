@@ -11,7 +11,9 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import Badge from "@/components/ui/Badge";
 import CTABanner from "@/components/ui/CTABanner";
 import JsonLd from "@/components/seo/JsonLd";
-import { PRODUCTS, INDUSTRIES, ACCESSORY_PRODUCTS } from "@/lib/constants";
+import ProductFAQ from "@/components/ui/ProductFAQ";
+import RelatedContent from "@/components/ui/RelatedContent";
+import { PRODUCTS, INDUSTRIES, ACCESSORY_PRODUCTS, SERVICES, BLOG_POSTS } from "@/lib/constants";
 import { CheckCircle } from "lucide-react";
 import ExideBadge from "@/components/ui/ExideBadge";
 
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = PRODUCTS.find((p) => p.slug === slug);
   if (!product) return {};
   return generatePageMetadata({
-    title: `${product.name} — Exide Industrial Batteries`,
+    title: `${product.name} — Exide Industrial Battery Hyderabad`,
     description: product.description.slice(0, 160),
     path: `/products/${product.slug}`,
   });
@@ -85,7 +87,9 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Features */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">Key Features</h2>
+            <h2 className="font-heading text-2xl font-bold text-white mb-6">
+              Key Features of {product.shortName} Batteries
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {product.features.map((feature) => (
                 <div key={feature} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
@@ -206,6 +210,42 @@ export default async function ProductPage({ params }: Props) {
               </div>
             </MotionWrapper>
           )}
+
+          {/* Product FAQ */}
+          {product.faqs && product.faqs.length > 0 && (
+            <MotionWrapper className="mb-16">
+              <h2 className="font-heading text-2xl font-bold text-white mb-6">
+                Frequently Asked Questions About {product.shortName}
+              </h2>
+              <ProductFAQ faqs={product.faqs} />
+            </MotionWrapper>
+          )}
+
+          {/* Related Services */}
+          <RelatedContent
+            heading="Related Services"
+            items={(product.relatedServices || [])
+              .map((slug) => SERVICES.find((s) => s.slug === slug))
+              .filter((s): s is NonNullable<typeof s> => s != null)
+              .map((s) => ({
+                title: s.name,
+                description: s.description,
+                href: `/services/${s.slug}`,
+              }))}
+          />
+
+          {/* Related Articles */}
+          <RelatedContent
+            heading="Related Articles"
+            items={(product.relatedBlogSlugs || [])
+              .map((slug) => BLOG_POSTS.find((p) => p.slug === slug))
+              .filter((p): p is NonNullable<typeof p> => p != null)
+              .map((p) => ({
+                title: p.title,
+                description: p.excerpt,
+                href: `/blog/${p.slug}`,
+              }))}
+          />
         </Container>
       </section>
 
