@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import JsonLd from "@/components/seo/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { COMPANY } from "@/lib/constants";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
           <main className="min-h-screen pt-16 lg:pt-20">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
