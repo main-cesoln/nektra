@@ -12,6 +12,16 @@ import {
   AccessoryProduct,
 } from "./types";
 
+// ─── Hero ────────────────────────────────────────────────────────────────────
+
+export const HERO_ROTATING_TEXTS = [
+  "Enabling Reliability.",
+  "Trusted Since 1989.",
+  "Pan-Telangana Coverage.",
+  "Exide Authorized Dealer.",
+  "Powering 10+ Industries.",
+];
+
 // ─── Company Info ────────────────────────────────────────────────────────────
 
 export const COMPANY: CompanyInfo = {

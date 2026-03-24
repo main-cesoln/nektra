@@ -1,21 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import GridBackground from "@/components/ui/GridBackground";
 import ParticleField from "@/components/ui/ParticleField";
+import GradientBlobs from "@/components/ui/GradientBlobs";
+import EnergyLines from "@/components/ui/EnergyLines";
+import MouseGlow from "@/components/ui/MouseGlow";
+import RotatingText from "@/components/ui/RotatingText";
 import GlowButton from "@/components/ui/GlowButton";
 import ExideLogo from "@/components/ui/ExideLogo";
+import { HERO_ROTATING_TEXTS } from "@/lib/constants";
 
 export default function HeroSection() {
-  return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      <GridBackground />
-      <ParticleField />
+  const sectionRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
 
-      {/* Radial glow */}
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const bgY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? [0, 0] : [0, -40]
+  );
+  const midY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? [0, 0] : [0, -25]
+  );
+  const fgY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? [0, 0] : [0, -10]
+  );
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+    >
+      {/* Background parallax layer */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0">
+        <GridBackground />
+        <GradientBlobs />
+        <ParticleField />
+      </motion.div>
+
+      {/* Mid parallax layer */}
+      <motion.div style={{ y: midY }} className="absolute inset-0">
+        <EnergyLines />
+      </motion.div>
+
+      {/* Radial glow (static) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      {/* Mouse-following glow */}
+      <MouseGlow containerRef={sectionRef} />
+
+      {/* Foreground parallax layer */}
+      <motion.div
+        style={{ y: fgY }}
+        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,7 +83,7 @@ export default function HeroSection() {
           className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-heading mb-6 leading-tight"
         >
           Powering Industries.{" "}
-          <span className="gradient-text">Enabling Reliability.</span>
+          <RotatingText texts={HERO_ROTATING_TEXTS} className="gradient-text" />
         </motion.h1>
 
         <motion.p
@@ -43,8 +92,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-lg sm:text-xl text-muted mb-10 max-w-2xl mx-auto"
         >
-          Hyderabad&apos;s trusted partner for Exide forklift and traction batteries.
-          Expert installation, testing, and Pan-Telangana service for 10+ industries.
+          Hyderabad&apos;s trusted partner for Exide forklift and traction
+          batteries. Expert installation, testing, and Pan-Telangana service for
+          10+ industries.
         </motion.p>
 
         <motion.div
@@ -67,10 +117,12 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-10 flex items-center justify-center gap-3 text-subtle"
         >
-          <span className="text-xs font-mono uppercase tracking-wider">Powered by</span>
+          <span className="text-xs font-mono uppercase tracking-wider">
+            Powered by
+          </span>
           <ExideLogo colorMode="color" className="h-20" />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

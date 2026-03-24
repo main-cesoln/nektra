@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export default function ParticleField() {
+  const reducedMotion = useReducedMotion();
   const [particles, setParticles] = useState<
     { id: number; left: string; top: string; size: number; delay: number; duration: number }[]
   >([]);
@@ -33,7 +35,9 @@ export default function ParticleField() {
             top: p.top,
             width: p.size,
             height: p.size,
-            animation: `float ${p.duration}s ease-in-out ${p.delay}s infinite`,
+            animation: reducedMotion
+              ? undefined
+              : `float ${p.duration}s ease-in-out ${p.delay}s infinite`,
           }}
         />
       ))}
