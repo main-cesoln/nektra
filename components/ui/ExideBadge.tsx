@@ -17,7 +17,7 @@ export default function ExideBadge({
     return (
       <div className={`flex items-center gap-2 ${className}`}>
         <ExideLogo colorMode="color" className="h-16" priority={priority} />
-        <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+        <span className="text-[10px] font-mono uppercase tracking-wider text-muted">
           {label}
         </span>
       </div>
@@ -27,10 +27,10 @@ export default function ExideBadge({
   if (variant === "stacked") {
     return (
       <div
-        className={`inline-flex flex-col items-center gap-2 px-5 py-3 rounded-xl border border-primary/20 bg-white/[0.03] backdrop-blur-sm ${className}`}
+        className={`inline-flex flex-col items-center gap-2 px-5 py-3 rounded-xl border border-primary/20 bg-tint backdrop-blur-sm ${className}`}
       >
         <ExideLogo colorMode="color" className="h-20" priority={priority} />
-        <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+        <span className="text-[10px] font-mono uppercase tracking-widest text-muted">
           {label}
         </span>
       </div>
@@ -40,10 +40,10 @@ export default function ExideBadge({
   // inline
   return (
     <div
-      className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border border-primary/20 bg-white/[0.03] backdrop-blur-sm ${className}`}
+      className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border border-primary/20 bg-tint backdrop-blur-sm ${className}`}
     >
       <ExideLogo colorMode="color" className="h-16" priority={priority} />
-      <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+      <span className="text-[10px] font-mono uppercase tracking-widest text-muted">
         {label}
       </span>
     </div>

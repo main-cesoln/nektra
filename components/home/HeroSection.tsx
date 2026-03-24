@@ -31,7 +31,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-heading mb-6 leading-tight"
         >
           Powering Industries.{" "}
           <span className="gradient-text">Enabling Reliability.</span>
@@ -41,7 +41,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-muted mb-10 max-w-2xl mx-auto"
         >
           Hyderabad&apos;s trusted partner for Exide forklift and traction batteries.
           Expert installation, testing, and Pan-Telangana service for 10+ industries.
@@ -65,7 +65,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-10 flex items-center justify-center gap-3 text-gray-500"
+          className="mt-10 flex items-center justify-center gap-3 text-subtle"
         >
           <span className="text-xs font-mono uppercase tracking-wider">Powered by</span>
           <ExideLogo colorMode="color" className="h-20" />

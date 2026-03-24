@@ -26,7 +26,7 @@ export default function Breadcrumbs({ overrides = {} }: { overrides?: Breadcrumb
     <>
       <JsonLd data={breadcrumbSchema(items)} />
       <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex items-center flex-wrap gap-1 text-sm text-gray-400">
+        <ol className="flex items-center flex-wrap gap-1 text-sm text-muted">
           {items.map((item, i) => (
             <li key={item.href} className="flex items-center gap-1">
               {i > 0 && <ChevronRight className="w-3 h-3" />}

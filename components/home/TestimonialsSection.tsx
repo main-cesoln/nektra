@@ -9,7 +9,7 @@ import { TESTIMONIALS } from "@/lib/constants";
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-20 bg-surface-panel/50">
+    <section className="py-20 bg-surface-panel">
       <Container>
         <SectionHeading
           overline="Testimonials"
@@ -25,12 +25,12 @@ export default function TestimonialsSection() {
                     <Star key={j} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-gray-300 text-sm italic flex-1 mb-4">
+                <p className="text-foreground text-sm italic flex-1 mb-4">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div>
-                  <p className="text-white font-medium text-sm">{t.name}</p>
-                  <p className="text-gray-500 text-xs">{t.company} — {t.industry}</p>
+                  <p className="text-heading font-medium text-sm">{t.name}</p>
+                  <p className="text-subtle text-xs">{t.company} — {t.industry}</p>
                 </div>
               </GlassCard>
             </MotionWrapper>

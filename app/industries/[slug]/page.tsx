@@ -52,10 +52,10 @@ export default async function IndustryPage({ params }: Props) {
           {/* Hero */}
           <MotionWrapper className="mb-16">
             <Badge variant="cyan" className="mb-4">{industry.shortName}</Badge>
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
               {industry.name}
             </h1>
-            <p className="text-gray-300 max-w-3xl leading-relaxed">
+            <p className="text-foreground max-w-3xl leading-relaxed">
               {industry.description}
             </p>
           </MotionWrapper>
@@ -64,13 +64,13 @@ export default async function IndustryPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             <MotionWrapper>
               <GlassCard hover={false} className="h-full">
-                <h2 className="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="font-heading text-xl font-bold text-heading mb-4 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-accent-red" />
                   {industry.shortName} Battery Challenges
                 </h2>
                 <ul className="space-y-3">
                   {industry.painPoints.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-sm text-gray-400">
+                    <li key={point} className="flex items-start gap-3 text-sm text-muted">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent-red mt-1.5 shrink-0" />
                       {point}
                     </li>
@@ -81,13 +81,13 @@ export default async function IndustryPage({ params }: Props) {
 
             <MotionWrapper delay={0.15}>
               <GlassCard hover={false} className="h-full border-primary/20 bg-primary/5">
-                <h2 className="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="font-heading text-xl font-bold text-heading mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-primary" />
                   Battery Solutions for {industry.shortName} in Hyderabad
                 </h2>
                 <ul className="space-y-3">
                   {industry.solutions.map((solution) => (
-                    <li key={solution} className="flex items-start gap-3 text-sm text-gray-300">
+                    <li key={solution} className="flex items-start gap-3 text-sm text-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                       {solution}
                     </li>
@@ -99,7 +99,7 @@ export default async function IndustryPage({ params }: Props) {
 
           {/* Recommended Products */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6">
               Recommended Products
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -107,10 +107,10 @@ export default async function IndustryPage({ params }: Props) {
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <GlassCard className="group">
                     <Badge>{product.shortName}</Badge>
-                    <h3 className="font-heading text-lg font-bold text-white mt-2 mb-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-heading text-lg font-bold text-heading mt-2 mb-1 group-hover:text-primary transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-400 text-xs mb-3 line-clamp-2">{product.tagline}</p>
+                    <p className="text-muted text-xs mb-3 line-clamp-2">{product.tagline}</p>
                     <span className="inline-flex items-center gap-1 text-sm text-primary">
                       View Product <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>

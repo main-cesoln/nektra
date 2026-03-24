@@ -57,24 +57,24 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
               {service.highlight && <Badge variant="green">Popular Service</Badge>}
             </div>
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
               {service.name}
             </h1>
-            <p className="text-gray-300 max-w-3xl leading-relaxed">
+            <p className="text-foreground max-w-3xl leading-relaxed">
               {service.detailedDescription || service.description}
             </p>
           </MotionWrapper>
 
           {/* Service Details */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6">
               What&apos;s Included
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {service.details.map((detail) => (
-                <div key={detail} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                <div key={detail} className="flex items-start gap-3 p-3 rounded-xl bg-tint border border-subtle">
                   <span className="text-primary mt-0.5 shrink-0">&#9656;</span>
-                  <span className="text-sm text-gray-300">{detail}</span>
+                  <span className="text-sm text-foreground">{detail}</span>
                 </div>
               ))}
             </div>
@@ -83,18 +83,18 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Process Steps */}
           {service.steps && service.steps.length > 0 && (
             <MotionWrapper className="mb-16">
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">
                 How {service.name} Works
               </h2>
               <div className="space-y-4">
                 {service.steps.map((step, i) => (
-                  <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                  <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-tint border border-subtle">
                     <span className="w-8 h-8 rounded-full bg-primary/20 text-primary text-sm flex items-center justify-center shrink-0 font-bold">
                       {i + 1}
                     </span>
                     <div>
-                      <h3 className="text-white font-medium text-sm">{step.name}</h3>
-                      <p className="text-gray-400 text-xs mt-1">{step.description}</p>
+                      <h3 className="text-heading font-medium text-sm">{step.name}</h3>
+                      <p className="text-muted text-xs mt-1">{step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -106,7 +106,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           {service.faqs && service.faqs.length > 0 && (
             <MotionWrapper className="mb-16">
               <JsonLd data={faqSchema(service.faqs)} />
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">
                 Frequently Asked Questions About {service.name}
               </h2>
               <ProductFAQ faqs={service.faqs} />

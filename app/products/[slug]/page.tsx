@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: Props) {
             <MotionWrapper>
               <div className="flex flex-col lg:flex-row lg:items-center gap-8">
                 {product.image && (
-                  <div className="relative w-full lg:w-1/3 aspect-[4/3] rounded-xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                  <div className="relative w-full lg:w-1/3 aspect-[4/3] rounded-xl overflow-hidden bg-tint border border-default-theme shrink-0">
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -73,11 +73,11 @@ export default async function ProductPage({ params }: Props) {
                     <Badge variant="cyan">{product.shortName}</Badge>
                     <ExideBadge variant="compact" />
                   </div>
-                  <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                  <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
                     {product.name}
                   </h1>
                   <p className="text-primary font-mono text-sm mb-4">{product.tagline}</p>
-                  <p className="text-gray-300 max-w-3xl leading-relaxed">
+                  <p className="text-foreground max-w-3xl leading-relaxed">
                     {product.description}
                   </p>
                 </div>
@@ -87,14 +87,14 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Features */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6">
               Key Features of {product.shortName} Batteries
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {product.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                <div key={feature} className="flex items-start gap-3 p-3 rounded-xl bg-tint border border-subtle">
                   <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-300">{feature}</span>
+                  <span className="text-sm text-foreground">{feature}</span>
                 </div>
               ))}
             </div>
@@ -103,11 +103,11 @@ export default async function ProductPage({ params }: Props) {
           {/* Spec Tables */}
           {product.specTables && product.specTables.map((table) => (
             <MotionWrapper key={table.title} className="mb-12">
-              <h2 className="font-heading text-2xl font-bold text-white mb-4">{table.title}</h2>
-              <div className="overflow-x-auto rounded-xl border border-white/10">
+              <h2 className="font-heading text-2xl font-bold text-heading mb-4">{table.title}</h2>
+              <div className="overflow-x-auto rounded-xl border border-default-theme">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-white/5">
+                    <tr className="bg-tint">
                       {table.headers.map((h) => (
                         <th key={h} className="px-4 py-3 text-left text-xs font-mono text-primary uppercase tracking-wider whitespace-nowrap">
                           {h}
@@ -117,9 +117,9 @@ export default async function ProductPage({ params }: Props) {
                   </thead>
                   <tbody>
                     {table.rows.map((row, i) => (
-                      <tr key={i} className="border-t border-white/5 hover:bg-white/[0.02]">
+                      <tr key={i} className="border-t border-subtle hover:bg-tint">
                         {table.headers.map((h) => (
-                          <td key={h} className="px-4 py-3 text-gray-300 whitespace-nowrap">
+                          <td key={h} className="px-4 py-3 text-foreground whitespace-nowrap">
                             {String(row[h] ?? "")}
                           </td>
                         ))}
@@ -134,12 +134,12 @@ export default async function ProductPage({ params }: Props) {
           {/* Accessories Detail */}
           {product.slug === "accessories" && (
             <MotionWrapper className="mb-16">
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">Accessory Products</h2>
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">Accessory Products</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {ACCESSORY_PRODUCTS.map((acc) => (
                   <GlassCard key={acc.name}>
                     {acc.image && (
-                      <div className="relative w-full aspect-[3/2] mb-4 rounded-lg overflow-hidden bg-white/5">
+                      <div className="relative w-full aspect-[3/2] mb-4 rounded-lg overflow-hidden bg-tint">
                         <Image
                           src={acc.image}
                           alt={acc.name}
@@ -149,12 +149,12 @@ export default async function ProductPage({ params }: Props) {
                         />
                       </div>
                     )}
-                    <h3 className="font-heading text-lg font-bold text-white mb-2">{acc.name}</h3>
-                    <p className="text-gray-400 text-sm mb-3">{acc.description}</p>
+                    <h3 className="font-heading text-lg font-bold text-heading mb-2">{acc.name}</h3>
+                    <p className="text-muted text-sm mb-3">{acc.description}</p>
                     {acc.specs && (
                       <ul className="space-y-1">
                         {acc.specs.map((spec) => (
-                          <li key={spec} className="text-xs text-gray-500 flex items-start gap-2">
+                          <li key={spec} className="text-xs text-subtle flex items-start gap-2">
                             <span className="text-primary">&#9656;</span> {spec}
                           </li>
                         ))}
@@ -169,12 +169,12 @@ export default async function ProductPage({ params }: Props) {
           {/* Technology Features */}
           {product.techFeatures && (
             <MotionWrapper className="mb-16">
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">Technology</h2>
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">Technology</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {product.techFeatures.map((tf) => (
                   <GlassCard key={tf.title}>
-                    <h3 className="text-white font-bold text-sm mb-1">{tf.title}</h3>
-                    <p className="text-gray-400 text-xs">{tf.description}</p>
+                    <h3 className="text-heading font-bold text-sm mb-1">{tf.title}</h3>
+                    <p className="text-muted text-xs">{tf.description}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -183,7 +183,7 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Applications */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-4">Applications</h2>
+            <h2 className="font-heading text-2xl font-bold text-heading mb-4">Applications</h2>
             <div className="flex flex-wrap gap-2">
               {product.applications.map((app) => (
                 <Badge key={app} variant="green">{app}</Badge>
@@ -194,15 +194,15 @@ export default async function ProductPage({ params }: Props) {
           {/* Related Industries */}
           {relatedIndustries.length > 0 && (
             <MotionWrapper className="mb-16">
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">Industries Using This Product</h2>
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">Industries Using This Product</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                 {relatedIndustries.map((ind) => (
                   <Link
                     key={ind.slug}
                     href={`/industries/${ind.slug}`}
-                    className="p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-primary/30 transition-all text-center group"
+                    className="p-4 rounded-xl border border-default-theme bg-tint hover:border-primary/30 transition-all text-center group"
                   >
-                    <span className="text-sm text-gray-300 group-hover:text-primary transition-colors">
+                    <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                       {ind.shortName}
                     </span>
                   </Link>
@@ -215,7 +215,7 @@ export default async function ProductPage({ params }: Props) {
           {product.faqs && product.faqs.length > 0 && (
             <MotionWrapper className="mb-16">
               <JsonLd data={faqSchema(product.faqs)} />
-              <h2 className="font-heading text-2xl font-bold text-white mb-6">
+              <h2 className="font-heading text-2xl font-bold text-heading mb-6">
                 Frequently Asked Questions About {product.shortName}
               </h2>
               <ProductFAQ faqs={product.faqs} />

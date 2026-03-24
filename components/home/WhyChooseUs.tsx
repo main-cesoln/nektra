@@ -41,7 +41,7 @@ const usps = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-surface-panel/50">
+    <section className="py-20 bg-surface-panel">
       <Container>
         <SectionHeading
           overline="Why Choose Us"
@@ -55,10 +55,10 @@ export default function WhyChooseUs() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <usp.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-heading text-lg font-bold text-white mb-2">
+                <h3 className="font-heading text-lg font-bold text-heading mb-2">
                   {usp.title}
                 </h3>
-                <p className="text-gray-400 text-sm">{usp.description}</p>
+                <p className="text-muted text-sm">{usp.description}</p>
               </GlassCard>
             </MotionWrapper>
           ))}

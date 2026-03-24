@@ -32,7 +32,7 @@ export default function ContactPage() {
           {/* Form */}
           <MotionWrapper>
             <GlassCard hover={false}>
-              <h3 className="font-heading text-xl font-bold text-white mb-6">
+              <h3 className="font-heading text-xl font-bold text-heading mb-6">
                 Send Us a Message
               </h3>
               <ContactForm />
@@ -46,28 +46,28 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
-                  className="block p-4 rounded-xl border border-white/10 bg-white/5 hover:border-primary/30 hover:bg-primary/5 transition-all text-center"
+                  className="block p-4 rounded-xl border border-default-theme bg-tint hover:border-primary/30 hover:bg-primary/5 transition-all text-center"
                 >
                   <Phone className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="text-white text-sm font-medium">Call Now</p>
+                  <p className="text-heading text-sm font-medium">Call Now</p>
                 </a>
                 <a
                   href={`https://wa.me/${COMPANY.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent-green/30 hover:bg-accent-green/5 transition-all text-center"
+                  className="block p-4 rounded-xl border border-default-theme bg-tint hover:border-accent-green/30 hover:bg-accent-green/5 transition-all text-center"
                 >
                   <MessageCircle className="w-6 h-6 text-accent-green mx-auto mb-2" />
-                  <p className="text-white text-sm font-medium">WhatsApp</p>
+                  <p className="text-heading text-sm font-medium">WhatsApp</p>
                 </a>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${COMPANY.coordinates.lat},${COMPANY.coordinates.lng}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent-red/30 hover:bg-accent-red/5 transition-all text-center"
+                  className="block p-4 rounded-xl border border-default-theme bg-tint hover:border-accent-red/30 hover:bg-accent-red/5 transition-all text-center"
                 >
                   <Navigation className="w-6 h-6 text-accent-red mx-auto mb-2" />
-                  <p className="text-white text-sm font-medium">Directions</p>
+                  <p className="text-heading text-sm font-medium">Directions</p>
                 </a>
               </div>
 
@@ -77,16 +77,16 @@ export default function ContactPage() {
                   <li className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-white font-medium text-sm">Address</p>
-                      <p className="text-gray-400 text-sm">{COMPANY.address}</p>
+                      <p className="text-heading font-medium text-sm">Address</p>
+                      <p className="text-muted text-sm">{COMPANY.address}</p>
                     </div>
                   </li>
                   {COMPANY.phones.map((phone) => (
                     <li key={phone} className="flex items-start gap-3">
                       <Phone className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <div>
-                        <p className="text-white font-medium text-sm">Phone</p>
-                        <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-gray-400 text-sm hover:text-primary transition-colors">
+                        <p className="text-heading font-medium text-sm">Phone</p>
+                        <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-muted text-sm hover:text-primary transition-colors">
                           {phone}
                         </a>
                       </div>
@@ -95,8 +95,8 @@ export default function ContactPage() {
                   <li className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-white font-medium text-sm">Email</p>
-                      <a href={`mailto:${COMPANY.email}`} className="text-gray-400 text-sm hover:text-primary transition-colors">
+                      <p className="text-heading font-medium text-sm">Email</p>
+                      <a href={`mailto:${COMPANY.email}`} className="text-muted text-sm hover:text-primary transition-colors">
                         {COMPANY.email}
                       </a>
                     </div>
@@ -104,15 +104,15 @@ export default function ContactPage() {
                   <li className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-white font-medium text-sm">Business Hours</p>
-                      <p className="text-gray-400 text-sm">{COMPANY.hours}</p>
+                      <p className="text-heading font-medium text-sm">Business Hours</p>
+                      <p className="text-muted text-sm">{COMPANY.hours}</p>
                     </div>
                   </li>
                 </ul>
               </GlassCard>
 
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-white/10">
+              <div className="rounded-2xl overflow-hidden border border-default-theme">
                 <iframe
                   src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.0!2d${COMPANY.coordinates.lng}!3d${COMPANY.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI5JzM2LjAiTiA3OMKwMTknMjAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000`}
                   width="100%"
@@ -131,17 +131,17 @@ export default function ContactPage() {
         {/* Service Areas */}
         <MotionWrapper>
           <GlassCard hover={false} className="text-center">
-            <h3 className="font-heading text-xl font-bold text-white mb-4">
+            <h3 className="font-heading text-xl font-bold text-heading mb-4">
               Serving All of Telangana
             </h3>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-muted text-sm mb-4">
               Battery delivery and on-site service available across:
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               {SERVICE_AREAS.map((area) => (
                 <span
                   key={area}
-                  className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300"
+                  className="px-3 py-1 rounded-full bg-tint border border-default-theme text-xs text-foreground"
                 >
                   {area}
                 </span>

@@ -23,10 +23,10 @@ export default function BatteryDealerHyderabadPage() {
         <Container>
           <MotionWrapper className="mb-16 text-center">
             <Badge variant="cyan" className="mb-4">Authorized Exide Dealer</Badge>
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
               Industrial Battery Dealer in Hyderabad
             </h1>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            <p className="text-foreground text-lg max-w-3xl mx-auto">
               Nektra Energy Solutions is Hyderabad&apos;s trusted authorized Exide industrial battery dealer with over 35 years of experience. We provide the complete range of forklift batteries, traction batteries, and industrial energy solutions with free installation, free diagnostics, and Pan-Telangana service coverage.
             </p>
           </MotionWrapper>
@@ -42,8 +42,8 @@ export default function BatteryDealerHyderabadPage() {
               <MotionWrapper key={item.label} delay={i * 0.1}>
                 <GlassCard className="text-center">
                   <item.icon className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="text-white font-bold text-sm">{item.value}</p>
-                  <p className="text-gray-500 text-xs mt-1">{item.label}</p>
+                  <p className="text-heading font-bold text-sm">{item.value}</p>
+                  <p className="text-subtle text-xs mt-1">{item.label}</p>
                 </GlassCard>
               </MotionWrapper>
             ))}
@@ -51,7 +51,7 @@ export default function BatteryDealerHyderabadPage() {
 
           {/* Products Overview */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6 text-center">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6 text-center">
               Exide Industrial Battery Range in Hyderabad
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -59,10 +59,10 @@ export default function BatteryDealerHyderabadPage() {
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <GlassCard className="group">
                     <Badge>{product.shortName}</Badge>
-                    <h3 className="font-heading text-lg font-bold text-white mt-2 mb-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-heading text-lg font-bold text-heading mt-2 mb-1 group-hover:text-primary transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-400 text-xs line-clamp-2">{product.tagline}</p>
+                    <p className="text-muted text-xs line-clamp-2">{product.tagline}</p>
                     <span className="inline-flex items-center gap-1 text-sm text-primary mt-3">
                       View Product <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -74,14 +74,14 @@ export default function BatteryDealerHyderabadPage() {
 
           {/* Services Overview */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6 text-center">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6 text-center">
               Battery Services Available in Hyderabad
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {SERVICES.map((service) => (
                 <Link key={service.slug} href={`/services/${service.slug}`}>
-                  <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-primary/30 transition-all text-center group">
-                    <h3 className="text-sm text-gray-300 group-hover:text-primary transition-colors">
+                  <div className="p-4 rounded-xl border border-default-theme bg-tint hover:border-primary/30 transition-all text-center group">
+                    <h3 className="text-sm text-foreground group-hover:text-primary transition-colors">
                       {service.name}
                     </h3>
                   </div>
@@ -92,13 +92,13 @@ export default function BatteryDealerHyderabadPage() {
 
           {/* Service Areas */}
           <MotionWrapper className="mb-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6 text-center">
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6 text-center">
               Areas We Serve in Hyderabad &amp; Telangana
             </h2>
             <GlassCard hover={false}>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                 {SERVICE_AREAS.map((area) => (
-                  <div key={area} className="flex items-center gap-2 text-sm text-gray-400">
+                  <div key={area} className="flex items-center gap-2 text-sm text-muted">
                     <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
                     {area}
                   </div>
@@ -110,10 +110,10 @@ export default function BatteryDealerHyderabadPage() {
           {/* Contact CTA */}
           <MotionWrapper>
             <GlassCard hover={false} className="text-center border-primary/20 bg-primary/5">
-              <h2 className="font-heading text-2xl font-bold text-white mb-4">
+              <h2 className="font-heading text-2xl font-bold text-heading mb-4">
                 Contact Nektra Energy Solutions — Hyderabad
               </h2>
-              <p className="text-gray-400 mb-6">
+              <p className="text-muted mb-6">
                 {COMPANY.address}
               </p>
               <div className="flex flex-wrap justify-center gap-4">

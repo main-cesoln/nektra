@@ -24,10 +24,10 @@ export default function IndustryGrid() {
               <MotionWrapper key={industry.slug} delay={i * 0.05}>
                 <Link
                   href={`/industries/${industry.slug}`}
-                  className="group block p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-primary/30 transition-all text-center"
+                  className="group block p-5 rounded-2xl border border-subtle bg-tint hover:bg-tint-hover hover:border-primary/30 transition-all text-center"
                 >
                   <Icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                  <span className="text-sm font-medium text-foreground group-hover:text-heading transition-colors">
                     {industry.shortName}
                   </span>
                 </Link>

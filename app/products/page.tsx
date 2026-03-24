@@ -43,7 +43,7 @@ export default function ProductsPage() {
                 <Link href={`/products/${product.slug}`} className="block h-full">
                   <GlassCard className="h-full flex flex-col group">
                     {product.image && (
-                      <div className="relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-white/5">
+                      <div className="relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-tint">
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -54,13 +54,13 @@ export default function ProductsPage() {
                       </div>
                     )}
                     <Badge>{product.shortName}</Badge>
-                    <h3 className="font-heading text-xl font-bold text-white mt-3 mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-heading text-xl font-bold text-heading mt-3 mb-2 group-hover:text-primary transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-4">{product.tagline}</p>
+                    <p className="text-muted text-sm mb-4">{product.tagline}</p>
                     <ul className="space-y-1.5 mb-4 flex-1">
                       {product.features.slice(0, 4).map((f) => (
-                        <li key={f} className="text-xs text-gray-500 flex items-start gap-2">
+                        <li key={f} className="text-xs text-subtle flex items-start gap-2">
                           <span className="text-primary mt-0.5">&#9656;</span> {f}
                         </li>
                       ))}

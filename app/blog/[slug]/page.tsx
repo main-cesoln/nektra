@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const boldToHtml = (s: string) =>
-  s.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
+  s.replace(/\*\*(.*?)\*\*/g, '<strong class="text-heading">$1</strong>');
 
 function renderMarkdown(content: string) {
   const lines = content.split("\n");
@@ -52,13 +52,13 @@ function renderMarkdown(content: string) {
 
     if (line.startsWith("### ")) {
       elements.push(
-        <h3 key={i} className="font-heading text-xl font-bold text-white mt-8 mb-3">
+        <h3 key={i} className="font-heading text-xl font-bold text-heading mt-8 mb-3">
           {line.slice(4)}
         </h3>
       );
     } else if (line.startsWith("## ")) {
       elements.push(
-        <h2 key={i} className="font-heading text-2xl font-bold text-white mt-10 mb-4">
+        <h2 key={i} className="font-heading text-2xl font-bold text-heading mt-10 mb-4">
           {line.slice(3)}
         </h2>
       );
@@ -71,7 +71,7 @@ function renderMarkdown(content: string) {
       elements.push(
         <ol key={`ol-${i}`} className="space-y-1.5 my-3 ml-4 list-decimal list-inside">
           {listItems.map((item, j) => (
-            <li key={j} className="text-gray-300 text-sm"
+            <li key={j} className="text-foreground text-sm"
               dangerouslySetInnerHTML={{ __html: boldToHtml(item) }}
             />
           ))}
@@ -80,7 +80,7 @@ function renderMarkdown(content: string) {
       continue;
     } else if (line.startsWith("**") && line.endsWith("**")) {
       elements.push(
-        <p key={i} className="text-white font-semibold mt-4 mb-2">
+        <p key={i} className="text-heading font-semibold mt-4 mb-2">
           {line.slice(2, -2)}
         </p>
       );
@@ -93,7 +93,7 @@ function renderMarkdown(content: string) {
       elements.push(
         <ul key={`list-${i}`} className="space-y-1.5 my-3 ml-4">
           {listItems.map((item, j) => (
-            <li key={j} className="text-gray-300 text-sm flex items-start gap-2">
+            <li key={j} className="text-foreground text-sm flex items-start gap-2">
               <span className="text-primary mt-1">&#9656;</span>
               <span dangerouslySetInnerHTML={{ __html: boldToHtml(item) }} />
             </li>
@@ -114,10 +114,10 @@ function renderMarkdown(content: string) {
       if (tableRows.length > 1) {
         const [headers, ...rows] = tableRows;
         elements.push(
-          <div key={`table-${i}`} className="overflow-x-auto my-4 rounded-xl border border-white/10">
+          <div key={`table-${i}`} className="overflow-x-auto my-4 rounded-xl border border-default-theme">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-white/5">
+                <tr className="bg-tint">
                   {headers.map((h, j) => (
                     <th key={j} className="px-4 py-2 text-left text-xs font-mono text-primary">{h}</th>
                   ))}
@@ -125,9 +125,9 @@ function renderMarkdown(content: string) {
               </thead>
               <tbody>
                 {rows.map((row, j) => (
-                  <tr key={j} className="border-t border-white/5">
+                  <tr key={j} className="border-t border-subtle">
                     {row.map((cell, k) => (
-                      <td key={k} className="px-4 py-2 text-gray-300">{cell}</td>
+                      <td key={k} className="px-4 py-2 text-foreground">{cell}</td>
                     ))}
                   </tr>
                 ))}
@@ -141,7 +141,7 @@ function renderMarkdown(content: string) {
       // skip empty lines
     } else {
       elements.push(
-        <p key={i} className="text-gray-300 text-sm leading-relaxed mb-3"
+        <p key={i} className="text-foreground text-sm leading-relaxed mb-3"
           dangerouslySetInnerHTML={{
             __html: boldToHtml(line)
           }}
@@ -174,18 +174,18 @@ export default async function BlogPostPage({ params }: Props) {
             <MotionWrapper>
               <div className="flex items-center gap-3 mb-4">
                 <Badge variant="green">{post.category}</Badge>
-                <span className="text-xs text-gray-500 flex items-center gap-1">
+                <span className="text-xs text-subtle flex items-center gap-1">
                   <Clock className="w-3 h-3" /> {post.readTime}
                 </span>
-                <span className="text-xs text-gray-500">{post.date}</span>
+                <span className="text-xs text-subtle">{post.date}</span>
               </div>
-              <h1 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-8">
+              <h1 className="font-heading text-3xl sm:text-4xl font-bold text-heading mb-8">
                 {post.title}
               </h1>
             </MotionWrapper>
 
             <MotionWrapper delay={0.1}>
-              <div className="relative w-full aspect-[16/9] mb-8 rounded-2xl overflow-hidden border border-white/10">
+              <div className="relative w-full aspect-[16/9] mb-8 rounded-2xl overflow-hidden border border-default-theme">
                 <Image src={post.image} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-deepest/40 to-transparent" />
               </div>
@@ -226,16 +226,16 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Related Posts */}
           <div className="max-w-3xl mx-auto mt-16">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">Related Articles</h2>
+            <h2 className="font-heading text-2xl font-bold text-heading mb-6">Related Articles</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {relatedPosts.map((rp) => (
                 <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                   <GlassCard className="group">
-                    <div className="relative w-full aspect-[16/9] mb-3 rounded-lg overflow-hidden bg-white/5">
+                    <div className="relative w-full aspect-[16/9] mb-3 rounded-lg overflow-hidden bg-tint">
                       <Image src={rp.image} alt={rp.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <Badge variant="green" className="text-xs">{rp.category}</Badge>
-                    <h3 className="font-heading text-sm font-bold text-white mt-2 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="font-heading text-sm font-bold text-heading mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {rp.title}
                     </h3>
                   </GlassCard>

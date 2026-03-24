@@ -30,11 +30,11 @@ export default function SectionHeading({
           {overline}
         </span>
       )}
-      <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+      <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">{subtitle}</p>
+        <p className="text-muted text-lg max-w-2xl mx-auto">{subtitle}</p>
       )}
     </motion.div>
   );

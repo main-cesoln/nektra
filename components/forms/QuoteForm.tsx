@@ -52,7 +52,7 @@ export default function QuoteForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h3 className="font-heading text-lg font-bold text-white mb-2">Your Details</h3>
+      <h3 className="font-heading text-lg font-bold text-heading mb-2">Your Details</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <input name="name" placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
@@ -74,7 +74,7 @@ export default function QuoteForm() {
         </div>
       </div>
 
-      <h3 className="font-heading text-lg font-bold text-white mt-6 mb-2">Battery Requirements</h3>
+      <h3 className="font-heading text-lg font-bold text-heading mt-6 mb-2">Battery Requirements</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <select name="industry" value={form.industry} onChange={handleChange} className={inputClasses}>
           <option value="">Select Industry</option>
