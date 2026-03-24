@@ -48,10 +48,10 @@ export default function GetQuotePage() {
           <div className="space-y-6">
             <MotionWrapper delay={0.2}>
               <GlassCard hover={false}>
-                <h3 className="font-heading text-lg font-bold text-white mb-4">
+                <h3 className="font-heading text-lg font-bold text-heading mb-4">
                   What to Expect
                 </h3>
-                <ol className="space-y-3 text-sm text-gray-400">
+                <ol className="space-y-3 text-sm text-muted">
                   <li className="flex items-start gap-3">
                     <span className="w-6 h-6 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center shrink-0 font-bold">1</span>
                     Submit your requirements using the form
@@ -77,10 +77,10 @@ export default function GetQuotePage() {
                 {trustBadges.map((badge) => (
                   <div
                     key={badge.label}
-                    className="p-3 rounded-xl border border-white/10 bg-white/5 text-center"
+                    className="p-3 rounded-xl border border-default-theme bg-tint text-center"
                   >
                     <badge.icon className="w-5 h-5 text-primary mx-auto mb-1.5" />
-                    <p className="text-xs text-gray-400">{badge.label}</p>
+                    <p className="text-xs text-muted">{badge.label}</p>
                   </div>
                 ))}
               </div>

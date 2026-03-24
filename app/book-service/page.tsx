@@ -47,17 +47,17 @@ export default function BookServicePage() {
                 <div className="flex items-start gap-3 mb-3">
                   <Zap className="w-6 h-6 text-accent-red shrink-0" />
                   <div>
-                    <h3 className="font-heading text-lg font-bold text-white">
+                    <h3 className="font-heading text-lg font-bold text-heading">
                       Emergency Service
                     </h3>
-                    <p className="text-gray-400 text-sm mt-1">
+                    <p className="text-muted text-sm mt-1">
                       Battery down and operations stopped? Call us immediately for rapid emergency response.
                     </p>
                   </div>
                 </div>
                 <a
                   href={`tel:${COMPANY.phones[0].replace(/\s/g, "")}`}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-accent-red text-white font-semibold text-sm mt-4"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-accent-red text-heading font-semibold text-sm mt-4"
                 >
                   <Phone className="w-4 h-4" />
                   Call {COMPANY.phones[0]}
@@ -68,13 +68,13 @@ export default function BookServicePage() {
             {/* Services List */}
             <MotionWrapper delay={0.3}>
               <GlassCard hover={false}>
-                <h3 className="font-heading text-lg font-bold text-white mb-4">
+                <h3 className="font-heading text-lg font-bold text-heading mb-4">
                   Available Services
                 </h3>
                 <ul className="space-y-2">
                   {SERVICES.map((s) => (
                     <li key={s.slug} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-300">{s.name}</span>
+                      <span className="text-foreground">{s.name}</span>
                       {s.highlight && <Badge variant="green">Free</Badge>}
                     </li>
                   ))}

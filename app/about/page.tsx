@@ -34,7 +34,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <MotionWrapper>
-              <div className="space-y-4 text-gray-300">
+              <div className="space-y-4 text-foreground">
                 <p>
                   Nektra Energy Solutions has been at the forefront of industrial energy solutions for over three decades. As an authorized Exide Industrial Battery dealer in Hyderabad, we have built our reputation on technical expertise, genuine products, and service that goes beyond the sale.
                 </p>
@@ -49,16 +49,16 @@ export default function AboutPage() {
 
             <MotionWrapper delay={0.2}>
               <GlassCard hover={false} className="space-y-6">
-                <h3 className="font-heading text-xl font-bold text-white">Our Mission</h3>
-                <p className="text-gray-400">
+                <h3 className="font-heading text-xl font-bold text-heading">Our Mission</h3>
+                <p className="text-muted">
                   To be the most reliable and technically proficient industrial battery partner in South India, delivering genuine Exide products with unmatched service and support.
                 </p>
-                <h3 className="font-heading text-xl font-bold text-white">Our Vision</h3>
-                <p className="text-gray-400">
+                <h3 className="font-heading text-xl font-bold text-heading">Our Vision</h3>
+                <p className="text-muted">
                   To power every forklift, every warehouse, and every factory in Telangana with the best battery technology available — backed by service that never lets our clients down.
                 </p>
-                <h3 className="font-heading text-xl font-bold text-white">Our Values</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
+                <h3 className="font-heading text-xl font-bold text-heading">Our Values</h3>
+                <ul className="space-y-2 text-muted text-sm">
                   <li className="flex items-start gap-2"><span className="text-primary">&#9656;</span> Technical excellence in everything we do</li>
                   <li className="flex items-start gap-2"><span className="text-primary">&#9656;</span> Genuine products, honest advice</li>
                   <li className="flex items-start gap-2"><span className="text-primary">&#9656;</span> Service speed that matches industry urgency</li>
@@ -91,8 +91,8 @@ export default function AboutPage() {
               <MotionWrapper key={item.label} delay={i * 0.1}>
                 <GlassCard className="text-center">
                   <item.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <p className="text-white font-bold text-sm mb-1">{item.value}</p>
-                  <p className="text-gray-500 text-xs font-mono uppercase">{item.label}</p>
+                  <p className="text-heading font-bold text-sm mb-1">{item.value}</p>
+                  <p className="text-subtle text-xs font-mono uppercase">{item.label}</p>
                 </GlassCard>
               </MotionWrapper>
             ))}
@@ -100,7 +100,7 @@ export default function AboutPage() {
 
           <MotionWrapper>
             <GlassCard hover={false}>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-foreground text-sm leading-relaxed">
                 {EXIDE_INFO.description}
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
@@ -121,7 +121,7 @@ export default function AboutPage() {
 
           <div className="relative max-w-2xl mx-auto mb-20">
             {/* Vertical line */}
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-white/10" />
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-tint-hover" />
 
             {[
               { year: "1990", text: "Founded in Hyderabad with a vision to provide reliable industrial battery solutions" },
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 <div className="relative pl-12 pb-10 last:pb-0">
                   <div className="absolute left-2 top-1 w-5 h-5 rounded-full border-2 border-primary bg-surface-deepest" />
                   <p className="font-mono text-primary text-sm font-bold mb-1">{milestone.year}</p>
-                  <p className="text-gray-400 text-sm">{milestone.text}</p>
+                  <p className="text-muted text-sm">{milestone.text}</p>
                 </div>
               </MotionWrapper>
             ))}
@@ -158,11 +158,11 @@ export default function AboutPage() {
             ].map((member, i) => (
               <MotionWrapper key={member.role} delay={i * 0.1}>
                 <GlassCard className="text-center">
-                  <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-20 h-20 rounded-full bg-tint border border-default-theme flex items-center justify-center mx-auto mb-4">
                     <User className="w-8 h-8 text-gray-600" />
                   </div>
-                  <p className="text-white font-bold text-sm">{member.name}</p>
-                  <p className="text-gray-500 text-xs font-mono uppercase mt-1">{member.role}</p>
+                  <p className="text-heading font-bold text-sm">{member.name}</p>
+                  <p className="text-subtle text-xs font-mono uppercase mt-1">{member.role}</p>
                 </GlassCard>
               </MotionWrapper>
             ))}

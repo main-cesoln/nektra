@@ -3,17 +3,86 @@
 @tailwind utilities;
 
 :root {
+  /* Light mode */
+  --background: #FFFFFF;
+  --background-rgb: 255 255 255;
+  --foreground: #1A1A2E;
+  --heading: #0F0F1A;
+  --text-muted: #6B7280;
+  --text-subtle: #9CA3AF;
+
+  --surface-deepest: #F8F9FA;
+  --surface-panel: #F0F1F3;
+  --surface-card: #FFFFFF;
+
+  --primary-rgb: 0 184 212;
+  --primary-on-bg: #FFFFFF;
+  --accent-red-rgb: 230 57 0;
+  --accent-green-rgb: 76 175 80;
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.10);
+
+  --glass-bg: rgba(255, 255, 255, 0.70);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-strong: rgba(0, 0, 0, 0.12);
+
+  --overlay-tint: rgba(0, 0, 0, 0.03);
+  --overlay-tint-hover: rgba(0, 0, 0, 0.06);
+
+  --glow-cyan: 0 0 20px rgba(0, 184, 212, 0.15);
+  --glow-red: 0 0 20px rgba(230, 57, 0, 0.15);
+  --glow-green: 0 0 20px rgba(76, 175, 80, 0.15);
+
+  --scrollbar-track: #F0F1F3;
+  --scrollbar-thumb: rgba(0, 184, 212, 0.3);
+  --scrollbar-thumb-hover: rgba(0, 184, 212, 0.5);
+  --selection-bg: rgba(0, 184, 212, 0.2);
+  --selection-color: #0F0F1A;
+  --grid-line: rgba(0, 184, 212, 0.04);
+  --fade-edge: #F8F9FA;
+}
+
+.dark {
   --background: #0A0A0F;
+  --background-rgb: 10 10 15;
   --foreground: #E0E0E0;
-  --primary: #00E5FF;
-  --accent-red: #FF3D00;
-  --accent-green: #76FF03;
+  --heading: #FFFFFF;
+  --text-muted: #9CA3AF;
+  --text-subtle: #6B7280;
+
   --surface-deepest: #0A0A0F;
   --surface-panel: #14141F;
   --surface-card: #1A1A2E;
+
+  --primary-rgb: 0 229 255;
+  --primary-on-bg: #0A0A0F;
+  --accent-red-rgb: 255 61 0;
+  --accent-green-rgb: 118 255 3;
+
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-default: rgba(255, 255, 255, 0.10);
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-strong: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-strong: rgba(255, 255, 255, 0.15);
+
+  --overlay-tint: rgba(255, 255, 255, 0.02);
+  --overlay-tint-hover: rgba(255, 255, 255, 0.06);
+
   --glow-cyan: 0 0 20px rgba(0, 229, 255, 0.3);
   --glow-red: 0 0 20px rgba(255, 61, 0, 0.3);
   --glow-green: 0 0 20px rgba(118, 255, 3, 0.3);
+
+  --scrollbar-track: #0A0A0F;
+  --scrollbar-thumb: rgba(0, 229, 255, 0.3);
+  --scrollbar-thumb-hover: rgba(0, 229, 255, 0.5);
+  --selection-bg: rgba(0, 229, 255, 0.3);
+  --selection-color: #FFFFFF;
+  --grid-line: rgba(0, 229, 255, 0.03);
+  --fade-edge: #0A0A0F;
 }
 
 * {
@@ -32,8 +101,8 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 229, 255, 0.3);
-  color: #fff;
+  background: var(--selection-bg);
+  color: var(--selection-color);
 }
 
 ::-webkit-scrollbar {
@@ -41,16 +110,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-deepest);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 229, 255, 0.3);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 229, 255, 0.5);
+  background: var(--scrollbar-thumb-hover);
 }
 
 @layer utilities {
@@ -71,15 +140,15 @@ body {
   }
 
   .text-glow-cyan {
-    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    text-shadow: 0 0 20px rgb(var(--primary-rgb) / 0.5);
   }
 
   .text-glow-red {
-    text-shadow: 0 0 20px rgba(255, 61, 0, 0.5);
+    text-shadow: 0 0 20px rgb(var(--accent-red-rgb) / 0.5);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #00E5FF, #76FF03);
+    background: linear-gradient(135deg, rgb(var(--primary-rgb)), rgb(var(--accent-green-rgb)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -87,8 +156,8 @@ body {
 
   .grid-bg {
     background-image:
-      linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 }

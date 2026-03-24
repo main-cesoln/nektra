@@ -35,12 +35,12 @@ export default function ExideSection() {
               {highlights.map((item) => (
                 <div key={item.label} className="text-center">
                   <item.icon className="w-7 h-7 text-primary mx-auto mb-2" />
-                  <p className="text-white font-bold text-sm">{item.value}</p>
-                  <p className="text-gray-500 text-xs font-mono uppercase">{item.label}</p>
+                  <p className="text-heading font-bold text-sm">{item.value}</p>
+                  <p className="text-subtle text-xs font-mono uppercase">{item.label}</p>
                 </div>
               ))}
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed text-center max-w-3xl mx-auto">
+            <p className="text-muted text-sm leading-relaxed text-center max-w-3xl mx-auto">
               {EXIDE_INFO.description}
             </p>
             <div className="flex flex-wrap justify-center gap-2 mt-4">

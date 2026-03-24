@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,16 +11,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#00E5FF",
-        "accent-red": "#FF3D00",
-        "accent-green": "#76FF03",
+        primary: "rgb(var(--primary-rgb) / <alpha-value>)",
+        "primary-on-bg": "var(--primary-on-bg)",
+        "accent-red": "rgb(var(--accent-red-rgb) / <alpha-value>)",
+        "accent-green": "rgb(var(--accent-green-rgb) / <alpha-value>)",
         surface: {
-          deepest: "#0A0A0F",
-          panel: "#14141F",
-          card: "#1A1A2E",
+          deepest: "var(--surface-deepest)",
+          panel: "var(--surface-panel)",
+          card: "var(--surface-card)",
         },
-        background: "var(--background)",
+        background: "rgb(var(--background-rgb) / <alpha-value>)",
         foreground: "var(--foreground)",
+        heading: "var(--heading)",
+        muted: "var(--text-muted)",
+        subtle: "var(--text-subtle)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "sans-serif"],
@@ -28,8 +33,8 @@ const config: Config = {
       },
       keyframes: {
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(0, 229, 255, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(0, 229, 255, 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgb(var(--primary-rgb) / 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgb(var(--primary-rgb) / 0.6)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
@@ -40,8 +45,12 @@ const config: Config = {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "pulse-green": {
-          "0%, 100%": { boxShadow: "0 0 10px rgba(118, 255, 3, 0.4)" },
-          "50%": { boxShadow: "0 0 25px rgba(118, 255, 3, 0.7)" },
+          "0%, 100%": {
+            boxShadow: "0 0 10px rgb(var(--accent-green-rgb) / 0.4)",
+          },
+          "50%": {
+            boxShadow: "0 0 25px rgb(var(--accent-green-rgb) / 0.7)",
+          },
         },
         ticker: {
           "0%": { transform: "translateX(0)" },
@@ -63,14 +72,26 @@ const config: Config = {
         ".glass": {
           "backdrop-filter": "blur(16px)",
           "-webkit-backdrop-filter": "blur(16px)",
-          "background-color": "rgba(255, 255, 255, 0.05)",
-          "border": "1px solid rgba(255, 255, 255, 0.1)",
+          "background-color": "var(--glass-bg)",
+          border: "1px solid var(--glass-border)",
         },
         ".glass-strong": {
           "backdrop-filter": "blur(24px)",
           "-webkit-backdrop-filter": "blur(24px)",
-          "background-color": "rgba(255, 255, 255, 0.08)",
-          "border": "1px solid rgba(255, 255, 255, 0.15)",
+          "background-color": "var(--glass-bg-strong)",
+          border: "1px solid var(--glass-border-strong)",
+        },
+        ".border-subtle": {
+          "border-color": "var(--border-subtle)",
+        },
+        ".border-default-theme": {
+          "border-color": "var(--border-default)",
+        },
+        ".bg-tint": {
+          "background-color": "var(--overlay-tint)",
+        },
+        ".bg-tint-hover": {
+          "background-color": "var(--overlay-tint-hover)",
         },
       });
     }),

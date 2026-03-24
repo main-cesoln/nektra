@@ -10,10 +10,10 @@ export default function NotFound() {
         <h1 className="font-heading text-8xl font-bold text-primary text-glow-cyan mb-4">
           404
         </h1>
-        <h2 className="font-heading text-2xl font-bold text-white mb-4">
+        <h2 className="font-heading text-2xl font-bold text-heading mb-4">
           Page Not Found
         </h2>
-        <p className="text-gray-400 mb-8 max-w-md mx-auto">
+        <p className="text-muted mb-8 max-w-md mx-auto">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
           Let us help you find what you need.
         </p>

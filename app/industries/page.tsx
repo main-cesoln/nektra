@@ -43,10 +43,10 @@ export default function IndustriesPage() {
                           <Icon className="w-6 h-6 text-primary" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-heading text-lg font-bold text-white group-hover:text-primary transition-colors">
+                          <h3 className="font-heading text-lg font-bold text-heading group-hover:text-primary transition-colors">
                             {industry.name}
                           </h3>
-                          <p className="text-gray-400 text-sm mt-2 line-clamp-3">
+                          <p className="text-muted text-sm mt-2 line-clamp-3">
                             {industry.description}
                           </p>
                           <span className="inline-flex items-center gap-1 text-sm text-primary font-medium mt-3">

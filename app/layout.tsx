@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import ThemeProvider from "@/components/layout/ThemeProvider";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { COMPANY } from "@/lib/constants";
@@ -58,7 +59,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0F",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0F" },
+  ],
 };
 
 export default function RootLayout({
@@ -67,16 +71,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${syne.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body antialiased bg-surface-deepest text-foreground`}
+        className={`${syne.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body antialiased bg-background text-foreground`}
       >
-        <JsonLd data={organizationSchema()} />
-        <JsonLd data={websiteSchema()} />
-        <Navbar />
-        <main className="min-h-screen pt-16 lg:pt-20">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <ThemeProvider>
+          <JsonLd data={organizationSchema()} />
+          <JsonLd data={websiteSchema()} />
+          <Navbar />
+          <main className="min-h-screen pt-16 lg:pt-20">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );

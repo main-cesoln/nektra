@@ -32,22 +32,22 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-xl bg-[#0A0A0F]/90 border-b border-white/5"
-          : "backdrop-blur-md bg-[#0A0A0F]/60"
+          ? "backdrop-blur-xl bg-background/90 border-b border-subtle"
+          : "backdrop-blur-md bg-background/60"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <Zap className="w-7 h-7 text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.6)]" />
-            <span className="font-heading text-xl font-bold text-white">
+            <Zap className="w-7 h-7 text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgb(var(--primary-rgb)/0.6)]" />
+            <span className="font-heading text-xl font-bold text-heading">
               Nektra<span className="text-primary">.</span>
             </span>
           </Link>
 
           {/* Exide Badge — desktop only */}
-          <div className="hidden lg:flex items-center ml-3 pl-3 border-l border-white/10">
+          <div className="hidden lg:flex items-center ml-3 pl-3 border-l border-default-theme">
             <ExideBadge variant="compact" priority />
           </div>
 
@@ -65,7 +65,7 @@ export default function Navbar() {
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
                     pathname === item.href || pathname.startsWith(item.href + "/")
                       ? "text-primary"
-                      : "text-gray-300 hover:text-white"
+                      : "text-foreground hover:text-heading"
                   }`}
                 >
                   {item.label}
@@ -80,7 +80,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-1 w-72 bg-[#1A1A2E] border border-white/10 rounded-xl p-2 shadow-2xl"
+                      className="absolute top-full left-0 mt-1 w-72 bg-surface-card border border-default-theme rounded-xl p-2 shadow-2xl"
                     >
                       {item.children.map((child) => (
                         <Link
@@ -89,7 +89,7 @@ export default function Navbar() {
                           className={`block px-4 py-2.5 rounded-lg text-sm transition-colors ${
                             pathname === child.href
                               ? "text-primary bg-primary/10"
-                              : "text-gray-300 hover:text-white hover:bg-white/5"
+                              : "text-foreground hover:text-heading hover:bg-tint"
                           }`}
                         >
                           {child.label}
@@ -106,13 +106,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/get-quote"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl bg-primary text-surface-deepest text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+              className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl bg-primary text-primary-on-bg text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgb(var(--primary-rgb)/0.4)]"
             >
               Get a Quote
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-gray-300 hover:text-white"
+              className="lg:hidden p-2 text-foreground hover:text-heading"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -128,7 +128,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-white/5 bg-surface-deepest/95 backdrop-blur-xl overflow-hidden"
+            className="lg:hidden border-t border-subtle bg-surface-deepest backdrop-blur-xl overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {NAV_ITEMS.map((item) => (
@@ -136,7 +136,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={`block px-4 py-3 rounded-lg text-base font-medium ${
-                      pathname === item.href ? "text-primary bg-primary/10" : "text-gray-300"
+                      pathname === item.href ? "text-primary bg-primary/10" : "text-foreground"
                     }`}
                   >
                     {item.label}
@@ -150,7 +150,7 @@ export default function Navbar() {
                           className={`block px-4 py-2 rounded-lg text-sm ${
                             pathname === child.href
                               ? "text-primary"
-                              : "text-gray-400 hover:text-white"
+                              : "text-muted hover:text-heading"
                           }`}
                         >
                           {child.label}
@@ -162,7 +162,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/get-quote"
-                className="block mx-4 mt-4 text-center px-5 py-3 rounded-xl bg-primary text-surface-deepest font-semibold"
+                className="block mx-4 mt-4 text-center px-5 py-3 rounded-xl bg-primary text-primary-on-bg font-semibold"
               >
                 Get a Quote
               </Link>

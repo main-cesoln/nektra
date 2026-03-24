@@ -14,9 +14,9 @@ interface GlowButtonProps {
 }
 
 const variants = {
-  primary: "bg-primary text-surface-deepest font-semibold hover:shadow-[0_0_30px_rgba(0,229,255,0.4)]",
-  secondary: "bg-accent-red text-white font-semibold hover:shadow-[0_0_30px_rgba(255,61,0,0.4)]",
-  outline: "border border-primary text-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]",
+  primary: "bg-primary text-primary-on-bg font-semibold hover:shadow-[0_0_30px_rgb(var(--primary-rgb)/0.4)]",
+  secondary: "bg-accent-red text-white font-semibold hover:shadow-[0_0_30px_rgb(var(--accent-red-rgb)/0.4)]",
+  outline: "border border-primary text-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgb(var(--primary-rgb)/0.2)]",
 };
 
 const sizes = {

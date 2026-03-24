@@ -22,18 +22,18 @@ export default function CTABanner({
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-surface-panel to-accent-red/10" />
       <Container className="relative text-center">
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-heading mb-4">
           {heading}
         </h2>
         {subtitle && (
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
             {subtitle}
           </p>
         )}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-surface-deepest font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-primary-on-bg font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgb(var(--primary-rgb)/0.4)] hover:scale-105"
           >
             {primaryLabel}
           </Link>

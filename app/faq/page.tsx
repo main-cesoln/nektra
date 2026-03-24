@@ -39,7 +39,7 @@ export default function FAQPage() {
               if (catFaqs.length === 0) return null;
               return (
                 <MotionWrapper key={category}>
-                  <h3 className="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <h3 className="font-heading text-xl font-bold text-heading mb-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary" />
                     {category}
                   </h3>

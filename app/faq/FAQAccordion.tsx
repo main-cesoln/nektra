@@ -13,13 +13,13 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
       {faqs.map((faq, i) => (
         <div
           key={i}
-          className="border border-white/10 rounded-xl overflow-hidden bg-white/[0.02]"
+          className="border border-default-theme rounded-xl overflow-hidden bg-tint"
         >
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             className="w-full flex items-center justify-between px-5 py-4 text-left"
           >
-            <span className="text-sm font-medium text-white pr-4">{faq.question}</span>
+            <span className="text-sm font-medium text-heading pr-4">{faq.question}</span>
             <ChevronDown
               className={`w-4 h-4 text-primary shrink-0 transition-transform ${
                 openIndex === i ? "rotate-180" : ""
@@ -34,7 +34,7 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="px-5 pb-4 text-sm text-gray-400 leading-relaxed">
+                <p className="px-5 pb-4 text-sm text-muted leading-relaxed">
                   {faq.answer}
                 </p>
               </motion.div>
