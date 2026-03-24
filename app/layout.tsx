@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import JsonLd from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { COMPANY } from "@/lib/constants";
 
@@ -84,6 +85,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppButton />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
