@@ -28,14 +28,15 @@ export const metadata: Metadata = {
     siteName: COMPANY.name,
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Nektra Energy Solutions" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Exide Industrial Battery Dealer in Hyderabad | Nektra Energy Solutions",
     description:
       "Authorized Exide industrial battery dealer in Hyderabad. 35+ years of expertise.",
-    images: ["/og-default.jpg"],
+  },
+  alternates: {
+    canonical: COMPANY.url,
   },
 };
 

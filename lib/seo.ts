@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { COMPANY } from "./constants";
 
 const baseUrl = COMPANY.url;
-const DEFAULT_OG_IMAGE = "/og-default.jpg";
 
 interface PageSEO {
   title: string;
@@ -26,7 +25,6 @@ export function generatePageMetadata({
   section,
 }: PageSEO): Metadata {
   const url = `${baseUrl}${path}`;
-  const ogImage = image || DEFAULT_OG_IMAGE;
 
   return {
     title,
@@ -41,7 +39,9 @@ export function generatePageMetadata({
       siteName: COMPANY.name,
       locale: "en_IN",
       type,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      ...(image && {
+        images: [{ url: image, width: 1200, height: 630, alt: title }],
+      }),
       ...(type === "article" && {
         publishedTime,
         modifiedTime,
@@ -52,7 +52,8 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: `${title} | ${COMPANY.name}`,
       description,
-      images: [ogImage],
+      ...(image && { images: [image] }),
+      ...(COMPANY.twitter && { site: COMPANY.twitter, creator: COMPANY.twitter }),
     },
   };
 }

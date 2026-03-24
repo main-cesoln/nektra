@@ -31,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {};
   return generatePageMetadata({
     title: `${product.name} — Exide Industrial Battery Hyderabad`,
-    description: product.description.slice(0, 160),
+    description: product.description.length <= 160
+      ? product.description
+      : product.description.slice(0, product.description.lastIndexOf(" ", 157)) + "...",
     path: `/products/${product.slug}`,
   });
 }

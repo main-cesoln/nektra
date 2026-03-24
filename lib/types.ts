@@ -88,6 +88,7 @@ export interface BlogPost {
   categorySlug?: string;
   dateModified?: string;
   tags?: string[];
+  author?: { name: string; title: string };
   relatedProducts?: string[];
   relatedServices?: string[];
   relatedIndustries?: string[];
@@ -132,5 +133,6 @@ export interface CompanyInfo {
   hours: string;
   coordinates: { lat: number; lng: number };
   url: string;
+  twitter?: string;
   socials?: SocialLink[];
 }

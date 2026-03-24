@@ -66,6 +66,16 @@ export function websiteSchema() {
     "@type": "WebSite",
     name: COMPANY.name,
     url: COMPANY.url,
+    description: `Authorized Exide Industrial Battery dealer in Hyderabad. ${COMPANY.tagline}`,
+    publisher: {
+      "@type": "Organization",
+      name: COMPANY.name,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${COMPANY.url}/products?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -87,6 +97,15 @@ export function productSchema(product: Product) {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       priceCurrency: "INR",
+      price: "0",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "INR",
+        eligibleTransactionVolume: {
+          "@type": "PriceSpecification",
+          name: "Contact for pricing",
+        },
+      },
       seller: {
         "@type": "Organization",
         name: COMPANY.name,
@@ -161,6 +180,19 @@ export function breadcrumbSchema(
 }
 
 export function articleSchema(post: BlogPost) {
+  const author = post.author
+    ? {
+        "@type": "Person" as const,
+        name: post.author.name,
+        jobTitle: post.author.title,
+        url: COMPANY.url,
+      }
+    : {
+        "@type": "Organization" as const,
+        name: COMPANY.name,
+        url: COMPANY.url,
+      };
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -171,15 +203,31 @@ export function articleSchema(post: BlogPost) {
     ...(post.dateModified && { dateModified: post.dateModified }),
     wordCount: post.content.split(/\s+/).length,
     articleSection: post.category,
-    author: {
-      "@type": "Organization",
-      name: COMPANY.name,
-      url: COMPANY.url,
-    },
+    author,
     publisher: {
       "@type": "Organization",
       name: COMPANY.name,
       url: COMPANY.url,
+    },
+  };
+}
+
+export function collectionPageSchema(category: { name: string; description: string; slug: string }, posts: BlogPost[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: category.name,
+    description: category.description,
+    url: `${COMPANY.url}/blog/category/${category.slug}`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: posts.length,
+      itemListElement: posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${COMPANY.url}/blog/${post.slug}`,
+        name: post.title,
+      })),
     },
   };
 }

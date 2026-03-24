@@ -19,8 +19,8 @@ export default function BlogPage() {
     <section className="py-16">
       <Container>
         <Breadcrumbs />
-        <h1 className="sr-only">Industrial Battery Guides &amp; Insights</h1>
         <SectionHeading
+          as="h1"
           overline="Our Blog"
           title="Expert Insights & Guides"
           subtitle="Practical knowledge from 35+ years of industrial battery expertise."

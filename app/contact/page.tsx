@@ -21,8 +21,8 @@ export default function ContactPage() {
     <section className="py-16">
       <Container>
         <Breadcrumbs />
-        <h1 className="sr-only">Contact Exide Battery Dealer Hyderabad</h1>
         <SectionHeading
+          as="h1"
           overline="Contact Us"
           title="Get in Touch"
           subtitle="We're here to help with all your industrial battery needs."
