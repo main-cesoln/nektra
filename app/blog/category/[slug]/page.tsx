@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo";
+import { collectionPageSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GlassCard from "@/components/ui/GlassCard";
@@ -35,9 +37,11 @@ export default async function BlogCategoryPage({ params }: Props) {
   const posts = BLOG_POSTS.filter((p) => p.categorySlug === slug);
 
   return (
-    <section className="py-16">
-      <Container>
-        <Breadcrumbs overrides={{ category: "Categories", [category.slug]: category.name }} />
+    <>
+      <JsonLd data={collectionPageSchema(category, posts)} />
+      <section className="py-16">
+        <Container>
+          <Breadcrumbs overrides={{ category: "Categories", [category.slug]: category.name }} />
 
         <div className="mb-12">
           <h1 className="font-heading text-3xl sm:text-4xl font-bold text-heading mb-4">
@@ -63,5 +67,6 @@ export default async function BlogCategoryPage({ params }: Props) {
         )}
       </Container>
     </section>
+    </>
   );
 }

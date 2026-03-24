@@ -25,8 +25,8 @@ export default function AboutPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
-          <h1 className="sr-only">About Nektra Energy Solutions — 35+ Years of Industrial Battery Expertise</h1>
           <SectionHeading
+            as="h1"
             overline="About Us"
             title="35+ Years of Powering Indian Industry"
             subtitle="From a single dealership to Telangana's most trusted industrial battery partner."

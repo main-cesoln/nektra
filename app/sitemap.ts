@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { PRODUCTS, INDUSTRIES, BLOG_POSTS, SERVICES, BLOG_CATEGORIES, COMPANY } from "@/lib/constants";
 
-const SITE_LAST_UPDATED = "2026-03-17";
+const SITE_LAST_UPDATED = new Date().toISOString().split("T")[0];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = COMPANY.url;

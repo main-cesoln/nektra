@@ -25,8 +25,8 @@ export default function ServicesPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
-          <h1 className="sr-only">Industrial Battery Services in Hyderabad</h1>
           <SectionHeading
+            as="h1"
             overline="Our Services"
             title="Complete Battery Service Solutions"
             subtitle="From free installation to emergency response — we've got your batteries covered across Telangana."

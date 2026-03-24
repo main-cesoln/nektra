@@ -28,7 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
   return generatePageMetadata({
     title: `${service.name} — Battery Service Hyderabad`,
-    description: service.description.slice(0, 160),
+    description: service.description.length <= 160
+      ? service.description
+      : service.description.slice(0, service.description.lastIndexOf(" ", 157)) + "...",
     path: `/services/${service.slug}`,
   });
 }

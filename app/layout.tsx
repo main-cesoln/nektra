@@ -45,6 +45,12 @@ export const metadata: Metadata = {
     "forklift battery dealer",
     "motive power battery",
     "gel battery India",
+    "industrial battery dealer Telangana",
+    "battery AMC Hyderabad",
+    "forklift battery service",
+    "Exide battery price",
+    "battery dealer near me Hyderabad",
+    "UPS battery Hyderabad",
   ],
   metadataBase: new URL(COMPANY.url),
   formatDetection: {

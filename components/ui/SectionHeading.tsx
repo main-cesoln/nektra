@@ -7,6 +7,7 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  as?: "h1" | "h2";
   className?: string;
 }
 
@@ -15,8 +16,10 @@ export default function SectionHeading({
   title,
   subtitle,
   align = "center",
+  as = "h2",
   className = "",
 }: SectionHeadingProps) {
+  const Tag = as;
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -30,9 +33,9 @@ export default function SectionHeading({
           {overline}
         </span>
       )}
-      <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
+      <Tag className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-heading mb-4">
         {title}
-      </h2>
+      </Tag>
       {subtitle && (
         <p className="text-muted text-lg max-w-2xl mx-auto">{subtitle}</p>
       )}

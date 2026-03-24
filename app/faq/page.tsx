@@ -26,8 +26,8 @@ export default function FAQPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
-          <h1 className="sr-only">Industrial Battery FAQ — Exide Dealer Hyderabad</h1>
           <SectionHeading
+            as="h1"
             overline="FAQ"
             title="Frequently Asked Questions"
             subtitle="Everything you need to know about industrial batteries, our products, and services."

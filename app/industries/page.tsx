@@ -24,8 +24,8 @@ export default function IndustriesPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
-          <h1 className="sr-only">Battery Solutions by Industry</h1>
           <SectionHeading
+            as="h1"
             overline="Industries We Serve"
             title="Battery Solutions for Every Industry"
             subtitle="Tailored industrial battery solutions for the unique demands of each sector."

@@ -26,8 +26,8 @@ export default function ProductsPage() {
       <section className="py-16">
         <Container>
           <Breadcrumbs />
-          <h1 className="sr-only">Industrial Battery Products — Exide Authorized Dealer</h1>
           <SectionHeading
+            as="h1"
             overline="Our Products"
             title="Exide Industrial Battery Range"
             subtitle="The complete range of traction and motive power batteries for every industrial application."
