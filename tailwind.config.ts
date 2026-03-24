@@ -56,6 +56,44 @@ const config: Config = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "blob-morph-1": {
+          "0%, 100%": {
+            transform: "translate(0, 0) scale(1) rotate(0deg)",
+            borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+          },
+          "33%": {
+            transform: "translate(30px, -20px) scale(1.1) rotate(120deg)",
+            borderRadius: "70% 30% 50% 50% / 30% 30% 70% 70%",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9) rotate(240deg)",
+            borderRadius: "50% 60% 30% 70% / 60% 40% 60% 40%",
+          },
+        },
+        "blob-morph-2": {
+          "0%, 100%": {
+            transform: "translate(0, 0) scale(1) rotate(0deg)",
+            borderRadius: "60% 40% 30% 70% / 50% 60% 40% 50%",
+          },
+          "33%": {
+            transform: "translate(-30px, 15px) scale(1.15) rotate(-120deg)",
+            borderRadius: "30% 60% 70% 40% / 50% 30% 60% 70%",
+          },
+          "66%": {
+            transform: "translate(15px, -25px) scale(0.85) rotate(-240deg)",
+            borderRadius: "70% 50% 40% 60% / 40% 70% 30% 60%",
+          },
+        },
+        "blob-morph-3": {
+          "0%, 100%": {
+            transform: "translate(0, 0) scale(1)",
+            borderRadius: "50% 50% 50% 50% / 50% 50% 50% 50%",
+          },
+          "50%": {
+            transform: "translate(20px, -15px) scale(1.1)",
+            borderRadius: "60% 40% 60% 40% / 40% 60% 40% 60%",
+          },
+        },
       },
       animation: {
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
@@ -63,6 +101,9 @@ const config: Config = {
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "pulse-green": "pulse-green 2s ease-in-out infinite",
         ticker: "ticker 30s linear infinite",
+        "blob-1": "blob-morph-1 12s ease-in-out infinite",
+        "blob-2": "blob-morph-2 15s ease-in-out infinite",
+        "blob-3": "blob-morph-3 10s ease-in-out infinite",
       },
     },
   },
