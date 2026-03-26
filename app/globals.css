@@ -133,6 +133,11 @@ body {
   color: var(--selection-color);
 }
 
+.dark select option {
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

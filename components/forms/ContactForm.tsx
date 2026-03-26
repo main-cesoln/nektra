@@ -48,36 +48,36 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <input name="name" placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
-          {errors.name && <p className="text-accent-red text-xs mt-1">{errors.name}</p>}
+          <input name="name" aria-label="Full Name" aria-describedby={errors.name ? "name-error" : undefined} placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
+          {errors.name && <p id="name-error" role="alert" className="text-accent-red text-xs mt-1">{errors.name}</p>}
         </div>
         <div>
-          <input name="email" type="email" placeholder="Email Address *" value={form.email} onChange={handleChange} className={inputClasses} />
-          {errors.email && <p className="text-accent-red text-xs mt-1">{errors.email}</p>}
+          <input name="email" type="email" aria-label="Email Address" aria-describedby={errors.email ? "email-error" : undefined} placeholder="Email Address *" value={form.email} onChange={handleChange} className={inputClasses} />
+          {errors.email && <p id="email-error" role="alert" className="text-accent-red text-xs mt-1">{errors.email}</p>}
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <input name="phone" placeholder="Phone Number *" value={form.phone} onChange={handleChange} className={inputClasses} />
-          {errors.phone && <p className="text-accent-red text-xs mt-1">{errors.phone}</p>}
+          <input name="phone" aria-label="Phone Number" aria-describedby={errors.phone ? "phone-error" : undefined} placeholder="Phone Number *" value={form.phone} onChange={handleChange} className={inputClasses} />
+          {errors.phone && <p id="phone-error" role="alert" className="text-accent-red text-xs mt-1">{errors.phone}</p>}
         </div>
-        <input name="company" placeholder="Company Name" value={form.company} onChange={handleChange} className={inputClasses} />
+        <input name="company" aria-label="Company Name" placeholder="Company Name" value={form.company} onChange={handleChange} className={inputClasses} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <select name="industry" value={form.industry} onChange={handleChange} className={inputClasses}>
+        <select name="industry" aria-label="Industry" value={form.industry} onChange={handleChange} className={inputClasses}>
           <option value="">Select Industry</option>
           {INDUSTRIES.map((ind) => (
             <option key={ind.slug} value={ind.slug}>{ind.name}</option>
           ))}
         </select>
-        <input name="batteryType" placeholder="Battery Type (if known)" value={form.batteryType} onChange={handleChange} className={inputClasses} />
+        <input name="batteryType" aria-label="Battery Type" placeholder="Battery Type (if known)" value={form.batteryType} onChange={handleChange} className={inputClasses} />
       </div>
       <div>
-        <textarea name="message" rows={4} placeholder="Your Message *" value={form.message} onChange={handleChange} className={inputClasses} />
-        {errors.message && <p className="text-accent-red text-xs mt-1">{errors.message}</p>}
+        <textarea name="message" rows={4} aria-label="Your Message" aria-describedby={errors.message ? "message-error" : undefined} placeholder="Your Message *" value={form.message} onChange={handleChange} className={inputClasses} />
+        {errors.message && <p id="message-error" role="alert" className="text-accent-red text-xs mt-1">{errors.message}</p>}
       </div>
       <GlowButton type="submit" className="w-full">
         Send Message

@@ -47,29 +47,29 @@ export default function ServiceBookingForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <input name="name" placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
-          {errors.name && <p className="text-accent-red text-xs mt-1">{errors.name}</p>}
+          <input name="name" aria-label="Full Name" aria-describedby={errors.name ? "name-error" : undefined} placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
+          {errors.name && <p id="name-error" role="alert" className="text-accent-red text-xs mt-1">{errors.name}</p>}
         </div>
         <div>
-          <input name="phone" placeholder="Phone Number *" value={form.phone} onChange={handleChange} className={inputClasses} />
-          {errors.phone && <p className="text-accent-red text-xs mt-1">{errors.phone}</p>}
+          <input name="phone" aria-label="Phone Number" aria-describedby={errors.phone ? "phone-error" : undefined} placeholder="Phone Number *" value={form.phone} onChange={handleChange} className={inputClasses} />
+          {errors.phone && <p id="phone-error" role="alert" className="text-accent-red text-xs mt-1">{errors.phone}</p>}
         </div>
       </div>
-      <input name="company" placeholder="Company Name" value={form.company} onChange={handleChange} className={inputClasses} />
+      <input name="company" aria-label="Company Name" placeholder="Company Name" value={form.company} onChange={handleChange} className={inputClasses} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <select name="serviceType" value={form.serviceType} onChange={handleChange} className={inputClasses}>
+          <select name="serviceType" aria-label="Service Type" aria-describedby={errors.serviceType ? "serviceType-error" : undefined} value={form.serviceType} onChange={handleChange} className={inputClasses}>
             <option value="">Select Service *</option>
             {SERVICES.map((s) => (
               <option key={s.slug} value={s.slug}>{s.name}</option>
             ))}
           </select>
-          {errors.serviceType && <p className="text-accent-red text-xs mt-1">{errors.serviceType}</p>}
+          {errors.serviceType && <p id="serviceType-error" role="alert" className="text-accent-red text-xs mt-1">{errors.serviceType}</p>}
         </div>
-        <select name="batteryType" value={form.batteryType} onChange={handleChange} className={inputClasses}>
+        <select name="batteryType" aria-label="Battery Type" value={form.batteryType} onChange={handleChange} className={inputClasses}>
           <option value="">Battery Type (optional)</option>
           {PRODUCTS.map((p) => (
             <option key={p.slug} value={p.slug}>{p.shortName}</option>
@@ -77,10 +77,10 @@ export default function ServiceBookingForm() {
         </select>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input name="preferredDate" type="date" placeholder="Preferred Date" value={form.preferredDate} onChange={handleChange} className={inputClasses} />
-        <input name="location" placeholder="Location / Area" value={form.location} onChange={handleChange} className={inputClasses} />
+        <input name="preferredDate" type="date" aria-label="Preferred Date" placeholder="Preferred Date" value={form.preferredDate} onChange={handleChange} className={inputClasses} />
+        <input name="location" aria-label="Location" placeholder="Location / Area" value={form.location} onChange={handleChange} className={inputClasses} />
       </div>
-      <textarea name="message" rows={3} placeholder="Additional details" value={form.message} onChange={handleChange} className={inputClasses} />
+      <textarea name="message" rows={3} aria-label="Additional details" placeholder="Additional details" value={form.message} onChange={handleChange} className={inputClasses} />
       <GlowButton type="submit" className="w-full">
         Book Service
       </GlowButton>

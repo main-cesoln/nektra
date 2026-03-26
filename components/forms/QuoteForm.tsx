@@ -51,38 +51,38 @@ export default function QuoteForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <h3 className="font-heading text-lg font-bold text-heading mb-2">Your Details</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <input name="name" placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
-          {errors.name && <p className="text-accent-red text-xs mt-1">{errors.name}</p>}
+          <input name="name" aria-label="Full Name" aria-describedby={errors.name ? "name-error" : undefined} placeholder="Full Name *" value={form.name} onChange={handleChange} className={inputClasses} />
+          {errors.name && <p id="name-error" role="alert" className="text-accent-red text-xs mt-1">{errors.name}</p>}
         </div>
         <div>
-          <input name="email" type="email" placeholder="Email *" value={form.email} onChange={handleChange} className={inputClasses} />
-          {errors.email && <p className="text-accent-red text-xs mt-1">{errors.email}</p>}
+          <input name="email" type="email" aria-label="Email" aria-describedby={errors.email ? "email-error" : undefined} placeholder="Email *" value={form.email} onChange={handleChange} className={inputClasses} />
+          {errors.email && <p id="email-error" role="alert" className="text-accent-red text-xs mt-1">{errors.email}</p>}
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <input name="phone" placeholder="Phone *" value={form.phone} onChange={handleChange} className={inputClasses} />
-          {errors.phone && <p className="text-accent-red text-xs mt-1">{errors.phone}</p>}
+          <input name="phone" aria-label="Phone" aria-describedby={errors.phone ? "phone-error" : undefined} placeholder="Phone *" value={form.phone} onChange={handleChange} className={inputClasses} />
+          {errors.phone && <p id="phone-error" role="alert" className="text-accent-red text-xs mt-1">{errors.phone}</p>}
         </div>
         <div>
-          <input name="company" placeholder="Company Name *" value={form.company} onChange={handleChange} className={inputClasses} />
-          {errors.company && <p className="text-accent-red text-xs mt-1">{errors.company}</p>}
+          <input name="company" aria-label="Company Name" aria-describedby={errors.company ? "company-error" : undefined} placeholder="Company Name *" value={form.company} onChange={handleChange} className={inputClasses} />
+          {errors.company && <p id="company-error" role="alert" className="text-accent-red text-xs mt-1">{errors.company}</p>}
         </div>
       </div>
 
       <h3 className="font-heading text-lg font-bold text-heading mt-6 mb-2">Battery Requirements</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <select name="industry" value={form.industry} onChange={handleChange} className={inputClasses}>
+        <select name="industry" aria-label="Industry" value={form.industry} onChange={handleChange} className={inputClasses}>
           <option value="">Select Industry</option>
           {INDUSTRIES.map((ind) => (
             <option key={ind.slug} value={ind.slug}>{ind.name}</option>
           ))}
         </select>
-        <select name="batteryType" value={form.batteryType} onChange={handleChange} className={inputClasses}>
+        <select name="batteryType" aria-label="Battery Type" value={form.batteryType} onChange={handleChange} className={inputClasses}>
           <option value="">Select Battery Type</option>
           {PRODUCTS.map((p) => (
             <option key={p.slug} value={p.slug}>{p.shortName}</option>
@@ -90,18 +90,18 @@ export default function QuoteForm() {
         </select>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <input name="quantity" placeholder="Quantity" value={form.quantity} onChange={handleChange} className={inputClasses} />
-        <input name="voltage" placeholder="Voltage (V)" value={form.voltage} onChange={handleChange} className={inputClasses} />
-        <input name="capacity" placeholder="Capacity (Ah)" value={form.capacity} onChange={handleChange} className={inputClasses} />
+        <input name="quantity" aria-label="Quantity" placeholder="Quantity" value={form.quantity} onChange={handleChange} className={inputClasses} />
+        <input name="voltage" aria-label="Voltage" placeholder="Voltage (V)" value={form.voltage} onChange={handleChange} className={inputClasses} />
+        <input name="capacity" aria-label="Capacity" placeholder="Capacity (Ah)" value={form.capacity} onChange={handleChange} className={inputClasses} />
       </div>
-      <select name="timeline" value={form.timeline} onChange={handleChange} className={inputClasses}>
+      <select name="timeline" aria-label="Timeline" value={form.timeline} onChange={handleChange} className={inputClasses}>
         <option value="">Timeline</option>
         <option value="immediate">Immediate (within 1 week)</option>
         <option value="1-month">Within 1 month</option>
         <option value="3-months">Within 3 months</option>
         <option value="planning">Just planning / exploring</option>
       </select>
-      <textarea name="notes" rows={3} placeholder="Additional notes or requirements" value={form.notes} onChange={handleChange} className={inputClasses} />
+      <textarea name="notes" rows={3} aria-label="Additional notes" placeholder="Additional notes or requirements" value={form.notes} onChange={handleChange} className={inputClasses} />
       <GlowButton type="submit" className="w-full">
         Request Quote
       </GlowButton>
