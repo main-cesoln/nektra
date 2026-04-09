@@ -70,7 +70,7 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "#FFFFFF",
+          background: "#F7FDFE",
           position: "relative",
           overflow: "hidden",
         }}
@@ -82,7 +82,7 @@ export default async function Image() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "5px",
+            height: "6px",
             background:
               "linear-gradient(90deg, #00E5FF 0%, #00B8D4 60%, #0091EA 100%)",
           }}
@@ -97,54 +97,43 @@ export default async function Image() {
             width: "100%",
             height: "100%",
             background:
-              "radial-gradient(circle at 20% 50%, rgba(0,229,255,0.04) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0,229,255,0.03) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(0,184,212,0.05) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0,184,212,0.04) 0%, transparent 50%)",
           }}
         />
 
         {/* Logo */}
         <img
           src={logoBase64}
-          width={500}
-          height={199}
+          width={700}
+          height={278}
           style={{
-            marginBottom: "32px",
+            marginBottom: "18px",
           }}
         />
 
         {/* Tagline */}
         <span
           style={{
-            fontSize: "28px",
+            fontSize: "38px",
             fontFamily: spaceGroteskMedium ? "Space Grotesk" : "sans-serif",
             fontWeight: 500,
             color: "#00B8D4",
-            marginBottom: "32px",
-            lineHeight: 1.4,
-            letterSpacing: "2px",
+            marginBottom: "20px",
+            lineHeight: 1.3,
+            letterSpacing: "2.5px",
           }}
         >
           Powering Industries. Enabling Reliability.
         </span>
 
-        {/* Separator */}
-        <div
-          style={{
-            width: "120px",
-            height: "3px",
-            background:
-              "linear-gradient(90deg, transparent, #00E5FF, transparent)",
-            marginBottom: "32px",
-          }}
-        />
-
         {/* Subtitle */}
         <span
           style={{
-            fontSize: "22px",
+            fontSize: "30px",
             fontFamily: spaceGroteskMedium ? "Space Grotesk" : "sans-serif",
             fontWeight: 500,
             color: "#374151",
-            marginBottom: "10px",
+            marginBottom: "12px",
           }}
         >
           Authorized Exide Industrial Battery Dealer
@@ -153,7 +142,7 @@ export default async function Image() {
         {/* Location */}
         <span
           style={{
-            fontSize: "18px",
+            fontSize: "24px",
             fontFamily: spaceGroteskMedium ? "Space Grotesk" : "sans-serif",
             fontWeight: 500,
             color: "#6B7280",
@@ -169,7 +158,7 @@ export default async function Image() {
             bottom: 0,
             left: 0,
             width: "100%",
-            height: "5px",
+            height: "6px",
             background:
               "linear-gradient(90deg, #0091EA 0%, #00B8D4 40%, #00E5FF 100%)",
           }}
