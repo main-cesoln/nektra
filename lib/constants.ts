@@ -27,8 +27,8 @@ export const HERO_ROTATING_TEXTS = [
 export const COMPANY: CompanyInfo = {
   name: "Nektra Energy Solutions",
   tagline: "Powering Industries. Enabling Reliability.",
-  phones: ["+91 9963739107", "+91 9246838235"],
-  whatsapp: "919963739107",
+  phones: ["+91 9187615904"],
+  whatsapp: "919187615904",
   email: "info@nektraenergy.com",
   address:
     "Chandanagar, Hyderabad, Telangana 500099",
@@ -1029,7 +1029,7 @@ export const SERVICES: Service[] = [
       {
         question: "Is emergency service available 24/7?",
         answer:
-          "Our emergency phone line (+91 9963739107 via WhatsApp) is monitored 24/7. Technician dispatch is available during extended hours; for after-midnight emergencies, we will schedule the earliest possible morning response.",
+          "Our emergency phone line (+91 9187615904 via WhatsApp) is monitored 24/7. Technician dispatch is available during extended hours; for after-midnight emergencies, we will schedule the earliest possible morning response.",
       },
       {
         question: "What if you don't have the exact battery in stock?",
@@ -1510,7 +1510,7 @@ Exide manufactures complete ranges in both standards:
 
 ## Still Unsure?
 
-Send us a photo of your battery label and forklift model number, and our team will identify the exact replacement you need — free of charge. Call +91 9963739107 or WhatsApp us.`,
+Send us a photo of your battery label and forklift model number, and our team will identify the exact replacement you need — free of charge. Call +91 9187615904 or WhatsApp us.`,
     date: "2025-09-18",
     readTime: "5 min read",
     category: "Technical",
@@ -1608,7 +1608,7 @@ For Hyderabad and Telangana businesses, our technicians are on-site within 24 ho
 
 We recommend printing this checklist and posting it in your battery charging room. Assign responsibilities to specific team members and review compliance monthly. The small investment of time pays off in dramatically extended battery life and reduced replacement costs.
 
-Contact Nektra Energy Solutions at +91 9963739107 for a free battery fleet assessment and customized maintenance schedule.`,
+Contact Nektra Energy Solutions at +91 9187615904 for a free battery fleet assessment and customized maintenance schedule.`,
     date: "2025-06-15",
     readTime: "6 min read",
     category: "Maintenance Guides",
@@ -1715,7 +1715,7 @@ When you contact Nektra Energy Solutions for UPS battery replacement, here is wh
 
 ## Get a Free Assessment
 
-Nektra Energy Solutions offers free UPS battery assessments for businesses across Hyderabad. Our engineers will test your existing batteries, document their health status, and recommend the most cost-effective replacement strategy. Call +91 9963739107 or WhatsApp us for a same-week appointment.`,
+Nektra Energy Solutions offers free UPS battery assessments for businesses across Hyderabad. Our engineers will test your existing batteries, document their health status, and recommend the most cost-effective replacement strategy. Call +91 9187615904 or WhatsApp us for a same-week appointment.`,
     date: "2025-07-22",
     readTime: "6 min read",
     category: "Buying Guides",
@@ -1819,7 +1819,7 @@ The decision framework is straightforward:
 
 ## Expert Consultation
 
-Not sure which technology fits your application? Nektra Energy Solutions provides free technical consultations for businesses across Hyderabad and Telangana. With 35+ years of experience selling and servicing Exide industrial batteries, we can assess your operational requirements and recommend the most cost-effective solution. Contact us at +91 9963739107.`,
+Not sure which technology fits your application? Nektra Energy Solutions provides free technical consultations for businesses across Hyderabad and Telangana. With 35+ years of experience selling and servicing Exide industrial batteries, we can assess your operational requirements and recommend the most cost-effective solution. Contact us at +91 9187615904.`,
     date: "2025-08-10",
     readTime: "6 min read",
     category: "Battery Technology",
@@ -1927,7 +1927,7 @@ Nektra Energy Solutions supplies Exide batteries to telecom tower operators acro
 - **AMC services** with scheduled visits to remote tower sites
 - **Old battery buyback** with environmentally compliant recycling
 
-Contact our telecom battery specialists at +91 9963739107 for volume pricing and site assessments.`,
+Contact our telecom battery specialists at +91 9187615904 for volume pricing and site assessments.`,
     date: "2025-09-05",
     readTime: "6 min read",
     category: "Industry Insights",
@@ -2046,7 +2046,7 @@ While Nektra Energy Solutions specializes in industrial batteries rather than so
 - **AMC for battery maintenance** ensuring maximum cycle life from your investment
 - **Battery replacement and recycling** when the time comes
 
-Partner with us for the storage side of your solar installation. Call +91 9963739107 for a consultation.`,
+Partner with us for the storage side of your solar installation. Call +91 9187615904 for a consultation.`,
     date: "2025-10-18",
     readTime: "6 min read",
     category: "Industry Insights",
@@ -2169,7 +2169,7 @@ These 10 practices are only effective if they become part of your daily routine.
 
 ## Nektra's Safety Support
 
-Nektra Energy Solutions provides battery safety training for warehouse teams across Hyderabad as part of our service commitment. We also supply safety equipment including acid-resistant PPE, spill kits, and single-point watering systems that reduce acid exposure during maintenance. Contact us at +91 9963739107 to schedule a safety assessment of your battery charging facility.`,
+Nektra Energy Solutions provides battery safety training for warehouse teams across Hyderabad as part of our service commitment. We also supply safety equipment including acid-resistant PPE, spill kits, and single-point watering systems that reduce acid exposure during maintenance. Contact us at +91 9187615904 to schedule a safety assessment of your battery charging facility.`,
     date: "2025-11-20",
     readTime: "6 min read",
     category: "Maintenance Guides",
@@ -2311,7 +2311,7 @@ The results show that despite significant price differences, the TCO per cycle i
 
 ## Free TCO Analysis from Nektra
 
-Nektra Energy Solutions offers a complimentary TCO analysis for fleet operators across Hyderabad and Telangana. We will assess your current fleet, calculate the economics for each battery option, and present a clear recommendation backed by numbers. Call +91 9963739107 to schedule your consultation.`,
+Nektra Energy Solutions offers a complimentary TCO analysis for fleet operators across Hyderabad and Telangana. We will assess your current fleet, calculate the economics for each battery option, and present a clear recommendation backed by numbers. Call +91 9187615904 to schedule your consultation.`,
     date: "2025-12-05",
     readTime: "7 min read",
     category: "Buying Guides",
@@ -2429,7 +2429,7 @@ Nektra Energy Solutions is Hyderabad's leading supplier of CEIL Gel batteries fo
 - **AMC services** including quarterly health checks
 - **Regulatory compliance documentation** for GMP and FSSAI audits
 
-Contact us at +91 9963739107 for a site assessment and quotation.`,
+Contact us at +91 9187615904 for a site assessment and quotation.`,
     date: "2026-01-12",
     readTime: "6 min read",
     category: "Battery Technology",
@@ -2583,7 +2583,7 @@ Nektra Energy Solutions offers a free battery fleet assessment for any Hyderabad
 3. Document current condition with photographs
 4. Provide a customized AMC proposal with pricing
 
-There is no obligation, and the assessment itself provides valuable information about your fleet's health. Call +91 9963739107 or WhatsApp us to schedule.`,
+There is no obligation, and the assessment itself provides valuable information about your fleet's health. Call +91 9187615904 or WhatsApp us to schedule.`,
     date: "2026-02-08",
     readTime: "7 min read",
     category: "Buying Guides",
@@ -2744,7 +2744,7 @@ Nektra Energy Solutions partners with warehouse operators throughout the electri
 - **AMC for ongoing maintenance**: Maximize your battery investment's lifespan
 - **Training**: Operator and maintenance team training at your facility
 
-Contact us at +91 9963739107 to start planning your warehouse electrification.`,
+Contact us at +91 9187615904 to start planning your warehouse electrification.`,
     date: "2026-02-25",
     readTime: "7 min read",
     category: "Industry Insights",
@@ -2909,7 +2909,7 @@ Nektra Energy Solutions helps Hyderabad businesses optimize their charging pract
 - **AMC services** that include charger function verification
 - **Training** for operators and maintenance teams on proper charging protocols
 
-Proper charging is the highest-ROI investment you can make in battery life. Contact us at +91 9963739107 for a charging infrastructure assessment.`,
+Proper charging is the highest-ROI investment you can make in battery life. Contact us at +91 9187615904 for a charging infrastructure assessment.`,
     date: "2026-03-05",
     readTime: "7 min read",
     category: "Maintenance Guides",
@@ -3039,7 +3039,7 @@ Nektra Energy Solutions has served Hyderabad's industrial battery needs for over
 - **AMC with 5-year warranty**: The most comprehensive warranty coverage available in the region
 - **Emergency service**: 4-hour response for AMC customers in Hyderabad
 
-Visit us at Chandanagar, Hyderabad, or call +91 9963739107. We are here to ensure your battery investment delivers maximum value.`,
+Visit us at Chandanagar, Hyderabad, or call +91 9187615904. We are here to ensure your battery investment delivers maximum value.`,
     date: "2026-03-15",
     readTime: "7 min read",
     category: "Buying Guides",
@@ -3100,7 +3100,7 @@ export const FAQS: FAQItem[] = [
   {
     question: "What are your business hours?",
     answer:
-      "We are open Monday through Saturday, 9:00 AM to 8:00 PM. For emergency battery service, you can reach us on our WhatsApp number +91 9963739107 outside business hours.",
+      "We are open Monday through Saturday, 9:00 AM to 8:00 PM. For emergency battery service, you can reach us on our WhatsApp number +91 9187615904 outside business hours.",
     category: "General",
   },
   {

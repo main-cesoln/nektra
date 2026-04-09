@@ -12,7 +12,7 @@ import { COMPANY, SERVICE_AREAS, PRODUCTS, SERVICES } from "@/lib/constants";
 export const metadata: Metadata = generatePageMetadata({
   title: "Exide Industrial Battery Dealer in Hyderabad",
   description:
-    "Authorized Exide industrial battery dealer in Hyderabad, Telangana. 35+ years experience, free installation, AMC with 5-year warranty. Serving all of Hyderabad and Telangana. Call +91 9963739107.",
+    "Authorized Exide industrial battery dealer in Hyderabad, Telangana. 35+ years experience, free installation, AMC with 5-year warranty. Serving all of Hyderabad and Telangana. Call +91 9187615904.",
   path: "/battery-dealer-hyderabad",
 });
 

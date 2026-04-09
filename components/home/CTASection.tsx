@@ -8,7 +8,7 @@ export default function CTASection() {
       primaryLabel="Get a Quote"
       primaryHref="/get-quote"
       secondaryLabel="WhatsApp Us"
-      secondaryHref="https://wa.me/919963739107"
+      secondaryHref="https://wa.me/919187615904"
     />
   );
 }
