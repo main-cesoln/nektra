@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 export const alt =
   "Nektra Energy Solutions — Authorized Exide Industrial Battery Dealer in Hyderabad";
@@ -6,6 +8,11 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  // Read logo as base64
+  const logoData = readFileSync(join(process.cwd(), "logo", "nektra-logo.png"));
+  const logoBase64 = `data:image/png;base64,${logoData.toString("base64")}`;
+
+  // Load fonts
   const [syneBold, spaceGroteskMedium] = await Promise.all([
     fetch(
       "https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap",
@@ -37,10 +44,21 @@ export default async function Image() {
       }),
   ]);
 
-  const fonts: { name: string; data: ArrayBuffer; style: "normal"; weight: 700 | 500 }[] = [];
-  if (syneBold) fonts.push({ name: "Syne", data: syneBold, style: "normal", weight: 700 });
+  const fonts: {
+    name: string;
+    data: ArrayBuffer;
+    style: "normal";
+    weight: 700 | 500;
+  }[] = [];
+  if (syneBold)
+    fonts.push({ name: "Syne", data: syneBold, style: "normal", weight: 700 });
   if (spaceGroteskMedium)
-    fonts.push({ name: "Space Grotesk", data: spaceGroteskMedium, style: "normal", weight: 500 });
+    fonts.push({
+      name: "Space Grotesk",
+      data: spaceGroteskMedium,
+      style: "normal",
+      weight: 500,
+    });
 
   return new ImageResponse(
     (
@@ -51,9 +69,8 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "flex-start",
-          padding: "60px 80px",
-          background: "linear-gradient(135deg, #0A0A0F 0%, #14141F 50%, #1A1A2E 100%)",
+          alignItems: "center",
+          background: "#FFFFFF",
           position: "relative",
           overflow: "hidden",
         }}
@@ -65,122 +82,58 @@ export default async function Image() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "4px",
-            background: "linear-gradient(90deg, #00E5FF 0%, #00E5FF 60%, transparent 100%)",
+            height: "5px",
+            background:
+              "linear-gradient(90deg, #00E5FF 0%, #00B8D4 60%, #0091EA 100%)",
           }}
         />
 
-        {/* Radial glow behind logo area */}
+        {/* Subtle background pattern */}
         <div
           style={{
             position: "absolute",
-            top: "120px",
-            left: "20px",
-            width: "400px",
-            height: "400px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%)",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "radial-gradient(circle at 20% 50%, rgba(0,229,255,0.04) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0,229,255,0.03) 0%, transparent 50%)",
           }}
         />
 
-        {/* Subtle corner accent */}
-        <div
+        {/* Logo */}
+        <img
+          src={logoBase64}
+          width={500}
+          height={199}
           style={{
-            position: "absolute",
-            bottom: "-100px",
-            right: "-100px",
-            width: "400px",
-            height: "400px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0,229,255,0.05) 0%, transparent 70%)",
+            marginBottom: "32px",
           }}
         />
-
-        {/* Logo + Company Name row */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "28px",
-            marginBottom: "24px",
-          }}
-        >
-          {/* Lightning bolt logo */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "80px",
-              height: "80px",
-              borderRadius: "18px",
-              background: "#0A0A0F",
-              border: "2px solid rgba(0,229,255,0.3)",
-              boxShadow: "0 0 30px rgba(0,229,255,0.15)",
-              flexShrink: 0,
-            }}
-          >
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 512 512"
-              fill="none"
-            >
-              <path
-                d="M280 48L144 288h104l-32 176 168-256H272l40-160z"
-                fill="#00E5FF"
-                stroke="#00E5FF"
-                strokeWidth="8"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          {/* Company name */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "2px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "52px",
-                fontFamily: syneBold ? "Syne" : "sans-serif",
-                fontWeight: 700,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-1px",
-              }}
-            >
-              Nektra Energy Solutions
-            </span>
-          </div>
-        </div>
 
         {/* Tagline */}
         <span
           style={{
-            fontSize: "26px",
+            fontSize: "28px",
             fontFamily: spaceGroteskMedium ? "Space Grotesk" : "sans-serif",
             fontWeight: 500,
-            color: "#00E5FF",
-            marginBottom: "28px",
+            color: "#00B8D4",
+            marginBottom: "32px",
             lineHeight: 1.4,
+            letterSpacing: "2px",
           }}
         >
           Powering Industries. Enabling Reliability.
         </span>
 
-        {/* Separator line */}
+        {/* Separator */}
         <div
           style={{
-            width: "200px",
-            height: "2px",
-            background: "linear-gradient(90deg, #00E5FF, transparent)",
-            marginBottom: "28px",
+            width: "120px",
+            height: "3px",
+            background:
+              "linear-gradient(90deg, transparent, #00E5FF, transparent)",
+            marginBottom: "32px",
           }}
         />
 
@@ -190,8 +143,8 @@ export default async function Image() {
             fontSize: "22px",
             fontFamily: spaceGroteskMedium ? "Space Grotesk" : "sans-serif",
             fontWeight: 500,
-            color: "#9CA3AF",
-            marginBottom: "8px",
+            color: "#374151",
+            marginBottom: "10px",
           }}
         >
           Authorized Exide Industrial Battery Dealer
@@ -206,7 +159,7 @@ export default async function Image() {
             color: "#6B7280",
           }}
         >
-          Hyderabad, Telangana
+          Hyderabad, Telangana • 35+ Years of Expertise
         </span>
 
         {/* Bottom accent bar */}
@@ -216,8 +169,9 @@ export default async function Image() {
             bottom: 0,
             left: 0,
             width: "100%",
-            height: "2px",
-            background: "linear-gradient(90deg, transparent 0%, #00E5FF 50%, transparent 100%)",
+            height: "5px",
+            background:
+              "linear-gradient(90deg, #0091EA 0%, #00B8D4 40%, #00E5FF 100%)",
           }}
         />
       </div>
