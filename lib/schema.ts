@@ -12,7 +12,7 @@ export function organizationSchema() {
     email: COMPANY.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Chandanagar",
+      streetAddress: "No. 4-94 & 95, Plot No. 2, Survey No. 361 & 361/1, PJR Stadium Road, Chandanagar, Serilingampally",
       addressLocality: COMPANY.city,
       addressRegion: COMPANY.state,
       postalCode: COMPANY.pincode,
