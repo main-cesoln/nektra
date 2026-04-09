@@ -14,6 +14,23 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Contact Nektra Energy Solutions for Exide industrial battery enquiries, service booking, and quotes. Chandanagar, Hyderabad. Call +91 9187615904. Free consultation.",
   path: "/contact",
+  keywords: [
+    "contact battery dealer Hyderabad",
+    "Exide dealer phone number Hyderabad",
+    "forklift battery enquiry",
+    "battery quotation Hyderabad",
+    "battery dealer Chandanagar",
+    "industrial battery dealer near me",
+    "book battery service Hyderabad",
+    "forklift battery free consultation",
+    "battery dealer contact Telangana",
+    "Nektra Energy Solutions contact",
+    "forklift battery best price enquiry",
+    "get battery quotation best offer",
+    "Exide dealer price enquiry Hyderabad",
+    "cheap battery quote Hyderabad",
+    "battery sales enquiry Telangana",
+  ],
 });
 
 export default function ContactPage() {

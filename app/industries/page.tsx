@@ -16,6 +16,16 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Industrial battery solutions for pharmaceutical, manufacturing, logistics, food processing, steel, construction, airports, e-commerce, automotive, and textile industries in Hyderabad.",
   path: "/industries",
+  keywords: [
+    "industrial battery solutions by industry",
+    "pharma warehouse battery Hyderabad",
+    "warehouse battery solution Telangana",
+    "cold storage forklift battery",
+    "food processing battery FSSAI",
+    "cement factory battery dealer",
+    "e-commerce warehouse battery Hyderabad",
+    "material handling battery Hyderabad",
+  ],
 });
 
 export default function IndustriesPage() {

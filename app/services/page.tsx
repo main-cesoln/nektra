@@ -17,6 +17,24 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Expert industrial battery services in Hyderabad: free installation, free diagnostics, AMC with 5-year warranty, and emergency response across Telangana. Call now.",
   path: "/services",
+  keywords: [
+    "battery AMC service Hyderabad",
+    "battery AMC price Telangana",
+    "forklift battery testing service",
+    "battery diagnostics Hyderabad",
+    "battery replacement service Hyderabad",
+    "forklift battery maintenance Hyderabad",
+    "battery water topping service",
+    "onsite battery service Telangana",
+    "doorstep battery delivery Hyderabad",
+    "battery preventive maintenance",
+    "industrial battery service near me",
+    "battery service best price Telangana",
+    "affordable battery maintenance plan",
+    "battery AMC best offer Hyderabad",
+    "free battery installation offer",
+    "battery service dealer price",
+  ],
 });
 
 export default function ServicesPage() {

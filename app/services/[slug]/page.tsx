@@ -22,6 +22,53 @@ export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
 
+const SERVICE_KEYWORDS: Record<string, string[]> = {
+  "battery-installation": [
+    "free battery installation", "battery fitment service",
+    "forklift battery setup", "battery commissioning service", "battery connector installation",
+    "Exide battery installation Telangana",
+  ],
+  "testing-diagnostics": [
+    "forklift battery diagnostics", "battery health check",
+    "battery load testing", "cell voltage measurement", "specific gravity testing battery",
+    "free battery testing Hyderabad", "battery capacity test",
+  ],
+  "battery-replacement": [
+    "forklift battery replacement Hyderabad", "battery replacement service near me",
+    "old forklift battery replacement",
+    "battery end of life replacement", "forklift battery upgrade",
+  ],
+  "old-battery-exchange": [
+    "battery buy back Hyderabad", "used battery exchange value",
+    "battery scrap dealer Hyderabad", "battery recycling Telangana", "trade in old forklift battery",
+    "best price old battery exchange", "highest buy back value battery",
+  ],
+  "doorstep-delivery": [
+    "battery delivery Hyderabad", "industrial battery delivery Telangana",
+    "forklift battery doorstep delivery", "free battery delivery Hyderabad",
+  ],
+  "emergency-service": [
+    "emergency battery service Hyderabad", "urgent forklift battery repair",
+    "same day battery service Telangana", "24/7 battery emergency", "forklift breakdown battery service",
+  ],
+  "amc": [
+    "battery annual maintenance contract", "battery AMC price",
+    "forklift battery AMC Telangana", "battery preventive maintenance plan",
+    "5 year battery warranty AMC", "battery maintenance contract cost",
+    "cheapest battery AMC Hyderabad", "battery AMC best offer", "affordable battery AMC plan",
+    "battery AMC dealer price Telangana",
+  ],
+  "equalizing-charge": [
+    "equalizing charge service Hyderabad", "battery cell balancing service",
+    "forklift battery sulphation repair", "battery reconditioning service",
+    "deep charge service forklift battery",
+  ],
+  "onsite-service": [
+    "onsite battery service Hyderabad", "battery technician visit Telangana",
+    "forklift battery repair onsite", "industrial battery service at location",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
@@ -32,6 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? service.description
       : service.description.slice(0, service.description.lastIndexOf(" ", 157)) + "...",
     path: `/services/${service.slug}`,
+    keywords: SERVICE_KEYWORDS[service.slug],
   });
 }
 

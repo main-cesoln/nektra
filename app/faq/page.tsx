@@ -15,6 +15,20 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Frequently asked questions about Exide industrial batteries, warranty, AMC, DIN vs BS standards, gel vs flooded, and maintenance. Hyderabad's trusted battery experts.",
   path: "/faq",
+  keywords: [
+    "forklift battery FAQ",
+    "Exide battery warranty details",
+    "battery sulphation repair",
+    "forklift battery life expectancy",
+    "battery overheating forklift",
+    "DIN vs BS battery difference",
+    "gel vs flooded battery which is better",
+    "forklift battery water topping frequency",
+    "battery AMC worth it",
+    "forklift battery replacement signs",
+    "industrial battery troubleshooting",
+    "Exide battery price range",
+  ],
 });
 
 const categories = ["General", "Products", "Services", "Warranty", "Technical"] as const;
