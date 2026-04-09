@@ -12,7 +12,7 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Navigation } from "lucide-re
 export const metadata: Metadata = generatePageMetadata({
   title: "Contact Exide Battery Dealer Hyderabad",
   description:
-    "Contact Nektra Energy Solutions for Exide industrial battery enquiries, service booking, and quotes. Chandanagar, Hyderabad. Call +91 9963739107. Free consultation.",
+    "Contact Nektra Energy Solutions for Exide industrial battery enquiries, service booking, and quotes. Chandanagar, Hyderabad. Call +91 9187615904. Free consultation.",
   path: "/contact",
 });
 

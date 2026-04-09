@@ -57,7 +57,7 @@ export default function FAQPage() {
         primaryLabel="Contact Us"
         primaryHref="/contact"
         secondaryLabel="WhatsApp Us"
-        secondaryHref="https://wa.me/919963739107"
+        secondaryHref="https://wa.me/919187615904"
       />
     </>
   );
