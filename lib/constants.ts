@@ -31,12 +31,12 @@ export const COMPANY: CompanyInfo = {
   whatsapp: "919187615904",
   email: "info@nektraenergy.com",
   address:
-    "Chandanagar, Hyderabad, Telangana 500099",
+    "No. 4-94 & 95, Plot No. 2, Survey No. 361 & 361/1, PJR Stadium Road, Chandanagar, Serilingampally, Hyderabad - 500050, Telangana",
   city: "Hyderabad",
   state: "Telangana",
-  pincode: "500099",
+  pincode: "500050",
   hours: "Mon-Sat 9:00 AM - 8:00 PM",
-  coordinates: { lat: 17.4933, lng: 78.3222 },
+  coordinates: { lat: 17.494350, lng: 78.325026 },
   url: "https://nektraenergy.com",
   twitter: "@nektraenergy",
   socials: [
@@ -3039,7 +3039,7 @@ Nektra Energy Solutions has served Hyderabad's industrial battery needs for over
 - **AMC with 5-year warranty**: The most comprehensive warranty coverage available in the region
 - **Emergency service**: 4-hour response for AMC customers in Hyderabad
 
-Visit us at Chandanagar, Hyderabad, or call +91 9187615904. We are here to ensure your battery investment delivers maximum value.`,
+Visit us at Chandanagar, Serilingampally, Hyderabad, or call +91 9187615904. We are here to ensure your battery investment delivers maximum value.`,
     date: "2026-03-15",
     readTime: "7 min read",
     category: "Buying Guides",
