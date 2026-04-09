@@ -12,6 +12,7 @@ interface PageSEO {
   publishedTime?: string;
   modifiedTime?: string;
   section?: string;
+  keywords?: string[];
 }
 
 export function generatePageMetadata({
@@ -23,12 +24,14 @@ export function generatePageMetadata({
   publishedTime,
   modifiedTime,
   section,
+  keywords,
 }: PageSEO): Metadata {
   const url = `${baseUrl}${path}`;
 
   return {
     title,
     description,
+    keywords,
     alternates: {
       canonical: url,
     },

@@ -17,6 +17,18 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Learn about Nektra Energy Solutions, authorized Exide industrial battery dealer in Hyderabad with 35+ years of experience serving 10+ industries across Telangana.",
   path: "/about",
+  keywords: [
+    "Nektra Energy Solutions",
+    "about Nektra Energy",
+    "Exide authorized dealer Hyderabad",
+    "industrial battery company Hyderabad",
+    "trusted battery dealer Telangana",
+    "forklift battery expert Hyderabad",
+    "35 years battery experience",
+    "Exide dealer since 1989",
+    "battery dealer 500 clients",
+    "Pan-Telangana battery dealer",
+  ],
 });
 
 export default function AboutPage() {

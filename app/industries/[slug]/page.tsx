@@ -22,6 +22,51 @@ export function generateStaticParams() {
   return INDUSTRIES.map((ind) => ({ slug: ind.slug }));
 }
 
+const INDUSTRY_KEYWORDS: Record<string, string[]> = {
+  "pharmaceutical": [
+    "pharma warehouse forklift battery", "clean room battery solution", "GMP compliant forklift battery",
+    "gel battery for pharmaceutical", "hospital logistics battery", "healthcare forklift battery Hyderabad",
+    "emission free forklift battery", "drug manufacturing battery solution",
+  ],
+  "engineering-manufacturing": [
+    "manufacturing plant forklift battery", "heavy duty factory battery", "multi-shift manufacturing battery",
+    "production line forklift battery", "engineering works battery dealer", "factory forklift battery Hyderabad",
+  ],
+  "warehouse-logistics": [
+    "warehouse forklift battery Hyderabad", "logistics centre battery", "reach truck battery warehouse",
+    "pallet jack battery dealer", "order picker battery", "multi-shift warehouse battery",
+    "3PL warehouse battery solution", "supply chain battery Telangana",
+  ],
+  "food-beverage": [
+    "food processing forklift battery", "FSSAI compliant battery", "cold storage battery solution",
+    "beverage plant forklift battery", "spill proof battery food industry", "dairy plant battery Hyderabad",
+  ],
+  "steel-metal": [
+    "steel plant forklift battery", "foundry battery dealer Hyderabad", "metal industry battery solution",
+    "high temperature forklift battery", "heavy load battery steel plant", "corrosion resistant traction battery",
+  ],
+  "cement-construction": [
+    "cement plant forklift battery", "construction site battery dealer", "dust resistant forklift battery",
+    "heavy duty battery cement industry", "building material handling battery",
+  ],
+  "airports-aviation": [
+    "airport ground support battery", "baggage tractor battery", "aviation GSE battery",
+    "pushback tug battery", "airport forklift battery Hyderabad", "ground handling equipment battery",
+  ],
+  "ecommerce-distribution": [
+    "e-commerce warehouse battery", "distribution centre forklift battery", "fulfilment centre battery",
+    "rapid cycle forklift battery", "peak season warehouse battery", "fast charge battery e-commerce",
+  ],
+  "automotive": [
+    "automotive plant forklift battery", "assembly line battery dealer", "JIT manufacturing battery",
+    "auto factory forklift battery Hyderabad", "OEM grade traction battery",
+  ],
+  "paper-textile": [
+    "paper mill forklift battery", "textile mill battery dealer", "heavy roll handling battery",
+    "humid environment forklift battery", "bale handling forklift battery",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const industry = INDUSTRIES.find((ind) => ind.slug === slug);
@@ -30,6 +75,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${industry.name} — Industrial Battery Solutions Hyderabad`,
     description: `${industry.name} battery solutions in Hyderabad. ${industry.description.slice(0, 120)}`,
     path: `/industries/${industry.slug}`,
+    keywords: INDUSTRY_KEYWORDS[industry.slug],
   });
 }
 

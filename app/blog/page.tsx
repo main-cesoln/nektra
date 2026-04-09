@@ -12,6 +12,21 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Expert articles on forklift batteries, maintenance tips, DIN vs BS standards, gel vs flooded comparisons, and industry insights from Hyderabad's trusted Exide dealer.",
   path: "/blog",
+  keywords: [
+    "forklift battery guide",
+    "industrial battery maintenance tips",
+    "DIN vs BS battery standards",
+    "gel vs flooded battery comparison",
+    "how to choose forklift battery",
+    "forklift battery life expectancy",
+    "battery sulphation prevention",
+    "forklift battery charging best practices",
+    "industrial battery ROI",
+    "forklift battery safety tips",
+    "battery AMC explained",
+    "warehouse electrification guide",
+    "forklift battery cost per cycle",
+  ],
 });
 
 export default function BlogPage() {

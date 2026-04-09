@@ -25,6 +25,55 @@ export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
+const PRODUCT_KEYWORDS: Record<string, string[]> = {
+  "motive-power-flooded-tubular": [
+    "flooded tubular battery Hyderabad", "IPzS battery dealer", "IPzB traction battery",
+    "BS standard forklift battery", "Exide motive power battery",
+    "1500 cycle forklift battery", "forklift battery for warehouse", "lead acid traction battery",
+    "5% antimony tubular battery", "forklift battery for Jungheinrich", "Toyota forklift battery Hyderabad",
+    "multi-shift forklift battery",
+    "flooded tubular battery best price", "Exide tubular battery dealer price",
+    "cheap traction battery Hyderabad", "buy flooded battery best offer",
+  ],
+  "motive-power-gel": [
+    "CEIL gel battery Hyderabad", "gel forklift battery India", "VRLA traction battery",
+    "maintenance free forklift battery", "sealed battery for forklift", "gel battery for cold storage",
+    "gel battery for pharma warehouse", "zero maintenance battery forklift", "clean room forklift battery",
+    "food processing forklift battery", "spill proof forklift battery", "gel battery price India",
+    "CEIL gel battery best price", "gel battery lowest price Hyderabad",
+    "buy gel battery best offer", "cheap gel battery India",
+  ],
+  "hsp-classic": [
+    "HSP Classic battery Exide", "HSP traction battery", "standard duty forklift battery",
+    "12 month warranty forklift battery", "single shift forklift battery", "budget forklift battery Hyderabad",
+    "Exide HSP battery price", "light duty forklift battery", "small warehouse forklift battery",
+    "cheapest forklift battery Hyderabad", "HSP battery best price", "affordable forklift battery India",
+    "low cost traction battery", "HSP battery dealer price",
+  ],
+  "gen-x": [
+    "Gen-X battery Exide", "15% extra capacity battery", "next gen forklift battery",
+    "multi-shift battery Hyderabad", "high capacity forklift battery", "fast charging forklift battery",
+    "24/7 operation forklift battery", "heavy duty traction battery", "extended run time forklift battery",
+    "Red Lead Grey Oxide battery", "deep discharge forklift battery",
+    "Gen-X battery best price", "Gen-X battery dealer price Hyderabad", "buy Gen-X battery best offer",
+  ],
+  "bci-range": [
+    "BCI battery India", "American standard forklift battery",
+    "Hyster forklift battery dealer", "Yale forklift battery India", "BCI format battery Hyderabad",
+    "imported forklift battery", "US brand forklift battery India",
+    "BCI battery best price India", "American forklift battery dealer price",
+    "buy BCI battery best offer Hyderabad",
+  ],
+  "accessories": [
+    "single point watering system battery",
+    "electrolyte circulation system", "battery watering monitor", "smart clamp battery",
+    "forklift battery BMS", "battery fleet management", "battery maintenance accessories",
+    "battery water level indicator", "forklift battery charger accessories",
+    "battery accessories best price", "buy battery monitoring system best offer",
+    "cheap battery watering system", "battery accessories dealer price",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = PRODUCTS.find((p) => p.slug === slug);
@@ -35,6 +84,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? product.description
       : product.description.slice(0, product.description.lastIndexOf(" ", 157)) + "...",
     path: `/products/${product.slug}`,
+    keywords: PRODUCT_KEYWORDS[product.slug],
   });
 }
 
