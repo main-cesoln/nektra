@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { validatePhone, validateRequired } from "@/lib/validation";
 import { inputClasses } from "@/lib/styles";
 import { SERVICES, PRODUCTS } from "@/lib/constants";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import GlowButton from "@/components/ui/GlowButton";
 import FormSuccessMessage from "./FormSuccessMessage";
 
@@ -39,11 +40,30 @@ export default function ServiceBookingForm() {
       setErrors(newErrors);
       return;
     }
+
+    const serviceName = SERVICES.find((s) => s.slug === form.serviceType)?.name;
+    const batteryName = PRODUCTS.find((p) => p.slug === form.batteryType)?.shortName;
+    const url = buildWhatsAppUrl("New Service Booking from Nektra Website", [
+      { label: "Name", value: form.name },
+      { label: "Phone", value: form.phone },
+      { label: "Company", value: form.company },
+      { label: "Service", value: serviceName },
+      { label: "Battery Type", value: batteryName },
+      { label: "Preferred Date", value: form.preferredDate },
+      { label: "Location", value: form.location },
+      { label: "Details", value: form.message },
+    ]);
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
   if (submitted) {
-    return <FormSuccessMessage heading="Service Booked!" message="Our team will confirm your appointment shortly." />;
+    return (
+      <FormSuccessMessage
+        heading="Opening WhatsApp…"
+        message="Tap Send in WhatsApp to confirm your booking. If WhatsApp didn't open, please call +91 9187615904."
+      />
+    );
   }
 
   return (
