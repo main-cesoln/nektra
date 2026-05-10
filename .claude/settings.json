@@ -10,7 +10,14 @@
       "Bash(python3 -c \"from PIL import Image; img=Image.open\\(''/home/bharath/Projects/nektra/public/images/exide-logo.webp''\\); print\\(f''Dimensions: {img.size}''\\)\")",
       "Bash(npm run:*)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(identify /home/bharath/Projects/nektra/logo/nektra-logo.png)",
+      "Bash(npx next:*)",
+      "Bash(curl -s -o /tmp/og-preview.png -w \"%{http_code} %{size_download}\" http://localhost:3099/opengraph-image)",
+      "Read(//tmp/**)",
+      "Bash(kill %1)",
+      "Skill(commit-commands:commit-push-pr)",
+      "Skill(commit-commands:commit-push-pr:*)"
     ]
   }
 }

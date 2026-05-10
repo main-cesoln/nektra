@@ -4,8 +4,16 @@ import { useState, FormEvent } from "react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
 import { inputClasses } from "@/lib/styles";
 import { INDUSTRIES, PRODUCTS } from "@/lib/constants";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import GlowButton from "@/components/ui/GlowButton";
 import FormSuccessMessage from "./FormSuccessMessage";
+
+const TIMELINE_LABELS: Record<string, string> = {
+  immediate: "Immediate (within 1 week)",
+  "1-month": "Within 1 month",
+  "3-months": "Within 3 months",
+  planning: "Just planning / exploring",
+};
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -43,11 +51,33 @@ export default function QuoteForm() {
       setErrors(newErrors);
       return;
     }
+
+    const industryName = INDUSTRIES.find((i) => i.slug === form.industry)?.name;
+    const batteryName = PRODUCTS.find((p) => p.slug === form.batteryType)?.shortName;
+    const url = buildWhatsAppUrl("New Quote Request from Nektra Website", [
+      { label: "Name", value: form.name },
+      { label: "Email", value: form.email },
+      { label: "Phone", value: form.phone },
+      { label: "Company", value: form.company },
+      { label: "Industry", value: industryName },
+      { label: "Battery Type", value: batteryName },
+      { label: "Quantity", value: form.quantity },
+      { label: "Voltage", value: form.voltage },
+      { label: "Capacity", value: form.capacity },
+      { label: "Timeline", value: TIMELINE_LABELS[form.timeline] },
+      { label: "Notes", value: form.notes },
+    ]);
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
   if (submitted) {
-    return <FormSuccessMessage heading="Quote Request Received!" message="Our team will prepare a custom quote and contact you within 24 hours." />;
+    return (
+      <FormSuccessMessage
+        heading="Opening WhatsApp…"
+        message="Tap Send in WhatsApp to deliver your quote request. If WhatsApp didn't open, please call +91 9187615904."
+      />
+    );
   }
 
   return (

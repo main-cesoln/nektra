@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
 import { inputClasses } from "@/lib/styles";
 import { INDUSTRIES } from "@/lib/constants";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import GlowButton from "@/components/ui/GlowButton";
 import FormSuccessMessage from "./FormSuccessMessage";
 
@@ -40,11 +41,27 @@ export default function ContactForm() {
       return;
     }
 
+    const industryName = INDUSTRIES.find((i) => i.slug === form.industry)?.name;
+    const url = buildWhatsAppUrl("New Enquiry from Nektra Website", [
+      { label: "Name", value: form.name },
+      { label: "Email", value: form.email },
+      { label: "Phone", value: form.phone },
+      { label: "Company", value: form.company },
+      { label: "Industry", value: industryName },
+      { label: "Battery Type", value: form.batteryType },
+      { label: "Message", value: form.message },
+    ]);
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
   if (submitted) {
-    return <FormSuccessMessage heading="Message Sent!" message="We'll get back to you within 24 hours." />;
+    return (
+      <FormSuccessMessage
+        heading="Opening WhatsApp…"
+        message="Tap Send in WhatsApp to deliver your message. If WhatsApp didn't open, please call +91 9187615904."
+      />
+    );
   }
 
   return (
