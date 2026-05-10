@@ -3,17 +3,17 @@
 import { useState, FormEvent } from "react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
 import { inputClasses } from "@/lib/styles";
-import { INDUSTRIES, PRODUCTS } from "@/lib/constants";
+import { COMPANY, INDUSTRIES, PRODUCTS } from "@/lib/constants";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import GlowButton from "@/components/ui/GlowButton";
 import FormSuccessMessage from "./FormSuccessMessage";
 
-const TIMELINE_LABELS: Record<string, string> = {
-  immediate: "Immediate (within 1 week)",
-  "1-month": "Within 1 month",
-  "3-months": "Within 3 months",
-  planning: "Just planning / exploring",
-};
+const TIMELINE_OPTIONS = [
+  { value: "immediate", label: "Immediate (within 1 week)" },
+  { value: "1-month", label: "Within 1 month" },
+  { value: "3-months", label: "Within 3 months" },
+  { value: "planning", label: "Just planning / exploring" },
+] as const;
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -64,7 +64,7 @@ export default function QuoteForm() {
       { label: "Quantity", value: form.quantity },
       { label: "Voltage", value: form.voltage },
       { label: "Capacity", value: form.capacity },
-      { label: "Timeline", value: TIMELINE_LABELS[form.timeline] },
+      { label: "Timeline", value: TIMELINE_OPTIONS.find((t) => t.value === form.timeline)?.label },
       { label: "Notes", value: form.notes },
     ]);
     window.open(url, "_blank", "noopener,noreferrer");
@@ -75,7 +75,7 @@ export default function QuoteForm() {
     return (
       <FormSuccessMessage
         heading="Opening WhatsApp…"
-        message="Tap Send in WhatsApp to deliver your quote request. If WhatsApp didn't open, please call +91 9187615904."
+        message={`Tap Send in WhatsApp to deliver your quote request. If WhatsApp didn't open, please call ${COMPANY.phones[0]}.`}
       />
     );
   }
@@ -126,10 +126,9 @@ export default function QuoteForm() {
       </div>
       <select name="timeline" aria-label="Timeline" value={form.timeline} onChange={handleChange} className={inputClasses}>
         <option value="">Timeline</option>
-        <option value="immediate">Immediate (within 1 week)</option>
-        <option value="1-month">Within 1 month</option>
-        <option value="3-months">Within 3 months</option>
-        <option value="planning">Just planning / exploring</option>
+        {TIMELINE_OPTIONS.map((t) => (
+          <option key={t.value} value={t.value}>{t.label}</option>
+        ))}
       </select>
       <textarea name="notes" rows={3} aria-label="Additional notes" placeholder="Additional notes or requirements" value={form.notes} onChange={handleChange} className={inputClasses} />
       <GlowButton type="submit" className="w-full">

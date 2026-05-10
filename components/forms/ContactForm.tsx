@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
 import { inputClasses } from "@/lib/styles";
-import { INDUSTRIES } from "@/lib/constants";
+import { COMPANY, INDUSTRIES } from "@/lib/constants";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import GlowButton from "@/components/ui/GlowButton";
 import FormSuccessMessage from "./FormSuccessMessage";
@@ -59,7 +59,7 @@ export default function ContactForm() {
     return (
       <FormSuccessMessage
         heading="Opening WhatsApp…"
-        message="Tap Send in WhatsApp to deliver your message. If WhatsApp didn't open, please call +91 9187615904."
+        message={`Tap Send in WhatsApp to deliver your message. If WhatsApp didn't open, please call ${COMPANY.phones[0]}.`}
       />
     );
   }
