@@ -6,9 +6,10 @@ export function buildWhatsAppUrl(title: string, fields: Field[]): string {
   const lines = [
     `*${title}*`,
     "",
-    ...fields
-      .filter((f) => f.value && f.value.trim().length > 0)
-      .map((f) => `*${f.label}:* ${f.value!.trim()}`),
+    ...fields.flatMap((f) => {
+      const v = f.value?.trim();
+      return v ? [`*${f.label}:* ${v}`] : [];
+    }),
   ];
   const text = lines.join("\n");
   return `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(text)}`;
